@@ -13,34 +13,34 @@
     <title>SlickLab - Responsive Admin Dashboard Template</title>
 
     <!--easy pie chart-->
-    <link href="{{ $adminUrl }}/js/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{$adminUrl}}/js/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
 
     <!--vector maps -->
-    <link rel="stylesheet" href="{{ $adminUrl }}/js/vector-map/jquery-jvectormap-1.1.1.css">
+    <link rel="stylesheet" href="{{$adminUrl}}/js/vector-map/jquery-jvectormap-1.1.1.css">
 
     <!--right slidebar-->
-    <link href="{{ $adminUrl }}/css/slidebars.css" rel="stylesheet">
+    <link href="{{$adminUrl}}/css/slidebars.css" rel="stylesheet">
 
     <!--switchery-->
-    <link href="{{ $adminUrl }}/js/switchery/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{$adminUrl}}/js/switchery/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
 
     <!--jquery-ui-->
-    <link href="{{ $adminUrl }}/js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet" />
+    <link href="{{$adminUrl}}/js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet" />
 
     <!--iCheck-->
-    <link href="{{ $adminUrl }}/js/icheck/skins/all.css" rel="stylesheet">
+    <link href="{{$adminUrl}}/js/icheck/skins/all.css" rel="stylesheet">
 
-    <link href="{{ $adminUrl }}/css/owl.carousel.css" rel="stylesheet">
+    <link href="{{$adminUrl}}/css/owl.carousel.css" rel="stylesheet">
 
 
     <!--common style-->
-    <link href="{{ $adminUrl }}/css/style.css" rel="stylesheet">
-    <link href="{{ $adminUrl }}/css/style-responsive.css" rel="stylesheet">
+    <link href="{{$adminUrl}}/css/style.css" rel="stylesheet">
+    <link href="{{$adminUrl}}/css/style-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script src="{{ $adminUrl }}/js/html5shiv.js"></script>
-    <script src="{{ $adminUrl }}/js/respond.min.js"></script>
+    <script src="{{$adminUrl}}/js/html5shiv.js"></script>
+    <script src="{{$adminUrl}}/js/respond.min.js"></script>
     <![endif]-->
 </head>
 
@@ -51,8 +51,8 @@
         <div class="sidebar-left">
             <!--responsive view logo start-->
             <div class="logo dark-logo-bg visible-xs-* visible-sm-*">
-                <a href="{{ route('admin.index') }}">
-                    <img src="{{ $adminUrl }}/img/logo-icon.png" alt="">
+                <a href="{{route('admin.index')}}">
+                    <img src="{{$adminUrl}}/img/logo-icon.png" alt="">
                     <!--<i class="fa fa-maxcdn"></i>-->
                     <span class="brand-name">SlickLab</span>
                 </a>
@@ -69,9 +69,9 @@
 
                     <li class="menu-list"><a href="javascript:;"><i class="fa fa-tasks"></i> <span>Form</span></a>
                         <ul class="child-list">
-                            <li><a href="{{ route('admin.cat.index') }}"> Quản lý phòng</a></li>
-                            <li><a href="{{ route('admin.tour.index') }}"> Quản lý đơn hàng</a></li>
-                            <li><a href="{{ route('admin.user.index') }}"> Quản lý người dùng</a></li>
+                            <li><a href="{{route('admin.cat.index')}}"> Quản lý phòng</a></li>
+                            <li><a href="{{route('admin.tour.index')}}"> Quản lý đơn hàng</a></li>
+                            <li><a href="{{route('admin.user.index')}}"> Quản lý người dùng</a></li>
                             <li><a href="table-dynamic.html"> Advanced Table</a></li>
                         </ul>
                     </li>
@@ -89,8 +89,8 @@
 
                 <!--logo and logo icon start-->
                 <div class="logo dark-logo-bg hidden-xs hidden-sm">
-                    <a href="{{ route('admin.index') }}">
-                        <img src="{{ $adminUrl }}/img/logo-icon.png" alt="">
+                    <a href="{{route('admin.index')}}">
+                        <img src="{{$adminUrl}}/img/logo-icon.png" alt="">
                         <!--<i class="fa fa-maxcdn"></i>-->
                         <span class="brand-name">SlickLab</span>
                     </a>
@@ -98,7 +98,7 @@
 
                 <div class="icon-logo dark-logo-bg hidden-xs hidden-sm">
                     <a href="index.html">
-                        <img src="{{ $adminUrl }}/img/logo-icon.png" alt="">
+                        <img src="{{$adminUrl}}/img/logo-icon.png" alt="">
                         <!--<i class="fa fa-maxcdn"></i>-->
                     </a>
                 </div>
@@ -187,7 +187,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="javascript:;">
-                                                        <img class="icon-img" src="{{ $adminUrl }}/img/mega-menu/mega_icon1.png" alt="" />
+                                                        <img class="icon-img" src="{{$adminUrl}}/img/mega-menu/mega_icon1.png" alt="" />
                                                                 <span class="icon-desk">
                                                                                         <span class="d-title">Full Flat Concept</span>
                                                                 <span class="d-desk">Description goes here</span>
@@ -196,7 +196,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="javascript:;">
-                                                        <img class="icon-img" src="{{ $adminUrl }}/img/mega-menu/mega_icon2.png" alt="" />
+                                                        <img class="icon-img" src="{{$adminUrl}}/img/mega-menu/mega_icon2.png" alt="" />
                                                                 <span class="icon-desk">
                                                                                         <span class="d-title">Amaging Dashboard</span>
                                                                 <span class="d-desk">Build with BS3</span>
@@ -205,7 +205,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="javascript:;">
-                                                        <img class="icon-img" src="{{ $adminUrl }}/img/mega-menu/mega_icon3.png" alt="" />
+                                                        <img class="icon-img" src="{{$adminUrl}}/img/mega-menu/mega_icon3.png" alt="" />
                                                                 <span class="icon-desk">
                                                                                         <span class="d-title">3500+ Satisfied Client</span>
                                                                 <span class="d-desk">Max 5 star rating</span>
@@ -214,7 +214,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="javascript:;">
-                                                        <img class="icon-img" src="{{ $adminUrl }}/img/mega-menu/mega_icon4.png" alt="" />
+                                                        <img class="icon-img" src="{{$adminUrl}}/img/mega-menu/mega_icon4.png" alt="" />
                                                                 <span class="icon-desk">
                                                                                         <span class="d-title">Easy to Cutomize</span>
                                                                 <span class="d-desk">Very easy to use</span>
@@ -247,19 +247,19 @@
                                 class=" fa fa-angle-down"></b></a>
                             <ul role="menu" class="dropdown-menu language-switch">
                                 <li>
-                                    <a tabindex="-1" href="javascript:;"><span> German </span><img src="{{ $adminUrl }}/img/flags/germany_flag.jpg" alt=""/></a>
+                                    <a tabindex="-1" href="javascript:;"><span> German </span><img src="{{$adminUrl}}/img/flags/germany_flag.jpg" alt=""/></a>
                                 </li>
                                 <li>
-                                    <a tabindex="-1" href="javascript:;"><span> Italian </span> <img src="{{ $adminUrl }}/img/flags/italy_flag.jpg" alt=""/></a>
+                                    <a tabindex="-1" href="javascript:;"><span> Italian </span> <img src="{{$adminUrl}}/img/flags/italy_flag.jpg" alt=""/></a>
                                 </li>
                                 <li>
-                                    <a tabindex="-1" href="javascript:;"><span> French </span> <img src="{{ $adminUrl }}/img/flags/french_flag.jpg" alt=""/></a>
+                                    <a tabindex="-1" href="javascript:;"><span> French </span> <img src="{{$adminUrl}}/img/flags/french_flag.jpg" alt=""/></a>
                                 </li>
                                 <li>
-                                    <a tabindex="-1" href="javascript:;"><span> Spanish </span> <img src="{{ $adminUrl }}/img/flags/spain_flag.jpg" alt=""/></a>
+                                    <a tabindex="-1" href="javascript:;"><span> Spanish </span> <img src="{{$adminUrl}}/img/flags/spain_flag.jpg" alt=""/></a>
                                 </li>
                                 <li>
-                                    <a tabindex="-1" href="javascript:;"><span> Russian </span> <img src="{{ $adminUrl }}/img/flags/russia_flag.jpg" alt=""/></a>
+                                    <a tabindex="-1" href="javascript:;"><span> Russian </span> <img src="{{$adminUrl}}/img/flags/russia_flag.jpg" alt=""/></a>
                                 </li>
                             </ul>
                         </li>
@@ -521,7 +521,7 @@
 
                         <li>
                             <a href="javascript:;" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                <img src="{{ $adminUrl }}/img/avatar-mini.jpg" alt="">John Doe
+                                <img src="{{$adminUrl}}/img/avatar-mini.jpg" alt="">John Doe
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu purple pull-right">
@@ -554,3 +554,4 @@
 
             </div>
             <!-- header section end-->
+            
