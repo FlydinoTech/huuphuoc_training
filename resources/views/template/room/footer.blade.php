@@ -1,85 +1,85 @@
 <div class="kf_instagram_updates">
     <div class="instagram">
         <figure>
-            <img src="{{$publicUrl}}/images/instagram-img01.jpeg" alt="">
-            <a href="{{$publicUrl}}/images/instagram-img01.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <img src="{{url($publicUrl)}}/images/instagram-img01.jpeg" alt="">
+            <a href="{{url($publicUrl)}}/images/instagram-img01.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         </figure>
     </div>
     <div class="instagram">
         <figure>
-            <img src="{{$publicUrl}}/images/instagram-img02.jpeg" alt="">
-            <a href="{{$publicUrl}}/images/instagram-img02.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <img src="{{url($publicUrl)}}/images/instagram-img02.jpeg" alt="">
+            <a href="{{url($publicUrl)}}/images/instagram-img02.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         </figure>
     </div>
     <div class="instagram">
         <figure>
-            <img src="{{$publicUrl}}/images/instagram-img03.jpeg" alt="">
-            <a href="{{$publicUrl}}/images/instagram-img03.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <img src="{{url($publicUrl)}}/images/instagram-img03.jpeg" alt="">
+            <a href="{{url($publicUrl)}}/images/instagram-img03.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         </figure>
     </div>
     <div class="instagram">
         <figure>
-            <img src="{{$publicUrl}}/images/instagram-img04.jpeg" alt="">
-            <a href="{{$publicUrl}}/images/instagram-img04.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <img src="{{url($publicUrl)}}/images/instagram-img04.jpeg" alt="">
+            <a href="{{url($publicUrl)}}/images/instagram-img04.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         </figure>
     </div>
     <div class="instagram">
         <figure>
-            <img src="{{$publicUrl}}/images/instagram-img05.jpeg" alt="">
-            <a href="{{$publicUrl}}/images/instagram-img05.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <img src="{{url($publicUrl)}}/images/instagram-img05.jpeg" alt="">
+            <a href="{{url($publicUrl)}}/images/instagram-img05.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         </figure>
     </div>
     <div class="instagram">
         <figure>
-            <img src="{{$publicUrl}}/images/instagram-img06.jpeg" alt="">
-            <a href="{{$publicUrl}}/images/instagram-img06.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <img src="{{url($publicUrl)}}/images/instagram-img06.jpeg" alt="">
+            <a href="{{url($publicUrl)}}/images/instagram-img06.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         </figure>
     </div>
     <div class="instagram">
         <figure>
-            <img src="{{$publicUrl}}/images/instagram-img07.jpeg" alt="">
-            <a href="{{$publicUrl}}/images/instagram-img07.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <img src="{{url($publicUrl)}}/images/instagram-img07.jpeg" alt="">
+            <a href="{{url($publicUrl)}}/images/instagram-img07.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         </figure>
     </div>
     <div class="instagram">
         <figure>
-            <img src="{{$publicUrl}}/images/instagram-img08.jpeg" alt="">
-            <a href="{{$publicUrl}}/images/instagram-img08.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <img src="{{url($publicUrl)}}/images/instagram-img08.jpeg" alt="">
+            <a href="{{url($publicUrl)}}/images/instagram-img08.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         </figure>
     </div>
     <div class="instagram">
         <figure>
-            <img src="{{$publicUrl}}/images/instagram-img09.jpeg" alt="">
-            <a href="{{$publicUrl}}/images/instagram-img09.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <img src="{{url($publicUrl)}}/images/instagram-img09.jpeg" alt="">
+            <a href="{{url($publicUrl)}}/images/instagram-img09.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         </figure>
     </div>
     <div class="instagram">
         <figure>
-            <img src="{{$publicUrl}}/images/instagram-img10.jpeg" alt="">
-            <a href="{{$publicUrl}}/images/instagram-img10.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <img src="{{url($publicUrl)}}/images/instagram-img10.jpeg" alt="">
+            <a href="{{url($publicUrl)}}/images/instagram-img10.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         </figure>
     </div>
     <div class="instagram">
         <figure>
-            <img src="{{$publicUrl}}/images/instagram-img11.jpeg" alt="">
-            <a href="{{$publicUrl}}/images/instagram-img11.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <img src="{{url($publicUrl)}}/images/instagram-img11.jpeg" alt="">
+            <a href="{{url($publicUrl)}}/images/instagram-img11.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         </figure>
     </div>
     <div class="instagram">
         <figure>
-            <img src="{{$publicUrl}}/images/instagram-img12.jpeg" alt="">
-            <a href="{{$publicUrl}}/images/instagram-img12.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <img src="{{url($publicUrl)}}/images/instagram-img12.jpeg" alt="">
+            <a href="{{url($publicUrl)}}/images/instagram-img12.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         </figure>
     </div>
     <div class="instagram">
         <figure>
-            <img src="{{$publicUrl}}/images/instagram-img13.jpeg" alt="">
-            <a href="{{$publicUrl}}/images/instagram-img13.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <img src="{{url($publicUrl)}}/images/instagram-img13.jpeg" alt="">
+            <a href="{{url($publicUrl)}}/images/instagram-img13.jpeg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         </figure>
     </div>
     <div class="instagram">
         <figure>
-            <img src="{{$publicUrl}}/images/instagram-img04.jpeg" alt="">
+            <img src="{{url($publicUrl)}}/images/instagram-img04.jpeg" alt="">
             <a href="images/instagram-img14.jpg" data-rel="prettyPhoto"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         </figure>
     </div>
@@ -135,38 +135,38 @@
                         <ul class="widget-gallery">
                             <li>
                                 <figure>
-                                    <img src="{{$publicUrl}}/images/widget-gallery-img1.jpeg" alt="">
-                                    <a href="{{$publicUrl}}/images/widget-gallery-img1.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                    <img src="{{url($publicUrl)}}/images/widget-gallery-img1.jpeg" alt="">
+                                    <a href="{{url($publicUrl)}}/images/widget-gallery-img1.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
                                 </figure>
                             </li>
                             <li>
                                 <figure>
-                                    <img src="{{$publicUrl}}/images/widget-gallery-img2.jpeg" alt="">
-                                    <a href="{{$publicUrl}}/images/widget-gallery-img2.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                    <img src="{{url($publicUrl)}}/images/widget-gallery-img2.jpeg" alt="">
+                                    <a href="{{url($publicUrl)}}/images/widget-gallery-img2.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
                                 </figure>
                             </li>
                             <li>
                                 <figure>
-                                    <img src="{{$publicUrl}}/images/widget-gallery-img3.jpeg" alt="">
-                                    <a href="{{$publicUrl}}/images/widget-gallery-img3.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                    <img src="{{url($publicUrl)}}/images/widget-gallery-img3.jpeg" alt="">
+                                    <a href="{{url($publicUrl)}}/images/widget-gallery-img3.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
                                 </figure>
                             </li>
                             <li>
                                 <figure>
-                                    <img src="{{$publicUrl}}/images/widget-gallery-img4.jpeg" alt="">
-                                    <a href="{{$publicUrl}}/images/widget-gallery-img4.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                    <img src="{{url($publicUrl)}}/images/widget-gallery-img4.jpeg" alt="">
+                                    <a href="{{url($publicUrl)}}/images/widget-gallery-img4.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
                                 </figure>
                             </li>
                             <li>
                                 <figure>
-                                    <img src="{{$publicUrl}}/images/widget-gallery-img5.jpeg" alt="">
-                                    <a href="{{$publicUrl}}/images/widget-gallery-img5.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                    <img src="{{url($publicUrl)}}/images/widget-gallery-img5.jpeg" alt="">
+                                    <a href="{{url($publicUrl)}}/images/widget-gallery-img5.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
                                 </figure>
                             </li>
                             <li>
                                 <figure>
-                                    <img src="{{$publicUrl}}/images/widget-gallery-img6.jpeg" alt="">
-                                    <a href="{{$publicUrl}}/images/widget-gallery-img6.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                    <img src="{{url($publicUrl)}}/images/widget-gallery-img6.jpeg" alt="">
+                                    <a href="{{url($publicUrl)}}/images/widget-gallery-img6.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
                                 </figure>
                             </li>
                         </ul>
@@ -179,10 +179,10 @@
         <div class="container">
             <span>Copyright 2018 - All Right Reserved</span>
             <ul class="kf_cradit_cards">
-                <li><a href="#"><img src="{{$publicUrl}}/images/card-1.jpeg" alt=""></a></li>
-                <li><a href="#"><img src="{{$publicUrl}}/images/card-2.jpeg" alt=""></a></li>
-                <li><a href="#"><img src="{{$publicUrl}}/images/card-3.jpeg" alt=""></a></li>
-                <li><a href="#"><img src="{{$publicUrl}}/images/card-4.jpeg" alt=""></a></li>
+                <li><a href="#"><img src="{{url($publicUrl)}}/images/card-1.jpeg" alt=""></a></li>
+                <li><a href="#"><img src="{{url($publicUrl)}}/images/card-2.jpeg" alt=""></a></li>
+                <li><a href="#"><img src="{{url($publicUrl)}}/images/card-3.jpeg" alt=""></a></li>
+                <li><a href="#"><img src="{{url($publicUrl)}}/images/card-4.jpeg" alt=""></a></li>
             </ul>
         </div>
     </div>

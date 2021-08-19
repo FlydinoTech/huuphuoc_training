@@ -4,41 +4,41 @@
 	    <meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	    <title>Bon Voyage Exotic Tourism Destination HTML Template</title>
   	    <!-- Bootstrap -->
-	    <link href="{{$publicUrl}}/css/bootstrap.min.css" rel="stylesheet">
+	    <link href="{{url($publicUrl)}}/css/bootstrap.min.css" rel="stylesheet">
 	    <!-- font awesome -->
-	    <link href="{{$publicUrl}}/css/font-awesome.min.css" rel="stylesheet">
+	    <link href="{{url($publicUrl)}}/css/font-awesome.min.css" rel="stylesheet">
 	    <!-- animation -->
-	    <link href="{{$publicUrl}}/css/animation.css" rel="stylesheet">
+	    <link href="{{url($publicUrl)}}/css/animation.css" rel="stylesheet">
 	    <!-- datepicker -->
-	    <link href="{{$publicUrl}}/css/datepicker.css" rel="stylesheet">
+	    <link href="{{url($publicUrl)}}/css/datepicker.css" rel="stylesheet">
 	    <!-- selectric -->
-	    <link href="{{$publicUrl}}/css/selectric.css" rel="stylesheet">
+	    <link href="{{url($publicUrl)}}/css/selectric.css" rel="stylesheet">
 	    <!-- slick Slider -->
-	    <link href="{{$publicUrl}}/css/slick.css" rel="stylesheet">
+	    <link href="{{url($publicUrl)}}/css/slick.css" rel="stylesheet">
 	    <!-- Responsive -->
-	    <link href="{{$publicUrl}}/js/responsive-menu/responsive.css" rel="stylesheet">
+	    <link href="{{url($publicUrl)}}/js/responsive-menu/responsive.css" rel="stylesheet">
 	    <!-- SVG icons -->
-	    <link href="{{$publicUrl}}/css/icons.css" rel="stylesheet">
+	    <link href="{{url($publicUrl)}}/css/icons.css" rel="stylesheet">
 	    <!-- prettyphoto -->
-	    <link href="{{$publicUrl}}/js/prettyphoto/prettyPhoto.css" rel="stylesheet">
+	    <link href="{{url($publicUrl)}}/js/prettyphoto/prettyPhoto.css" rel="stylesheet">
 	    <!-- svg-creater -->
-	    <link href="{{$publicUrl}}/css/svg-creater.css" rel="stylesheet">
+	    <link href="{{url($publicUrl)}}/css/svg-creater.css" rel="stylesheet">
 	    <!-- typography -->
-	    <link href="{{$publicUrl}}/css/typography.css" rel="stylesheet">
+	    <link href="{{url($publicUrl)}}/css/typography.css" rel="stylesheet">
 	    <!-- shortcodes -->
-	    <link href="{{$publicUrl}}/css/shortcodes.css" rel="stylesheet">
+	    <link href="{{url($publicUrl)}}/css/shortcodes.css" rel="stylesheet">
 	    <!-- widget -->
-	    <link href="{{$publicUrl}}/css/widget.css" rel="stylesheet">
+	    <link href="{{url($publicUrl)}}/css/widget.css" rel="stylesheet">
 	    <!-- colors -->
-	    <link href="{{$publicUrl}}/css/colors.css" rel="stylesheet">
+	    <link href="{{url($publicUrl)}}/css/colors.css" rel="stylesheet">
 	    <!-- Style sheet -->
-	    <link href="{{$publicUrl}}/style.css" rel="stylesheet">
+	    <link href="{{url($publicUrl)}}/style.css" rel="stylesheet">
 	    <!-- Mobile responsive -->
-        <link href="{{$publicUrl}}/css/responsive.css" rel="stylesheet">
-	    <link rel="icon" type="image/png" href="{{$publicUrl}}/favicon-32x32.png" sizes="32x32">
+        <link href="{{url($publicUrl)}}/css/responsive.css" rel="stylesheet">
+	    <link rel="icon" type="image/png" href="{{url($publicUrl)}}/favicon-32x32.png" sizes="32x32">
 </head>
     <body>
 	    <div class="pre-loader">
@@ -97,7 +97,7 @@
 	            <div class="header-v1_navigation_row animated">
 	               <div class="container">
 	                  <div class="logo-here">
-	                     <h1><a href="{{route('room.index')}}"><img src="{{$publicUrl}}/images/logo_v1.png" alt="44 by 150"></a></h1>
+	                     <h1><a href="{{route('room.index')}}"><img src="{{url($publicUrl)}}/images/logo_v1.png" alt="44 by 150"></a></h1>
 	                  </div>
 	                  <div class="header-v1-nav txt-hvr3">
 	                     <nav class="navigation">
@@ -212,5 +212,4 @@
 	               </div>
 	            </div>
 	         </header>
-			<!--Header starts version.1 ends-->
-			
+			<!--Header starts version.1 ends-->	
