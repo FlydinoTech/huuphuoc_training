@@ -9,8 +9,4 @@ use Illuminate\Support\Facades\DB;
 class Discount_code extends Model
 {
     use HasFactory;
-    public function getItem()
-    {
-        return DB::table('discount_codes')->get();
-    }
 }

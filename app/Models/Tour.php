@@ -9,8 +9,4 @@ use Illuminate\Support\Facades\DB;
 class Tour extends Model
 {
     use HasFactory;
-    public function getItem()
-    {
-        return DB::table('tours')->get();
-    }
 }

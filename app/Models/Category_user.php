@@ -9,8 +9,4 @@ use Illuminate\Support\Facades\DB;
 class Category_user extends Model
 {
     use HasFactory;
-    public function getItem()
-    {
-        return DB::table('category_users')->orderBy('id','desc')->get();
-    }
 }

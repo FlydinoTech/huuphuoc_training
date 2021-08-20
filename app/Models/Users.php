@@ -9,8 +9,4 @@ use Illuminate\Support\Facades\DB;
 class Users extends Model
 {
     use HasFactory;
-    public function getItem()
-    {
-        return DB::table('users')->get();
-    }
 }
