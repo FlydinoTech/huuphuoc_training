@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Category_users extends Model
+class Category_user extends Model
 {
     use HasFactory;
-    protected $table = 'category_users';
-    protected $primaryKey = 'id';
-    public function getItem(){
+    public function getItem()
+    {
         return DB::table('category_users')->orderBy('id','desc')->get();
     }
 }

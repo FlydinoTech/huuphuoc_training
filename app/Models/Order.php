@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Tours extends Model
+class Order extends Model
 {
     use HasFactory;
-    protected $table = 'tours';
-    protected $primaryKey = 'id';
-    public function getItem(){
-        return DB::table('tours')->orderBy('id','desc')->get();
+    public function getItem()
+    {
+        return DB::table('orfers')->get();
     }
 }
