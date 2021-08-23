@@ -9,9 +9,9 @@
             <!-- /. ROW  -->
             <hr />
             @php
-                $name = $arrCategory->name;
-                $description = $arrCategory->description;
-                $picture = $arrCategory->picture;
+                $name = $categoryId->name;
+                $description = $categoryId->description;
+                $picture = $categoryId->picture;
                 $urlPic = "/storage/files/".$picture;   
             @endphp
             <div class="row">
@@ -21,23 +21,24 @@
                         <div class="panel-body">
                             <div class="row">
                             <div class="">
-                                    <form style="padding-bottom: 50px;" role="form" method="post" action="" enctype='multipart/form-data'>
-                                        @csrf
-                                        <div class="form-group">
-                                            <label>Tên quốc gia</label>
-                                            <input type="text" value="{{$name}}" name="name" class="form-control" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Mô tả</label>
-                                            <textarea name="description" id="description" class="form-control">{{$description}}</textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Hình ảnh</label>
-                                            <input type="file" name="hinhanh" class="form-control" multiple="multiple"/>
-                                            <img src="{{$urlPic}}" style="width: 150px;height: 150;"/>
-                                        </div>
-                                        <button type="submit" name="submit"  class="btn btn-success btn-md">Thêm</button>
-                                    </form>
+                                {!! Form::open(['method' => 'POST', 'url' => '']) !!}    
+                                    @csrf
+                                    <div class="form-group">
+                                        {{ Form::label('name', 'Tên quốc gia', ['class' => 'form-group']) }}
+                                        {{ Form::text('name', $name, ['class' => 'form-control', 'placeholder' =>  'Nhập tên']) }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mô tả</label>
+                                        {{ Form::label('description', 'Mô tả', ['class' => 'form-group']) }}
+                                        {{ Form::textarea('description', $description, ['class' => 'form-control']) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ Form::label('hinhanh', 'Hình ảnh', ['class' => 'form-group']) }}
+                                        {{Form::file('file')}}<br/>
+                                        <img src="{{$urlPic}}" style="width: 150px;height: 150;"/>
+                                    </div>
+                                    {!! Form::submit( 'Sửa', ['class' => 'btn-submit']) !!}
+                                {!! Form::close() !!}
                                     <script>
                                             CKEDITOR.replace( 'description',
                                                 {

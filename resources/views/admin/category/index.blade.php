@@ -15,7 +15,7 @@
                 <div class="col-12">
                     <header class="panel-heading head-border row">
                         <div class="col-sm-7" style="text-align: left;">
-                            <a style="float:left" href="{{route('admin.category.add')}}" class="btn btn-success btn-md">Thêm</a>
+                            <a style="float:left" href="{{route('category.create')}}" class="btn btn-success btn-md">Thêm</a>
                         </div>
                         <div class="col-sm-5" style="text-align: right;">
                             <form action="" method="get">
@@ -35,12 +35,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($arrCategory as $arrCategory)
+                            @foreach ($categories as $categories)
                                 @php
-                                    $id = $arrCategory->id;
-                                    $name = $arrCategory->name;
-                                    $description = $arrCategory->description;
-                                    $picture = $arrCategory->picture;
+                                    $id = $categories->id;
+                                    $name = $categories->name;
+                                    $description = $categories->description;
+                                    $picture = $categories->picture;
                                     $urlPic = "/storage/files/".$picture;
                                 @endphp
                             <tr>
@@ -49,7 +49,7 @@
                                 <td>{{$description}}</td>
                                 <td><img src="{{$urlPic}}" style="width: 150px;height: 150;"/></td>
                                 <td class="center">
-                                    <a href="{{ route('admin.category.edit', $id) }}" title="" class="btn btn-success"><i class="fa fa-edit "></i> Sửa</a>
+                                    <a href="{{ route('category.edit', $id) }}" title="" class="btn btn-success"><i class="fa fa-edit "></i> Sửa</a>
                                     <a href="" title="" class="btn btn-danger"><i class="fa fa-pencil"></i> Xóa</a>
                                 </td>
                             </tr>
@@ -58,7 +58,7 @@
                     </table>
                 </div>
                 <nav aria-label="Page Navigation">
-                    {{-- {{ $arrCategory->links() }} --}}
+                    {{-- {{ $categories->links() }} --}}
                 </nav>
             </div>
         </div>

@@ -11,11 +11,12 @@ class Category extends Model
     use HasFactory;
     public function getItem()
     {
-        return DB::table('categories')->get();
+        return Category::get();
     }
 
     public function getItemId($id)
     {
-        return DB::table('categories')->where('id',$id)->first();
+        return Category::findOrFail($id);
+    
     }
 }
