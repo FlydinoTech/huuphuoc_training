@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix("admin")->namespace("Admin")->group(function(){
     Route::get('/',[AdminController::class,'index'])->name("admin.index");
+    Route::group(['prefix' => 'category'], function (){
+        Route::get('/',[CategoryController::class,'index'])->name('admin.category.index');
+        Route::get('/add',[CategoryController::class,'add'])->name('admin.category.add');
+        Route::get('/edit/{id}',[CategoryController::class,'edit'])->name('admin.category.edit');
+    });
 });
