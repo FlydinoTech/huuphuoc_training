@@ -36,20 +36,18 @@
                         </thead>
                         <tbody>
                             @foreach ($categories as $categories)
-                                @php
-                                    $id = $categories->id;
-                                    $name = $categories->name;
-                                    $description = $categories->description;
+                                @php  
                                     $picture = $categories->picture;
                                     $urlPic = "/storage/files/".$picture;
                                 @endphp
                             <tr>
-                                <td>{{$id}}</td>
-                                <td>{{$name}}</td>
-                                <td>{{$description}}</td>
-                                <td><img src="{{$urlPic}}" style="width: 150px;height: 150;"/></td>
+                                <td>{{$categories->id}}</td>
+                                <td>{{$categories->name}}</td>
+                                <td>{{$categories->description}}</td>
+                                
+                                <td>{{ Html::image($urlPic, 'alt', array( 'width' => 150, 'height' => 100 )) }}</td>
                                 <td class="center">
-                                    <a href="{{ route('category.edit', $id) }}" title="" class="btn btn-success"><i class="fa fa-edit "></i> Sửa</a>
+                                    <a href="{{ route('category.edit', $categories->id) }}" title="" class="btn btn-success"><i class="fa fa-edit "></i> Sửa</a>
                                     <a href="" title="" class="btn btn-danger"><i class="fa fa-pencil"></i> Xóa</a>
                                 </td>
                             </tr>

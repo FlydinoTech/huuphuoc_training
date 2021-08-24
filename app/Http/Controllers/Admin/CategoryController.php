@@ -20,7 +20,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = $this->category->getItem();
+        $categories = $this->category->get();
+        
         return view('admin.category.index')->with(compact('categories'));
     }
 
@@ -64,7 +65,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $categoryId = $this->category->getItemId($id);
+        $categoryId = $this->category->findOrFail($id);
+
         return view('admin.category.edit', compact('categoryId'));
     }
 

@@ -9,8 +9,6 @@
             <!-- /. ROW  -->
             <hr />
             @php
-                $name = $categoryId->name;
-                $description = $categoryId->description;
                 $picture = $categoryId->picture;
                 $urlPic = "/storage/files/".$picture;   
             @endphp
@@ -21,21 +19,19 @@
                         <div class="panel-body">
                             <div class="row">
                             <div class="">
-                                {!! Form::open(['method' => 'POST', 'url' => '']) !!}    
-                                    @csrf
+                                {!! Form::model($categoryId, ['method' => 'POST', 'route' => ['category.update', $categoryId->id]]) !!}
                                     <div class="form-group">
                                         {{ Form::label('name', 'Tên quốc gia', ['class' => 'form-group']) }}
-                                        {{ Form::text('name', $name, ['class' => 'form-control', 'placeholder' =>  'Nhập tên']) }}
+                                        {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' =>  'Nhập tên']) }}
                                     </div>
                                     <div class="form-group">
-                                        <label>Mô tả</label>
                                         {{ Form::label('description', 'Mô tả', ['class' => 'form-group']) }}
-                                        {{ Form::textarea('description', $description, ['class' => 'form-control']) }}
+                                        {{ Form::textarea('description', null, ['class' => 'form-control']) }}
                                     </div>
                                     <div class="form-group">
                                         {{ Form::label('hinhanh', 'Hình ảnh', ['class' => 'form-group']) }}
                                         {{Form::file('file')}}<br/>
-                                        <img src="{{$urlPic}}" style="width: 150px;height: 150;"/>
+                                        {{ Html::image($urlPic, 'alt', array( 'width' => 150, 'height' => 100 )) }}
                                     </div>
                                     {!! Form::submit( 'Sửa', ['class' => 'btn-submit']) !!}
                                 {!! Form::close() !!}
