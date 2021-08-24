@@ -9,8 +9,8 @@
 <div class="form-group">
     {{ Form::label('hinhanh', 'Hình ảnh', ['class' => 'form-group']) }}
     {{Form::file('file')}}<br/>
-@if (isset($category->picUrl))
-    {{ Html::image($category->picUrl, 'alt', array( 'width' => 150, 'height' => 100 )) }}
+@if (isset($category->picture_url))
+    {{ Html::image($category->picture_url, 'alt', array( 'width' => 150, 'height' => 100 )) }}
 @endif
 </div>
     {!! Form::submit( 'Submit', ['class' => 'btn-submit']) !!}

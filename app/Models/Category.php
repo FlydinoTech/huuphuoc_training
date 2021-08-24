@@ -10,9 +10,8 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function getPictureUrlAttribute($value)
+    public function getPictureUrlAttribute()
     {
-        return '/storage/files/' . $value;
+        return $this->picture ? url('/storage/files'). '/' . $this->picture : "";
     }
-
 }

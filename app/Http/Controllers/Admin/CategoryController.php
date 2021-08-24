@@ -66,8 +66,6 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = $this->category->findOrFail($id);
-        $pictureUrl = $this->category->getPictureUrlAttribute($category->picture);
-        $category->picUrl = $category->pictureUrl . $category->picture;
 
         return view('admin.category.edit', compact('category'));
     }
