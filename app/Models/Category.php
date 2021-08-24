@@ -9,4 +9,10 @@ use Illuminate\Support\Facades\DB;
 class Category extends Model
 {
     use HasFactory;
+
+    public function getPictureUrlAttribute($value)
+    {
+        return '/storage/files/' . $value;
+    }
+
 }
