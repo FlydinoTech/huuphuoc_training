@@ -12,6 +12,6 @@ class Category extends Model
 
     public function getPictureUrlAttribute()
     {
-        return $this->picture ? url('/storage/files'). '/' . $this->picture : "";
+        return $this->picture ? url('/storage/files'). '/' . $this->picture : '';
     }
 }

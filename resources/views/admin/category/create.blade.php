@@ -17,6 +17,9 @@
                             <div class="">
                                 {!! Form::open() !!} 
                                     @include('admin.category.form')
+                                    {!! Form::submit( 'Thêm', ['class' => 'btn-submit']) !!}
+                                    </div>
+
                                 {!! Form::close() !!}
                             </div>
                         </div>

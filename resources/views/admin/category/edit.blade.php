@@ -17,6 +17,8 @@
                             <div class="">
                                 {!! Form::model($category, ['method' => 'POST', 'route' => ['category.update', $category->id]]) !!}
                                     @include('admin.category.form')
+                                    {!! Form::submit( 'Sửa', ['class' => 'btn-submit']) !!}
+                                    </div>
                                 {!! Form::close() !!}
                                 </div>
 
