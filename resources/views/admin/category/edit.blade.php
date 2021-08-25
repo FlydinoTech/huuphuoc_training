@@ -14,21 +14,18 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="row">
-                            <div class="">
-                                {!! Form::model($category, ['method' => 'POST', 'route' => ['category.update', $category->id]]) !!}
-                                    @include('admin.category.form')
-                                    {!! Form::submit( 'Sửa', ['class' => 'btn-submit']) !!}
-                                    </div>
-                                {!! Form::close() !!}
+                                <div class="">
+                                    {!! Form::model($category, ['method' => 'POST', 'route' => ['category.update', $category->id]]) !!}
+                                        @include('admin.category.form')
+                                        {!! Form::submit( 'Sửa', ['class' => 'btn-submit']) !!}
+                                    {!! Form::close() !!}
                                 </div>
-
                             </div>
                         </div>
                     </div>
-                    <!-- End Form Elements -->
                 </div>
+                    <!-- End Form Elements -->
             </div>
         <!-- /. PAGE INNER  -->
     </div>
-</div>
-@stop
+@endsection

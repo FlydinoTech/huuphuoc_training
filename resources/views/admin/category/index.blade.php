@@ -36,16 +36,12 @@
                         </thead>
                         <tbody>
                             @foreach ($categories as $categories)
-                                @php  
-                                    $picture = $categories->picture;
-                                    $urlPic = "/storage/files/".$picture;
-                                @endphp
                             <tr>
                                 <td>{{$categories->id}}</td>
                                 <td>{{$categories->name}}</td>
                                 <td>{{$categories->description}}</td>
                                 
-                                <td>{{ Html::image($urlPic, 'alt', array( 'width' => 150, 'height' => 100 )) }}</td>
+                                <td>{{ Html::image($categories->picture_url, 'alt', array( 'width' => 150, 'height' => 100 )) }}</td>
                                 <td class="center">
                                     <a href="{{ route('category.edit', $categories->id) }}" title="" class="btn btn-success"><i class="fa fa-edit "></i> Sửa</a>
                                     <a href="" title="" class="btn btn-danger"><i class="fa fa-pencil"></i> Xóa</a>
