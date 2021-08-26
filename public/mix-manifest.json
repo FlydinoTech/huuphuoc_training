@@ -1,5 +1,6 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/admin/app.css": "/css/admin/app.css",
-    "/js/admin/jquery.min.js": "/js/admin/jquery.min.js"
+    "/css/app.css": "/css/app.css",
+    "/js/admin/jquery.min.js": "/js/admin/jquery.min.js",
+    "/img/auth/favicon-32x32.png": "/img/auth/favicon-32x32.png",
+    "/css/auth/all.css": "/css/auth/all.css"
 }
