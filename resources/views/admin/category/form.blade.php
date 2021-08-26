@@ -9,7 +9,7 @@
 <div class="form-group">
     {{ Form::label('hinhanh', 'Hình ảnh', ['class' => 'form-group']) }}
     {{ Form::file('file') }}<br/>
-     @if (isset($category->picture_url))
-        {{ Html::image($category->picture_url, 'alt', array( 'width' => 150, 'height' => 100 )) }}
+    @if (isset($category) && $category->picture))
+        {{ Html::image($category->picture_url, 'alt', ['width' => 150, 'height' => 100]) }}
     @endif
 </div>

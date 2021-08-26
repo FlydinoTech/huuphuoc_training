@@ -14,12 +14,10 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
-                            <div class="">
-                                {!! Form::model($category, ['method' => 'PUT', 'route' => ['category.update', $category->id]]) !!}
+                            {!! Form::model($category, ['method' => 'PUT', 'route' => ['category.update', $category->id]]) !!}
                                 @include('admin.category.form')
                                 {!! Form::submit('Sửa', ['class' => 'btn-submit']) !!}
-                                {!! Form::close() !!}
-                            </div>
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
