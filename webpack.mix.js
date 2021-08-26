@@ -11,7 +11,6 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/scss/admin/app.scss', 'css/admin');
+mix.sass('resources/scss/admin/app.scss', 'css/admin');
 
-mix.copy("node_modules/jquery/dist/jquery.min.js", "js/admin");
+mix.copy("node_modules/jquery/dist/jquery.min.js", "public/js/admin");

@@ -52,9 +52,10 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                        </table>
                 </div>
                 <nav aria-label="Page Navigation">
+                    {{-- {{ $items->links('vendor.pagination.default') }} --}}
                 </nav>
             </div>
         </div>
