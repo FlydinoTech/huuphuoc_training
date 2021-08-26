@@ -15,7 +15,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="">
-                                {!! Form::open(['method' => 'POST', 'url' => 'route(category.store)']) !!}
+                                {!! Form::open(['method' => 'POST', 'url' => route(category.store)]) !!}
                                     @include('admin.category.form')
                                     {!! Form::submit('Thêm', ['class' => 'btn-submit']) !!}
                                 {!! Form::close() !!}
