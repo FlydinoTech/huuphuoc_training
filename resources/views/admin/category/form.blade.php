@@ -8,8 +8,8 @@
 </div>
 <div class="form-group">
     {{ Form::label('hinhanh', 'Hình ảnh', ['class' => 'form-group']) }}
-    {{Form::file('file')}}<br/>
+    {{ Form::file('file') }}<br/>
      @if (isset($category->picture_url))
-    {{ Html::image($category->picture_url, 'alt', array( 'width' => 150, 'height' => 100 )) }}
+        {{ Html::image($category->picture_url, 'alt', array( 'width' => 150, 'height' => 100 )) }}
     @endif
 </div>

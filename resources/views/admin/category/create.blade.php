@@ -17,7 +17,7 @@
                             <div class="">
                                 {!! Form::open(['method' => 'POST', 'url' => 'route(category.store)']) !!}
                                     @include('admin.category.form')
-                                    {!! Form::submit( 'Thêm', ['class' => 'btn-submit']) !!}
+                                    {!! Form::submit('Thêm', ['class' => 'btn-submit']) !!}
                                 {!! Form::close() !!}
                             </div>
                         </div>
