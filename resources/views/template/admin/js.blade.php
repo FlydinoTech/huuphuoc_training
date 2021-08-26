@@ -1,66 +1,66 @@
 <!-- Placed js at the end of the document so the pages load faster -->
-<script src="{{url($adminUrl)}}/js/jquery-1.10.2.min.js"></script>
+<script src="/js/admin/jquery.min.js"></script>
 
 <!--jquery-ui-->
-<script src="{{url($adminUrl)}}/js/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="/js/jquery-ui/jquery.min.js" type="text/javascript"></script>
 
-<script src="{{url($adminUrl)}}/js/jquery-migrate.js"></script>
-<script src="{{url($adminUrl)}}/js/bootstrap.min.js"></script>
-<script src="{{url($adminUrl)}}/js/modernizr.min.js"></script>
+<script src="/js/jquery-migrate.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
 
 <!--Nice Scroll-->
-<script src="{{url($adminUrl)}}/js/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="/js/jquery.nicescroll.js" type="text/javascript"></script>
 
 <!--right slidebar-->
-<script src="{{url($adminUrl)}}/js/slidebars.min.js"></script>
+<script src="/js/slidebars.min.js"></script>
 
 <!--switchery-->
-<script src="{{url($adminUrl)}}/js/switchery/switchery.min.js"></script>
-<script src="{{url($adminUrl)}}/js/switchery/switchery-init.js"></script>
+<script src="/js/switchery/switchery.min.js"></script>
+<script src="/js/switchery/switchery-init.js"></script>
 
 <!--flot chart -->
-<script src="{{url($adminUrl)}}/js/flot-chart/jquery.flot.js"></script>
-<script src="{{url($adminUrl)}}/js/flot-chart/flot-spline.js"></script>
-<script src="{{url($adminUrl)}}/js/flot-chart/jquery.flot.resize.js"></script>
-<script src="{{url($adminUrl)}}/js/flot-chart/jquery.flot.tooltip.min.js"></script>
-<script src="{{url($adminUrl)}}/js/flot-chart/jquery.flot.pie.js"></script>
-<script src="{{url($adminUrl)}}/js/flot-chart/jquery.flot.selection.js"></script>
-<script src="{{url($adminUrl)}}/js/flot-chart/jquery.flot.stack.js"></script>
-<script src="{{url($adminUrl)}}/js/flot-chart/jquery.flot.crosshair.js"></script>
+<script src="/js/flot-chart/jquery.flot.js"></script>
+<script src="/js/flot-chart/flot-spline.js"></script>
+<script src="/js/flot-chart/jquery.flot.resize.js"></script>
+<script src="/js/flot-chart/jquery.flot.tooltip.min.js"></script>
+<script src="/js/flot-chart/jquery.flot.pie.js"></script>
+<script src="/js/flot-chart/jquery.flot.selection.js"></script>
+<script src="/js/flot-chart/jquery.flot.stack.js"></script>
+<script src="/js/flot-chart/jquery.flot.crosshair.js"></script>
 
 
 <!--earning chart init-->
-<script src="{{url($adminUrl)}}/js/earning-chart-init.js"></script>
+<script src="/js/earning-chart-init.js"></script>
 
 
 <!--Sparkline Chart-->
-<script src="{{url($adminUrl)}}/js/sparkline/jquery.sparkline.js"></script>
-<script src="{{url($adminUrl)}}/js/sparkline/sparkline-init.js"></script>
+<script src="/js/sparkline/jquery.sparkline.js"></script>
+<script src="/js/sparkline/sparkline-init.js"></script>
 
 <!--easy pie chart-->
-<script src="{{url($adminUrl)}}/js/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
-<script src="{{url($adminUrl)}}/js/easy-pie-chart.js"></script>
+<script src="/js/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+<script src="/js/easy-pie-chart.js"></script>
 
 
 <!--vectormap-->
-<script src="{{url($adminUrl)}}/js/vector-map/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="{{url($adminUrl)}}/js/vector-map/jquery-jvectormap-world-mill-en.js"></script>
-<script src="{{url($adminUrl)}}/js/dashboard-vmap-init.js"></script>
+<script src="/js/vector-map/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/js/vector-map/jquery-jvectormap-world-mill-en.js"></script>
+<script src="/js/dashboard-vmap-init.js"></script>
 
 <!--Icheck-->
-<script src="{{url($adminUrl)}}/js/icheck/skins/icheck.min.js"></script>
-<script src="{{url($adminUrl)}}/js/todo-init.js"></script>
+<script src="/js/icheck/skins/icheck.min.js"></script>
+<script src="/js/todo-init.js"></script>
 
 <!--jquery countTo-->
-<script src="{{url($adminUrl)}}/js/jquery-countTo/jquery.countTo.js"  type="text/javascript"></script>
+<script src="/js/jquery-countTo/jquery.countTo.js"  type="text/javascript"></script>
 
 <!--owl carousel-->
-<script src="{{url($adminUrl)}}/js/owl.carousel.js"></script>
+<script src="/js/owl.carousel.js"></script>
 
 
 <!--common scripts for all pages-->
 
-<script src="{{url($adminUrl)}}/js/scripts.js"></script>
+<script src="/js/scripts.js"></script>
 
 
 <script type="text/javascript">
@@ -88,8 +88,5 @@
     });
 
 </script>
-
 </body>
-
-<!-- Mirrored from thevectorlab.net/slicklab/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Oct 2018 08:54:42 GMT -->
 </html>
