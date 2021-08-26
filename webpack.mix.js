@@ -11,6 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.sass('resources/scss/admin/app.scss', 'css/admin');
+mix.sass('resources/scss/app.scss', 'css/');
 
-mix.copy("node_modules/jquery/dist/jquery.min.js", "public/js/admin");
+mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/js/admin');
+mix.copyDirectory('resources/img/auth', 'public/img/auth');
+mix.styles([
+    'resources/css/auth/style.css',
+    'resources/css/auth/shortcodes.css',
+    'resources/css/auth/widget.css',
+    'resources/css/auth/colors.css',
+], 'public/css/auth/all.css');
