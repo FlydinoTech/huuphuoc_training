@@ -9,4 +9,8 @@ use Illuminate\Support\Facades\DB;
 class Users extends Model
 {
     use HasFactory;
+    public function addUser($data)
+    {
+        return Users::insert($data);
+    }
 }
