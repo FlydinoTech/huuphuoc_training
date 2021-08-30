@@ -23,19 +23,19 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-    	return [
-    			'name' => 'required|min:2',
-    			'description' => 'required|min:50',
-                'file' => 'required',
-    	];
+        return [
+            'name' => 'required|min:2',
+            'description' => 'required|min:50',
+            'file' => 'required',
+        ];
     }
     public function messages(){
-    	return [
-    			'name.required'		=> 'Tên không được để trống',
-                'name.min'		=> 'Tên không được ít hơn 2 ký tự',
-    			'description.required' 	=> 'Mô tả không được để trống',
-                'description.min' 	=> 'Mô tả không được dưới 50 ký tự',
-                'file.required'		=> 'Ảnh chưa được thêm',
-    	];
+        return [
+            'name.required' => 'Tên không được để trống',
+            'name.min' => 'Tên không được ít hơn 2 ký tự',
+            'description.required' => 'Mô tả không được để trống',
+            'description.min' => 'Mô tả không được dưới 50 ký tự',
+            'file.required' => 'Ảnh chưa được thêm',
+        ];
     }
 }

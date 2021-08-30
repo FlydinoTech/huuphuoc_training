@@ -30,8 +30,8 @@ class Category extends Model
     }
 
     public function searchItem($data){
-    	return Category::where('name', 'LIKE', '%' . $data . '%')
-    		->orWhere ('description', 'LIKE', '%' . $data . '%')
-    		->get();
+        return Category::where('name', 'LIKE', '%' . $data . '%')
+            ->orWhere ('description', 'LIKE', '%' . $data . '%')
+            ->get();
     }
 }

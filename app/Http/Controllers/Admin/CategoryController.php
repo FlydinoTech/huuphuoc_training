@@ -50,7 +50,7 @@ class CategoryController extends Controller
         $createData = [
             'name' => $request->name,
             'description' => $request->description,
-            'picture' => $picture
+            'picture' => $picture,
         ];
         $addCategory = $this->category->addCategory($createData);
         if ($addCategory) {
@@ -93,30 +93,30 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $name           = $request->name;
- 		$description    = $request->description;
-        $picture        = $request->file('file');
-		if ($picture == "") {
+        $name = $request->name;
+        $description = $request->description;
+        $picture = $request->file('file');
+        if ($picture == "") {
             $data = [
                 'name' => $name,
-                'description' => $description
+                'description' => $description,
             ];
-		} else {
-			$path = $request->file('file')->store('public/files');
-			$explodePath = explode("/", $path);
-			$picture 	 = end($explodePath);
-			$data = [
+        } else {
+            $path = $request->file('file')->store('public/files');
+            $explodePath = explode("/", $path);
+            $picture 	 = end($explodePath);
+            $data = [
                 'name' => $name,
                 'description' => $description,
-                'picture' => $picture
+                'picture' => $picture,
             ];
-		}
-		$updateCategory = $this->category->updateCategory($data, $id);
-		if ($updateCategory) {
-			return redirect()->route('category.index')->with("msgUpdateSuccess", "Cập nhật thành công");
-		} else {
-			return redirect()->route('category.edit')->with("msgUpdateFail", "Lỗi. Vui lòng thử lại.");
-		}
+        }
+        $updateCategory = $this->category->updateCategory($data, $id);
+        if ($updateCategory) {
+            return redirect()->route('category.index')->with("msgUpdateSuccess", "Cập nhật thành công");
+        } else {
+            return redirect()->route('category.edit')->with("msgUpdateFail", "Lỗi. Vui lòng thử lại.");
+        }
     }
 
     /**
@@ -137,8 +137,9 @@ class CategoryController extends Controller
 
     public function search(Request $request)
     {
-		$search = $request->search;
-		$categories = $this->category->searchItem($search);
-		return view('admin.category.index')->with(compact('categories'));
-	}
+        $search = $request->search;
+        $categories = $this->category->searchItem($search);
+        
+        return view('admin.category.index')->with(compact('categories'));
+    }
 }
