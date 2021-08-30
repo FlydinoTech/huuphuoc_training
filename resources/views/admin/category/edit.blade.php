@@ -14,7 +14,12 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
-                            {!! Form::model($category, ['method' => 'PUT', 'route' => ['category.update', $category->id]]) !!}
+                            @if (session('msgUpdateFail'))
+                                <div class="alert alert-dark">
+                                    <p>{{ session('msgUpdateFail') }}</p>
+                                </div>
+                            @endif
+                            {!! Form::model($category, ['method' => 'PUT', 'route' => ['category.update', $category->id], 'enctype' => 'multipart/form-data']) !!}
                                 @include('admin.category.form')
                                 {!! Form::submit('Sửa', ['class' => 'btn-submit']) !!}
                             {!! Form::close() !!}
