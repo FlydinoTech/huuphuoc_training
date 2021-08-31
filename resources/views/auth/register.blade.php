@@ -25,15 +25,7 @@
                                                 <div class="travel-login ">
                                                     <a href=""><h4 class="title-01">Register for User</h4></a>
                                                     <h5 class="title-anchor">Not a member yet? <a href="{{ route('auth.login')}}">Login!</a></h5>
-                                                    @if ($errors->any())
-                                                        <div class="alert alert-danger">
-                                                            <ul>
-                                                                @foreach ($errors->all() as $error)
-                                                                    <li>{{ $error }}</li>
-                                                                @endforeach
-                                                            </ul>
-                                                        </div>
-                                                    @endif
+                                                    @include('template.errorValidate')
                                                     @if (session('msg'))
                                                         <div class="alert alert-danger">
                                                             <p>{{ session('msg') }}</p>
