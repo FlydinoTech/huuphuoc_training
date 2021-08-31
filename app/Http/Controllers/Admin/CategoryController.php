@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -102,7 +103,9 @@ class CategoryController extends Controller
                 'description' => $description,
             ];
         } else {
-            $path = $request->file('file')->store('public/files');
+            $category = $this->category->findOrFail($id);
+            Storage::delete('/images/category/' . $category->picture);
+            $path = $request->file('file')->store('/images/category');
             $explodePath = explode('/', $path);
             $picture = end($explodePath);
             $data = [
@@ -127,6 +130,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        $category = $this->category->findOrFail($id);
+        Storage::delete('/images/category/' . $category->picture);
         $deleteCategory = $this->category->deleteCategory($id);
         if ($deleteCategory) {
             return redirect()->route('category.index')->with('msgDeleteSuccess', 'Xóa thành công');
