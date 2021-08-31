@@ -19,6 +19,7 @@
                                     <p>{{ session('msgUpdateFail') }}</p>
                                 </div>
                             @endif
+                            @include('template.errorValidate')
                             {!! Form::model($category, ['method' => 'PUT', 'route' => ['category.update', $category->id], 'enctype' => 'multipart/form-data']) !!}
                                 @include('admin.category.form')
                                 {!! Form::submit('Sửa', ['class' => 'btn-submit']) !!}

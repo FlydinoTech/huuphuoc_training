@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\CategoryCreateRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -43,7 +44,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(CategoryCreateRequest $request)
     {
         $path = $request->file('file')->store('/images/category');
         $explodePath = explode('/', $path);
@@ -92,13 +93,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryUpdateRequest $request, $id)
     {
         $name = $request->name;
         $description = $request->description;
         $picture = $request->file('file');
         if ($picture == '') {
-            $data = [
+            $updateData = [
                 'name' => $name,
                 'description' => $description,
             ];
@@ -108,13 +109,13 @@ class CategoryController extends Controller
             $path = $request->file('file')->store('/images/category');
             $explodePath = explode('/', $path);
             $picture = end($explodePath);
-            $data = [
+            $updateData = [
                 'name' => $name,
                 'description' => $description,
                 'picture' => $picture,
             ];
         }
-        $updateCategory = $this->category->updateCategory($data, $id);
+        $updateCategory = $this->category->updateCategory($updateData, $id);
         if ($updateCategory) {
             return redirect()->route('category.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
         } else {

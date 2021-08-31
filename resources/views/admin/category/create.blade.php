@@ -19,21 +19,11 @@
                                     <p>{{ session('msgAddFail') }}</p>
                                 </div>
                             @endif
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-                            <div class="">
-                                {!! Form::open(['method' => 'POST', 'url' => route('category.store'), 'enctype' => 'multipart/form-data']) !!}
-                                    @include('admin.category.form')
-                                    {!! Form::submit('Thêm', ['class' => 'btn-submit']) !!}
-                                {!! Form::close() !!}
-                            </div>
+                            @include('template.errorValidate')
+                            {!! Form::open(['method' => 'POST', 'url' => route('category.store'), 'enctype' => 'multipart/form-data']) !!}
+                                @include('admin.category.form')
+                                {!! Form::submit('Thêm', ['class' => 'btn-submit']) !!}
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
