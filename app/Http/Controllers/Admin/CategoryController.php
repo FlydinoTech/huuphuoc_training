@@ -44,15 +44,15 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $path           = $request->file('file')->store('public/files');
-        $explodePath    = explode("/", $path);
-        $picture 	    = end($explodePath);
+        $path = $request->file('file')->store('/images/category');
+        $explodePath = explode('/', $path);
+        $picture = end($explodePath);
         $createData = [
             'name' => $request->name,
             'description' => $request->description,
             'picture' => $picture,
         ];
-        $addCategory = $this->category->addCategory($createData);
+        $addCategory = $this->category->insert($createData);
         if ($addCategory) {
             return redirect()->route('category.index')->with('msgAddSuccess', 'Thêm danh mục thành công.');
         } else {
@@ -96,15 +96,15 @@ class CategoryController extends Controller
         $name = $request->name;
         $description = $request->description;
         $picture = $request->file('file');
-        if ($picture == "") {
+        if ($picture == '') {
             $data = [
                 'name' => $name,
                 'description' => $description,
             ];
         } else {
             $path = $request->file('file')->store('public/files');
-            $explodePath = explode("/", $path);
-            $picture 	 = end($explodePath);
+            $explodePath = explode('/', $path);
+            $picture = end($explodePath);
             $data = [
                 'name' => $name,
                 'description' => $description,
@@ -113,9 +113,9 @@ class CategoryController extends Controller
         }
         $updateCategory = $this->category->updateCategory($data, $id);
         if ($updateCategory) {
-            return redirect()->route('category.index')->with("msgUpdateSuccess", "Cập nhật thành công");
+            return redirect()->route('category.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
         } else {
-            return redirect()->route('category.edit')->with("msgUpdateFail", "Lỗi. Vui lòng thử lại.");
+            return redirect()->route('category.edit')->with('msgUpdateFail', 'Lỗi. Vui lòng thử lại.');
         }
     }
 

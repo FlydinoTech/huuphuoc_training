@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Category extends Model
 {
@@ -11,12 +12,7 @@ class Category extends Model
 
     public function getPictureUrlAttribute()
     {
-        return $this->picture ? url('/storage/app/public/files/' . $this->picture) : '';
-    }
-
-    public function addCategory($data)
-    {
-        return Category::insert($data);
+        return $this->picture ? Storage::url('/images/category/' . $this->picture) : '';
     }
 
     public function updateCategory($data, $id)

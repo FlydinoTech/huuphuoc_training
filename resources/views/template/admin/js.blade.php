@@ -1,5 +1,5 @@
 <!-- Placed js at the end of the document so the pages load faster -->
-<script src="/public/js/admin/jquery.min.js"></script>
+<script src="/js/admin/jquery.min.js"></script>
 
 <!--jquery-ui-->
 <script src="/js/jquery-ui/jquery.min.js" type="text/javascript"></script>
