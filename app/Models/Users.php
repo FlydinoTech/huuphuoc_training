@@ -13,4 +13,9 @@ class Users extends Model
     {
         return Users::insert($data);
     }
+
+    public function isAdmin($id)
+    {
+        return Users::where('id', $id)->whereIn('category_user_id', [1, 2])->first();
+    }
 }

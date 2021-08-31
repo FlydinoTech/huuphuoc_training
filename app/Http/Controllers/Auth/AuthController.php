@@ -20,13 +20,14 @@ class AuthController extends Controller
     }
 
     public function postLogin(LoginRequest $request){
-        $data = [
+        $loginData = [
             'email' => $request->email,
             'password' => $request->password
         ];
-        if(Auth::attempt($data)){
-            $userLogin = Auth::user();
-            if (($userLogin->category_user_id == 1) || ($userLogin->category_user_id == 2)) {
+        if(Auth::attempt($loginData)){
+            $id = Auth::user()->id;
+            $checkAdminUser = $this->users->isAdmin($id);
+            if ($checkAdminUser) {
                 return redirect()->route('admin.index');
             } else {
                 return redirect()->route('tour.index');
@@ -43,14 +44,14 @@ class AuthController extends Controller
 
     public function postRegister(RegisterRequest $request) 
     {
-        $data = [
+        $editData = [
             'email' => $request->email,
             'password' => $request->password,
             'name' => $request->name,
             'category_user_id' => 3
         ];
-        $result = $this->users->addUser($data);
-        if ($result) {
+        $editUser = $this->users->addUser($editData);
+        if ($editUser) {
             return redirect()->route('auth.login')->with('msg', 'Đăng ký thành công. Vui lòng đăng nhập!');
         } else {
             return redirect()->route('auth.register')->with('msg', 'Lỗi. Vui lòng đăng ký lại!');
