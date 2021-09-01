@@ -14,12 +14,16 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
-                            <div class="">
-                                {!! Form::open(['method' => 'POST', 'url' => route(category.store)]) !!}
-                                    @include('admin.category.form')
-                                    {!! Form::submit('Thêm', ['class' => 'btn-submit']) !!}
-                                {!! Form::close() !!}
-                            </div>
+                            @if (session('msgAddFail'))
+                                <div class="alert alert-dark">
+                                    <p>{{ session('msgAddFail') }}</p>
+                                </div>
+                            @endif
+                            @include('template.errorValidate')
+                            {!! Form::open(['method' => 'POST', 'url' => route('category.store'), 'enctype' => 'multipart/form-data']) !!}
+                                @include('admin.category.form')
+                                {!! Form::submit('Thêm', ['class' => 'btn-submit']) !!}
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
