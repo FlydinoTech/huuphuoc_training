@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function __construct(Users $users)
     {
-        $this->users = $users;
+        $this->user = $users;
     }
     public function login()
     {
@@ -50,7 +50,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'category_user_id' => 3
         ];
-        $editUser = $this->users->addUser($editData);
+        $editUser = $this->user->addUser($editData);
         if ($editUser) {
             return redirect()->route('auth.login')->with('msg', 'Đăng ký thành công. Vui lòng đăng nhập!');
         } else {
