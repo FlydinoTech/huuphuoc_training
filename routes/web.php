@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\CategorySearchController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::prefix("admin")->group(function(){
     Route::get('/',[AdminController::class,'index'])->name("admin.index");
     Route::resource('category', CategoryController::class);
-    Route::get('/search',[CategoryController::class,'search'])->name('category.search');
+    Route::get('/searchCategory',[CategoryController::class,'search'])->name('category.search');
+    Route::resource('user', UserController::class);
+    Route::get('/searchUser',[UserController::class,'search'])->name('user.search');
 });
 Route::prefix('auth')->group(function(){
     Route::get('/login', [AuthController::class,'login'])->name('auth.login');

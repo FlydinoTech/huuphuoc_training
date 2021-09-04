@@ -58,7 +58,7 @@
                         <ul class="child-list">
                             <li><a href="{{ route('category.index')}}"> Quản lý danh mục</a></li>
                             <li><a href=""> Quản lý đơn hàng</a></li>
-                            <li><a href=""> Quản lý người dùng</a></li>
+                            <li><a href="{{ route('user.index')}}"> Quản lý người dùng</a></li>
                         </ul>
                     </li>
                 </ul>
