@@ -20,7 +20,7 @@ class Tour extends Model
     {
         return Tour::join('categories', 'tours.category_id', '=', 'categories.id')
             ->select('*', 'tours.name as name', 'tours.id as id', 'categories.name as cat_name',
-            'tours.description as description', 'tours.picture as picture',)->get();
+            'tours.description as description', 'tours.picture as picture',)->paginate(5);
     }
 
     public function updateTour($data, $id)
@@ -40,6 +40,6 @@ class Tour extends Model
             ->orWhere ('night', 'LIKE', '%' . $data . '%')
             ->orWhere ('price', 'LIKE', '%' . $data . '%')
             ->orWhere ('discount', 'LIKE', '%' . $data . '%')
-            ->get();
+            ->paginate(5);
     }
 }

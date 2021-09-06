@@ -52,7 +52,7 @@ class TourController extends Controller
         $path = $request->file('file')->store('/images/tour');
         $explodePath = explode('/', $path);
         $picture = end($explodePath);
-        $createData = [
+        $addTourData = [
             'name' => $request->name,
             'category_id' => $request->category_id,
             'description' => $request->description,
@@ -62,7 +62,7 @@ class TourController extends Controller
             'price' => $request->price,
             'discount' => $request->discount,
         ];
-        $addTour = $this->tour->insert($createData);
+        $addTour = $this->tour->insert($addTourData);
         if ($addTour) {
             return redirect()->route('tour.index')->with('msgAddSuccess', 'Thêm danh mục thành công.');
         } else {
@@ -105,34 +105,26 @@ class TourController extends Controller
     public function update(TourUpdateRequest $request, $id)
     {
         $picture = $request->file('file');
+        $updateTourData = [
+            'name' => $request->name,
+            'category_id' => $request->category_id,
+            'description' => $request->description,
+            'day' => $request->day,
+            'night' => $request->night,
+            'price' => $request->price,
+            'discount' => $request->discount,
+        ];
         if ($picture == '') {
-            $updateData = [
-                'name' => $request->name,
-                'category_id' => $request->category_id,
-                'description' => $request->description,
-                'day' => $request->day,
-                'night' => $request->night,
-                'price' => $request->price,
-                'discount' => $request->discount,
-            ];
+            $updateTourData = $updateTourData;
         } else {
             $tour = $this->tour->findOrFail($id);
             Storage::delete('/images/tour/' . $tour->picture);
             $path = $request->file('file')->store('/images/tour');
             $explodePath = explode('/', $path);
             $picture = end($explodePath);
-            $updateData = [
-                'name' => $request->name,
-                'category_id' => $request->category_id,
-                'description' => $request->description,
-                'picture' => $picture,
-                'day' => $request->day,
-                'night' => $request->night,
-                'price' => $request->price,
-                'discount' => $request->discount,
-            ];
+            $updateTourData['picture'] = $picture;
         }
-        $updateTour = $this->tour->updateTour($updateData, $id);
+        $updateTour = $this->tour->updateTour($updateTourData, $id);
         if ($updateTour) {
             return redirect()->route('tour.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
         } else {

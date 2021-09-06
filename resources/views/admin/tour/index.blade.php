@@ -24,26 +24,7 @@
                         {!! Form::close() !!}<br />
                     </div>
                 </header>
-                @if (session('msgAddSuccess'))
-                    <div class="alert alert-success">
-                        <p>{{ session('msgAddSuccess') }}</p>
-                    </div>
-                @endif
-                @if (session('msgUpdateSuccess'))
-                    <div class="alert alert-success">
-                        <p>{{ session('msgUpdateSuccess') }}</p>
-                    </div>
-                @endif
-                @if (session('msgDeleteSuccess'))
-                    <div class="alert alert-success">
-                        <p>{{ session('msgDeleteSuccess') }}</p>
-                    </div>
-                @endif
-                @if (session('msgDeleteFail'))
-                    <div class="alert alert-dark">
-                        <p>{{ session('msgDeleteFail') }}</p>
-                    </div>
-                @endif
+                @include('template.admin.msgSuccess')
                 <table class="table">
                     <thead>
                         <tr style="text-align: center">
@@ -59,19 +40,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($tours as $tours)
+                        @foreach ($tours as $tour)
                             <tr>
-                                <td>{{$tours->id}}</td>
-                                <td>{{$tours->name}}</td>
-                                <td>{{$tours->cat_name}}</td>
-                                <td style="width: 300px">{{$tours->description}}</td>
-                                <td>{{ Html::image($tours->picture_url, 'alt', array( 'width' => 150, 'height' => 100 )) }}</td>
-                                <td style="text-align: center">{{$tours->day}}/{{$tours->night}}</td>
-                                <td style="text-align: center">{{$tours->price}}</td>
-                                <td style="text-align: center">{{$tours->discount}}</td>
+                                <td>{{$tour->id}}</td>
+                                <td>{{$tour->name}}</td>
+                                <td>{{$tour->cat_name}}</td>
+                                <td style="width: 300px">{{$tour->description}}</td>
+                                <td>{{ Html::image($tour->picture_url, 'alt', array( 'width' => 150, 'height' => 100 )) }}</td>
+                                <td style="text-align: center">{{$tour->day}}/{{$tour->night}}</td>
+                                <td style="text-align: center">{{$tour->price}}</td>
+                                <td style="text-align: center">{{$tour->discount}}</td>
                                 <td class="center">
-                                    <a href="{{ route('tour.edit', $tours->id) }}" title="" class="btn btn-success" style="width: 75px; float:left"><i class="fa fa-edit "></i> Sửa</a>
-                                    {!! Form::open(['method' => 'DELETE', 'url' => route('tour.destroy', $tours->id)]) !!}
+                                    <a href="{{ route('tour.edit', $tour->id) }}" title="" class="btn btn-success" style="width: 75px; float:left"><i class="fa fa-edit "></i> Sửa</a>
+                                    {!! Form::open(['method' => 'DELETE', 'url' => route('tour.destroy', $tour->id)]) !!}
                                         {!! Form::submit('Xóa', ['class' => 'btn btn-danger', 'style' => 'width: 70px; float:left']) !!}
                                     {!! Form::close() !!}
                                 </td>
@@ -81,7 +62,7 @@
                 </table>
             </div>
             <nav aria-label="Page Navigation">
-                {{-- {{ $categories->links() }} --}}
+                {{ $tours->links() }}
             </nav>
         </div>
     </div>

@@ -14,11 +14,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
-                            @if (session('msgAddFail'))
-                                <div class="alert alert-dark">
-                                    <p>{{ session('msgAddFail') }}</p>
-                                </div>
-                            @endif
+                            @include('template.admin.msgAddFail')
                             @include('template.errorValidate')
                             {!! Form::open(['method' => 'POST', 'url' => route('tour.store'), 'enctype' => 'multipart/form-data']) !!}
                                 @include('admin.tour.form')
