@@ -29,44 +29,41 @@
                         <div class="div">
                             <div class="row">
                                 <!--Travel columns-->
-                                @foreach ($tours as $tours)
+                                @foreach ($tours as $tour)
                                     <div class="col-md-4 col-sm-6 col-xs-12">
                                         <div class="kf_column_trip hover-effect-01">
                                             <div class="kf_column-figure">
                                                 <figure>
-                                                    <a href="{{ route('tour.book_tour', [$tours->slug_tour, $tours->id]) }}" data-rel="prettyPhoto">
-                                                    <img src="{{ $tours->picture_url }}" style="width: 354px; height: 261px" alt="img here">
+                                                    <a href="{{ route('tour.book_tour', [$tour->slug_tour, $tour->id]) }}" data-rel="prettyPhoto">
+                                                    <img src="{{ $tour->picture_url }}" style="width: 354px; height: 261px" alt="img here">
                                                     </a>
                                                     <div class="hover-content-01"></div>
                                                     <figcaption class="">
                                                         <ul class="kf_meta_2">
-                                                            <li><span class="fa fa-clock-o"></span><a href="#">{{ $tours->day }} days</a></li>
-                                                            <li><a href="#">{{ $tours->night }} nights</a></li>
+                                                            <li><span class="fa fa-clock-o"></span><a href="#">{{ $tour->day }} days</a></li>
+                                                            <li><a href="#">{{ $tour->night }} nights</a></li>
                                                         </ul>
                                                     </figcaption>
                                                 </figure>
                                                 <div class="bottom-price">
-                                                    <span class="radio-price" style="width: 100px">{{ number_format($tours->price) }} đ</span>
+                                                    <span class="radio-price" style="width: 100px">{{ number_format($tour->price) }} đ</span>
                                                 </div>
                                             </div>
                                             <div class="kf_trip_content" style="height: 250px">
-                                                <h4><a href="{{ route('tour.book_tour', [$tours->slug_tour, $tours->id]) }}">{{ $tours->name }}</a></h4>
-                                                <p>{{ $tours->description }}</p>
-                                                <h5 style="color: red">Giảm giá : {{ $tours->discount }}%</h5>
+                                                <h4><a href="{{ route('tour.book_tour', [$tour->slug_tour, $tour->id]) }}">{{ $tour->name }}</a></h4>
+                                                <p>{{ $tour->description }}</p>
+                                                <h5 style="color: red">Giảm giá : {{ $tour->discount }}%</h5>
                                             </div>
                                             <ul class="booking-bottom">
-                                                <li><a href="{{ route('tour.book_tour', [$tours->slug_tour, $tours->id]) }}" class="btn-blog ">Book Now</a></li>
+                                                <li><a href="{{ route('tour.book_tour', [$tour->slug_tour, $tour->id]) }}" class="btn-blog ">Book Now</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 @endforeach
                                 <div class="pagination">
-                                    <a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-                                    <a href="#" class="active">1</a>
-                                    <a href="#">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#">4</a>
-                                    <a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                    <nav aria-label="Page Navigation">
+                                        {{ $tours->links() }}
+                                    </nav>
                                 </div>
                             </div>
                         </div>

@@ -34,5 +34,4 @@ class Tour extends Model
     {
         return $this->name ? Str::slug($this->name) : '';
     }
-
 }
