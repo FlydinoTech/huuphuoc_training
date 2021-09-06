@@ -1,50 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-	    <meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	    <title>Bon Voyage Exotic Tourism Destination HTML Template</title>
-  	    <!-- Bootstrap -->
-	    <link href="{{url($publicUrl)}}/css/bootstrap.min.css" rel="stylesheet">
-	    <!-- font awesome -->
-	    <link href="{{url($publicUrl)}}/css/font-awesome.min.css" rel="stylesheet">
-	    <!-- animation -->
-	    <link href="{{url($publicUrl)}}/css/animation.css" rel="stylesheet">
-	    <!-- datepicker -->
-	    <link href="{{url($publicUrl)}}/css/datepicker.css" rel="stylesheet">
-	    <!-- selectric -->
-	    <link href="{{url($publicUrl)}}/css/selectric.css" rel="stylesheet">
-	    <!-- slick Slider -->
-	    <link href="{{url($publicUrl)}}/css/slick.css" rel="stylesheet">
-	    <!-- Responsive -->
-	    <link href="{{url($publicUrl)}}/js/responsive-menu/responsive.css" rel="stylesheet">
-	    <!-- SVG icons -->
-	    <link href="{{url($publicUrl)}}/css/icons.css" rel="stylesheet">
-	    <!-- prettyphoto -->
-	    <link href="{{url($publicUrl)}}/js/prettyphoto/prettyPhoto.css" rel="stylesheet">
-	    <!-- svg-creater -->
-	    <link href="{{url($publicUrl)}}/css/svg-creater.css" rel="stylesheet">
-	    <!-- typography -->
-	    <link href="{{url($publicUrl)}}/css/typography.css" rel="stylesheet">
-	    <!-- shortcodes -->
-	    <link href="{{url($publicUrl)}}/css/shortcodes.css" rel="stylesheet">
-	    <!-- widget -->
-	    <link href="{{url($publicUrl)}}/css/widget.css" rel="stylesheet">
-	    <!-- colors -->
-	    <link href="{{url($publicUrl)}}/css/colors.css" rel="stylesheet">
-	    <!-- Style sheet -->
-	    <link href="{{url($publicUrl)}}/style.css" rel="stylesheet">
-	    <!-- Mobile responsive -->
-        <link href="{{url($publicUrl)}}/css/responsive.css" rel="stylesheet">
-	    <link rel="icon" type="image/png" href="{{url($publicUrl)}}/favicon-32x32.png" sizes="32x32">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<title>Bon Voyage Exotic Tourism Destination HTML Template</title>
+		<!-- Bootstrap -->
+		<link href="/css/app.css" rel="stylesheet">
+		<!-- Style sheet -->
+		<link href="/css/tour/all.css" rel="stylesheet">
+		<link rel="icon" type="image/png" href="/img/tour/favicon-32x32.png" sizes="32x32">
 </head>
-    <body>
-	    <div class="pre-loader">
-		    <div class="pre-loader-img"></div>
-	    </div>
-	    <button id="top-btn"><i class="fa fa-angle-up" data-toggle="tooltip" title="click"></i></button>
+	<body>
+		<div class="pre-loader">
+			<div class="pre-loader-img"></div>
+		</div>
+		<button id="top-btn"><i class="fa fa-angle-up" data-toggle="tooltip" title="click"></i></button>
         <i class='search-icon-close fa fa-times'></i>
         <div class='form-search-popup container'>
             <form class="kf-search-menu">
@@ -52,27 +24,28 @@
                 <button><i class='fa fa-search'></i></button>
             </form>
         </div>
-	    <div class="wrapper">
-		    <!--Header starts version.1-->
-		    <header class="header">
+		<div class="wrapper">
+			<!--Header starts version.1-->
+			<header class="header">
 	            <!--Header top row version.1-->
 	            <div class="header_v1_top_row">
 	               <!--Header container version.1-->
 	               <div class="container">
 	                  <!--Header left side version.1-->
 	                  <div class="kf_element_left">
-	                    <ul class="kode_social_icons">
+	                     
+	                     <ul class="kode_social_icons">
 	                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 	                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 	                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
 	                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-	                    </ul>
+	                     </ul>
 	                  </div>
 	                  <!--Header center side version.1-->
 	                  <div class="header_v1_slider text-align-center">
 	                     <div class="fade-slider">
 	                        <div class="items">
-	                           <p>offer: Worldwide tour 50% off  <a href="{{route('admin.index')}}">Join Now</a></p>
+	                           <p>offer: Worldwide tour 50% off  <a href="">Join Now</a></p>
 	                        </div>
 	                        <div class="items">
 	                           <p>offer: tour 90% off  <a href="#">Join Now</a></p>
@@ -86,8 +59,8 @@
 	                  <!--Header rights side version.1-->
 	                  <div class="kf_element_right">
 	                     <ul class="kf_meta">
-	                        <li><span class="icon-people"></span><a href="{{route('auth.login')}}">Login</a></li>
-	                        <li><a href="{{route('auth.register')}}">Register</a></li>
+	                        <li><span class="icon-people"></span><a href="{{ route('auth.login') }}">Login</a></li>
+	                        <li><a href="">Register</a></li>
 	                     </ul>
 	                  </div>
 	               </div>
@@ -97,26 +70,25 @@
 	            <div class="header-v1_navigation_row animated">
 	               <div class="container">
 	                  <div class="logo-here">
-	                     <h1><a href="{{route('room.index')}}"><img src="{{url($publicUrl)}}/images/logo_v1.png" alt="44 by 150"></a></h1>
+	                     <h1><a href="{{ route('tour.index') }}"><img src="/img/tour/logo_v1.png" alt="44 by 150"></a></h1>
 	                  </div>
 	                  <div class="header-v1-nav txt-hvr3">
 	                     <nav class="navigation">
 	                        <ul>
 	                           <li>
-	                              <a href="{{route('room.index')}}">Home</a>
+	                              <a href="{{ route('tour.index') }}">Home</a>
 	                           </li>
 	                           <li>
-	                              <a href="{{route('room.tour')}}">Tour</a>
+	                              <a href="{{ route('tour.all_tour') }}">Tour</a>
 	                           </li>
 	                           <li>
 	                              <a href="">Pages</a>
 	                              <ul class="sub-menu children">
-	                                 <li><a href="{{route('room.about')}}">about us</a></li>
-	                                 <li><a href="{{route('room.404')}}">404</a></li>
-	                                 <li><a href="{{route('room.comming')}}">comming-soon</a></li>
+	                                 <li><a href="{{ route('tour.about_us')}}">about us</a></li>
+	                                 <li><a href="{{ route('tour.error')}}">404</a></li>
 	                              </ul>
 	                           </li>
-	                           <li><a href="{{route('room.shop')}}">Shop</a></li>
+	                           <li><a href="">Shop</a></li>
 	                        </ul>
 	                     </nav> 
 	                     <div class="dl-menuwrapper">
@@ -192,12 +164,12 @@
                                <div class="kode-menu">
                                   <div class="kode-menu__wrap">
                                      <div class="group-01">
-                                        <a class="kode-menu__item kode-menu__item--demo-3" href="{{route('room.tour')}}">Tour</a>
-                                        <a class="kode-menu__item kode-menu__item--demo-3" href="{{route('room.about')}}">about us</a>
-                                        <a class="kode-menu__item kode-menu__item--demo-3" href="{{route('room.team')}}">Team</a>
-                                        <a class="kode-menu__item kode-menu__item--demo-3" href="{{route('room.blog')}}">Blogs</a>
-                                        <a class="kode-menu__item kode-menu__item--demo-3" href="{{route('room.shop')}}">Shop</a>
-                                        <a class="kode-menu__item kode-menu__item--demo-3" href="{{route('room.404')}}">404</a>
+                                        <a class="kode-menu__item kode-menu__item--demo-3" href="">Tour</a>
+                                        <a class="kode-menu__item kode-menu__item--demo-3" href="">about us</a>
+                                        <a class="kode-menu__item kode-menu__item--demo-3" href="">Team</a>
+                                        <a class="kode-menu__item kode-menu__item--demo-3" href="">Blogs</a>
+                                        <a class="kode-menu__item kode-menu__item--demo-3" href="">Shop</a>
+                                        <a class="kode-menu__item kode-menu__item--demo-3" href="">404</a>
                                      </div>
                                   </div>
                                   <div class="close-btn">
@@ -212,4 +184,4 @@
 	               </div>
 	            </div>
 	         </header>
-			<!--Header starts version.1 ends-->	
+			<!--Header starts version.1 ends-->
