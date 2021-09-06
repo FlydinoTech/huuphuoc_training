@@ -5,29 +5,29 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function __construct(Users $users)
+    public function __construct(User $user)
     {
-        $this->user = $users;
+        $this->user = $user;
     }
     public function login()
     {
         return view('auth.login');
     }
 
-    public function postLogin(LoginRequest $request){
+    public function postLogin(LoginRequest $request)
+    {
         $loginData = [
             'email' => $request->email,
-            'password' => $request->password
+            'password' => $request->password,
         ];
-        if(Auth::attempt($loginData)){
-            $id = Auth::user()->id;
-            $checkAdminUser = $this->users->isAdmin($id);
-            if ($checkAdminUser) {
+        if (Auth::attempt($loginData)) {
+            $this->user = Auth::user();
+            if ($this->user->isAdmin()) {
                 return redirect()->route('admin.index');
             } else {
                 return redirect()->route('tour.index');
@@ -44,23 +44,29 @@ class AuthController extends Controller
 
     public function postRegister(RegisterRequest $request) 
     {
-        $editData = [
+        $registerData = [
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
             'name' => $request->name,
-            'category_user_id' => 3
+            'category_user_id' => 3,
         ];
-        $editUser = $this->user->addUser($editData);
-        if ($editUser) {
+        $registerUser = $this->user->create($registerData);
+        if ($registerUser) {
             return redirect()->route('auth.login')->with('msg', 'Đăng ký thành công. Vui lòng đăng nhập!');
         } else {
             return redirect()->route('auth.register')->with('msg', 'Lỗi. Vui lòng đăng ký lại!');
         }
     }
+
     public function logout()
     {
         Auth::logout();
 
         return redirect()->route('auth.login');    
+    }
+
+    public function error()
+    {
+        return view('auth.error');
     }
 }
