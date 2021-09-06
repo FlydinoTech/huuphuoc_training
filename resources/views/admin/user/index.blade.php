@@ -24,26 +24,7 @@
                         {!! Form::close() !!}<br />
                     </div>
                 </header>
-                @if (session('msgAddSuccess'))
-                    <div class="alert alert-success">
-                        <p>{{ session('msgAddSuccess') }}</p>
-                    </div>
-                @endif
-                @if (session('msgUpdateSuccess'))
-                    <div class="alert alert-success">
-                        <p>{{ session('msgUpdateSuccess') }}</p>
-                    </div>
-                @endif
-                @if (session('msgDeleteSuccess'))
-                    <div class="alert alert-success">
-                        <p>{{ session('msgDeleteSuccess') }}</p>
-                    </div>
-                @endif
-                @if (session('msgDeleteFail'))
-                    <div class="alert alert-dark">
-                        <p>{{ session('msgDeleteFail') }}</p>
-                    </div>
-                @endif
+                @include('template.admin.msgSuccess')
                 <table class="table">
                     <thead>
                         <tr>
@@ -55,15 +36,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $users)
+                        @foreach ($users as $user)
                             <tr>
-                                <td>{{$users->id}}</td>
-                                <td>{{$users->name}}</td>
-                                <td>{{$users->email}}</td>
-                                <td>{{$users->category_user_name}}</td>
+                                <td>{{$user->id}}</td>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->email}}</td>
+                                <td>{{$user->category_user_name}}</td>
                                 <td class="center">
-                                    <a href="{{ route('user.edit', $users->id) }}" title="" class="btn btn-success" style="width: 75px; float:left"><i class="fa fa-edit "></i> Sửa</a>
-                                    {!! Form::open(['method' => 'DELETE', 'url' => route('user.destroy', $users->id)]) !!}
+                                    <a href="{{ route('user.edit', $user->id) }}" title="" class="btn btn-success" style="width: 75px; float:left"><i class="fa fa-edit "></i> Sửa</a>
+                                    {!! Form::open(['method' => 'DELETE', 'url' => route('user.destroy', $user->id)]) !!}
                                         {!! Form::submit('Xóa', ['class' => 'btn btn-danger', 'style' => 'width: 70px; float:left']) !!}
                                     {!! Form::close() !!}
                                 </td>
@@ -73,6 +54,7 @@
                 </table>
             </div>
             <nav aria-label="Page Navigation">
+                {{ $users->links() }}
             </nav>
         </div>
     </div>

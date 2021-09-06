@@ -48,13 +48,13 @@ class UserController extends Controller
      */
     public function store(UserCreateRequest $request)
     {
-        $createData = [
+        $createUserData = [
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'category_user_id' => $request->category_user_id,
         ];
-        $addUser = $this->user->insert($createData);
+        $addUser = $this->user->insert($createUserData);
         if ($addUser) {
             return redirect()->route('user.index')->with('msgAddSuccess', 'Thêm danh mục thành công.');
         } else {
@@ -97,21 +97,17 @@ class UserController extends Controller
     public function update(UserUpdateRequest $request, $id)
     {
         $password = $request->password;
+        $updateUserData = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'category_user_id' => $request->category_user_id,
+        ];
         if ($password == '') {
-            $updateData = [
-                'name' => $request->name,
-                'email' => $request->email,
-                'category_user_id' => $request->category_user_id,
-            ];
+            $updateUserData = $updateUserData;
         } else {
-            $updateData = [
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => bcrypt($password),
-                'category_user_id' => $request->category_user_id,
-            ];
+            $updateUserData['password'] = bcrypt($password);
         }
-        $updateUser = $this->user->updateUser($updateData, $id);
+        $updateUser = $this->user->updateUser($updateUserData, $id);
         if ($updateUser) {
             return redirect()->route('user.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
         } else {

@@ -13,7 +13,8 @@ class Users extends Model
     public function getCategoryUserName()
     {
         return Users::join('category_users', 'users.category_user_id', '=', 'category_users.id')
-            ->select('*','users.id as id', 'users.name as name', 'category_users.name as category_user_name')->get();
+            ->select('*','users.id as id', 'users.name as name', 'category_users.name as category_user_name')
+            ->paginate(3);
     }
 
     public function updateUser($data, $id)
@@ -29,6 +30,6 @@ class Users extends Model
     public function searchItem($data){
         return User::where('name', 'LIKE', '%' . $data . '%')
             ->orWhere ('email', 'LIKE', '%' . $data . '%')
-            ->get();
+            ->paginate(3);
     }
 }

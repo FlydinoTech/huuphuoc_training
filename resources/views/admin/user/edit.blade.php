@@ -14,11 +14,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
-                            @if (session('msgUpdateFail'))
-                                <div class="alert alert-dark">
-                                    <p>{{ session('msgUpdateFail') }}</p>
-                                </div>
-                            @endif
+                            @include('template.admin.msgUpdateFail')
                             @include('template.errorValidate')
                             {!! Form::model($user, ['method' => 'PUT', 'route' => ['user.update', $user->id], 'enctype' => 'multipart/form-data']) !!}
                                 @include('admin.user.form')
