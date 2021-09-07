@@ -17,7 +17,7 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-    	if((auth()->user()->category_user_id == 1) || (auth()->user()->category_user_id == 2)){
+    	if ((auth()->user()->category_user_id == 1) || (auth()->user()->category_user_id == 2)) {
     		return $next($request);
     	} else {
             return redirect()->route('auth.error');

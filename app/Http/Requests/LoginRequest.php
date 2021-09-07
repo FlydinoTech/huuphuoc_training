@@ -24,17 +24,17 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-                'email' => 'required|min:2|email',
-                'password' => 'required|min:6',
+            'email' => 'required|min:2|email',
+            'password' => 'required|min:6',
         ];
     }
     public function messages(){
         return [
-                'email.required'		    => 'Email không được để trống',
-                'email.min' 			    => 'Email phải ít nhất có 5 ký tự',
-                'email.email' 			    => 'Email phải có dạng abc@xyz',
-                'password.required'		    => 'Password không được để trống',
-                'password.min' 			    => 'Password phải ít nhất có 6 ký tự',
+            'email.required' => 'Email không được để trống',
+            'email.min' => 'Email phải ít nhất có 5 ký tự',
+            'email.email' => 'Email phải có dạng abc@xyz',
+            'password.required' => 'Password không được để trống',
+            'password.min' => 'Password phải ít nhất có 6 ký tự',
         ];
     }
 }

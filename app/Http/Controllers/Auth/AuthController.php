@@ -14,6 +14,7 @@ class AuthController extends Controller
     {
         $this->user = $user;
     }
+    
     public function login()
     {
         return view('auth.login');

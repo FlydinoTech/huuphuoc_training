@@ -12,6 +12,6 @@
             <h1>Bạn không thể thực hiện chức năng này.</h1>
             <h1>Bạn phải đăng nhập bằng tài khoản admin.</h1>
             <h1 >Vui lòng <a style = 'text-decoration:none; color: blue' href = '/auth/login'>QUAY LẠI</a></h1>
-    </div>
-</body>
+        </div>
+    </body>
 </html>
