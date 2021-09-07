@@ -28,7 +28,7 @@
 
         </div>
         <div class="col-3">
-            <p>Xin chào, Huu Phuoc  <a href="">Logout</a></p>
+            <p>Xin chào, {{ ucwords(Auth::user()->name) }}  <a href="{{ route('auth.logout') }}">Logout</a></p>
         </div>
         
     </div>

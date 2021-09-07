@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CategorySearchController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Tour\TourController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +17,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['namespace' => 'tour'], function (){
+	Route::get('/',[TourController::class,'index'])->name('tour.index');
+});
 
-Route::prefix("admin")->group(function(){
+Route::prefix('auth')->group(function(){
+    Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+    Route::post('/login', [AuthController::class, 'postLogin'])->name('auth.login');
+    Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
+    Route::post('/register', [AuthController::class, 'postRegister'])->name('auth.register');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('/error', [AuthController::class, 'error'])->name('auth.error');
+});
+
+
+Route::prefix('admin')->middleware('admin', 'auth')->group(function(){
     Route::get('/',[AdminController::class,'index'])->name("admin.index");
     Route::resource('category', CategoryController::class);
     Route::get('/search',[CategoryController::class,'search'])->name('category.search');
-});
-Route::prefix('auth')->group(function(){
-    Route::get('/login', [AuthController::class,'login'])->name('auth.login');
 });
