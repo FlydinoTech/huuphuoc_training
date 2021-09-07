@@ -13,7 +13,7 @@
     <title>SlickLab - Responsive Admin Dashboard Template</title>
     <!--common style-->
     <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/admin/app.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

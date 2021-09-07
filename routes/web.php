@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CategorySearchController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Tour\TourController;
 use Illuminate\Support\Facades\Route;
@@ -33,4 +34,5 @@ Route::prefix('auth')->group(function(){
 Route::prefix('admin')->middleware('admin', 'auth')->group(function(){
     Route::get('/',[AdminController::class,'index'])->name("admin.index");
     Route::resource('category', CategoryController::class);
+    Route::get('/search',[CategoryController::class,'search'])->name('category.search');
 });
