@@ -7,17 +7,15 @@ use App\Http\Requests\TourCreateRequest;
 use App\Http\Requests\TourUpdateRequest;
 use App\Models\Category;
 use App\Models\Tour;
-use App\Services\Admin\TourService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class TourController extends Controller
 {
-    public function __construct(Tour $tour, Category $category, TourService $tourService)
+    public function __construct(Tour $tour, Category $category)
     {
         $this->tour = $tour;
         $this->category = $category;
-        $this->tourService = $tourService;
     }
     /**
      * Display a listing of the resource.
@@ -99,17 +97,33 @@ class TourController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TourUpdateRequest $request, Tour $tour)
+    public function update(TourUpdateRequest $request, $id)
     {
-        try {
-            $inputs = $request->validated();
-            $update = $this->tourService->update($inputs, $tour);
-            if ($update) {
-                return redirect()->route('tour.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
-            }
-        } catch (\Exception $e) {
-
-            return redirect()->back();
+        $picture = $request->file('file');
+        $updateTourData = [
+            'name' => $request->name,
+            'category_id' => $request->category_id,
+            'description' => $request->description,
+            'day' => $request->day,
+            'night' => $request->night,
+            'price' => $request->price,
+            'discount' => $request->discount,
+        ];
+        if ($picture == '') {
+            $updateTourData = $updateTourData;
+        } else {
+            $tour = $this->tour->findOrFail($id);
+            Storage::delete('/images/tour/' . $tour->picture);
+            $path = $request->file('file')->store('/images/tour');
+            $explodePath = explode('/', $path);
+            $picture = end($explodePath);
+            $updateTourData['picture'] = $picture;
+        }
+        $updateTour = $this->tour->updateTour($updateTourData, $id);
+        if ($updateTour) {
+            return redirect()->route('tour.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
+        } else {
+            return redirect()->route('tour.edit')->with('msgUpdateFail', 'Lỗi. Vui lòng thử lại.');
         }
     }
 

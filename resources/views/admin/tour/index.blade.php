@@ -44,7 +44,7 @@
                             <tr>
                                 <td>{{$tour->id}}</td>
                                 <td>{{$tour->name}}</td>
-                                <td>{{$tour->cat_name}}</td>
+                                <td>{{$tour->category->name}}</td>
                                 <td style="width: 300px">{{$tour->description}}</td>
                                 <td>{{ Html::image($tour->picture_url, 'alt', array( 'width' => 150, 'height' => 100 )) }}</td>
                                 <td style="text-align: center">{{$tour->day}}/{{$tour->night}}</td>

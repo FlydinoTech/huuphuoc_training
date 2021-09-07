@@ -10,17 +10,25 @@ use Illuminate\Support\Facades\Storage;
 class Tour extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name', 
+        'category_id',
+        'description', 
+        'day', 
+        'night', 
+        'price', 
+        'discount', 
+        'picture'
+    ];
 
     public function getPictureUrlAttribute()
     {
         return $this->picture ? Storage::url('/images/tour/' . $this->picture) : '';
     }
 
-    public function getCategoryName()
-    {
-        return Tour::join('categories', 'tours.category_id', '=', 'categories.id')
-            ->select('*', 'tours.name as name', 'tours.id as id', 'categories.name as cat_name',
-            'tours.description as description', 'tours.picture as picture',)->paginate(5);
+    public function category()
+    { 
+        return $this->belongsTo(Category::class);
     }
 
     public function updateTour($data, $id)
