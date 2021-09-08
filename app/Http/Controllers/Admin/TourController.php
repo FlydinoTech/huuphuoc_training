@@ -50,8 +50,7 @@ class TourController extends Controller
     public function store(TourCreateRequest $request, Tour $tour)
     {
         $tourParam = $request->validated();
-        $tourParam = $this->tourService->setTourParam($tourParam, $request->category_id, $request->file('file'));
-        if ($this->tour->create($tourParam)) {
+        if ($this->tourService->create($tour, $tourParam, $request->category_id, $request->file('file'))) {
             return redirect()->route('tour.index')->with('msgAddSuccess', 'Thêm danh mục thành công.');
         } else {
             return redirect()->route('tour.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
@@ -90,8 +89,7 @@ class TourController extends Controller
     public function update(TourUpdateRequest $request, Tour $tour)
     {
         $tourParam = $request->validated();
-        $tourParam = $this->tourService->checkImageEmpty($tourParam, $request->file('file'));
-        if ($this->tourService->update($tourParam, $tour)) {
+        if ($this->tourService->update($tour, $tourParam, $request->file('file'))) {
             return redirect()->route('tour.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
         } else {
             return redirect()->route('tour.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
@@ -106,7 +104,7 @@ class TourController extends Controller
      */
     public function destroy(Tour $tour)
     {
-        if ($this->tourService->deleteTour($tour)) {
+        if ($this->tourService->delete($tour)) {
             return redirect()->route('tour.index')->with('msgDeleteSuccess', 'Xóa thành công');
         } else {
             return redirect()->route('tour.index')->with('msgDeleteFail', 'Xóa không thành công');

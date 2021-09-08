@@ -17,4 +17,13 @@ class BaseService
     
         return $picture;
     }
+
+    public function delete($model)
+    {
+        $folder = detectFolderByModel($this->model);
+        Storage::delete($folder . $model->picture);
+        $model->delete();
+
+        return $model;
+    }
 }

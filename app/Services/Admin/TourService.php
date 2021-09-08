@@ -20,6 +20,14 @@ class TourService extends BaseService
         return $inputs;
     }
 
+    public function create($model, $inputs, $category_id, $file)
+    {
+        $tourParam = $this->setTourParam($inputs, $category_id, $file);
+        $model->create($tourParam);
+        
+        return $model;
+    }
+
     public function checkImageEmpty($inputs, $picture)
     {
         if(!empty($picture)){
@@ -29,22 +37,14 @@ class TourService extends BaseService
         return $inputs;
     }
 
-    public function update($inputs, $model)
+    public function update($model, $inputs, $picture)
     {
+        $inputs = $this->checkImageEmpty($inputs, $picture);
         if (!empty($inputs['picture'])) {
             $folder = detectFolderByModel($this->model);
             Storage::delete($folder . $model->picture);
         }
         $model->update($inputs);
-
-        return $model;
-    }
-
-    public function deleteTour($model)
-    {
-        $folder = detectFolderByModel($this->model);
-        Storage::delete($folder . $model->picture);
-        $model->delete();
 
         return $model;
     }
