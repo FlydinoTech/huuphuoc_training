@@ -7,16 +7,18 @@ use App\Http\Requests\TourCreateRequest;
 use App\Http\Requests\TourUpdateRequest;
 use App\Models\Category;
 use App\Models\Tour;
+use App\Services\Admin\BaseService;
 use App\Services\Admin\TourService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class TourController extends Controller
 {
-    public function __construct(Tour $tour, Category $category, TourService $tourService)
+    public function __construct(Tour $tour, Category $category, BaseService $baseService, TourService $tourService)
     {
         $this->tour = $tour;
         $this->category = $category;
+        $this->baseService = $baseService;
         $this->tourService = $tourService;
     }
     /**
@@ -26,7 +28,7 @@ class TourController extends Controller
      */
     public function index()
     {
-        $tours = $this->tour->paginate(5);
+        $tours = $this->tour->orderBy('id', 'desc')->paginate(5);
         return view('admin.tour.index')->with(compact('tours'));
     }
 
@@ -47,23 +49,13 @@ class TourController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TourCreateRequest $request)
+    public function store(TourCreateRequest $request, Tour $tour)
     {
-        $path = $request->file('file')->store('/images/tour');
-        $explodePath = explode('/', $path);
-        $picture = end($explodePath);
-        $addTourData = [
-            'name' => $request->name,
-            'category_id' => $request->category_id,
-            'description' => $request->description,
-            'picture' => $picture,
-            'day' => $request->day,
-            'night' => $request->night,
-            'price' => $request->price,
-            'discount' => $request->discount,
-        ];
-        $addTour = $this->tour->create($addTourData);
-        if ($addTour) {
+        $inputs = $request->validated();
+        $inputs['category_id'] = $request->category_id;
+        $inputs['picture'] = $this->baseService->uploadImage($request->file('file'), $tour);
+        $createTour = $this->tour->create($inputs);
+        if ($createTour) {
             return redirect()->route('tour.index')->with('msgAddSuccess', 'Thêm danh mục thành công.');
         } else {
             return redirect()->route('tour.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
@@ -101,15 +93,15 @@ class TourController extends Controller
      */
     public function update(TourUpdateRequest $request, Tour $tour)
     {
-        try {
-            $inputs = $request->validated();
-            $update = $this->tourService->update($inputs, $tour);
-            if ($update) {
-                return redirect()->route('tour.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
-            }
-        } catch (\Exception $e) {
-
-            return redirect()->back();
+        $inputs = $request->validated();
+        if(!empty($request->file('file'))){
+            $inputs['picture'] = $this->baseService->uploadImage($request->file('file'), $tour);
+        }
+        $update = $this->baseService->update($inputs, $tour);
+        if ($update) {
+            return redirect()->route('tour.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
+        } else {
+            return redirect()->route('tour.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
         }
     }
 
@@ -133,8 +125,13 @@ class TourController extends Controller
     public function search(Request $request)
     {
         $search = $request->search;
-        $tours = $this->tour->searchTour($search);
+        $tours = $this->tourService->find($search);
+        if (count($tours) == 0) {
+            return view('admin.tour.index', compact('tours'))->with('msgNull', 'Không tìm thấy dữ liệu');
+        } else {
+            return view('admin.tour.index')->with(compact('tours'));
+        }
         
-        return view('admin.tour.index')->with(compact('tours'));
+        
     }
 }

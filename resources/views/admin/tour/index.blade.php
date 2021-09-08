@@ -48,7 +48,7 @@
                                 <td style="width: 300px">{{$tour->description}}</td>
                                 <td>{{ Html::image($tour->picture_url, 'alt', array( 'width' => 150, 'height' => 100 )) }}</td>
                                 <td style="text-align: center">{{$tour->day}}/{{$tour->night}}</td>
-                                <td style="text-align: center">{{$tour->price}}</td>
+                                <td style="text-align: center">{{ number_format($tour->price) }} đ</td>
                                 <td style="text-align: center">{{$tour->discount}}</td>
                                 <td class="center">
                                     <a href="{{ route('tour.edit', $tour->id) }}" title="" class="btn btn-success" style="width: 75px; float:left"><i class="fa fa-edit "></i> Sửa</a>
@@ -61,6 +61,9 @@
                     </tbody>
                 </table>
             </div>
+            @if(!empty($msgNull))
+                <div class="    alert alert-success"> {{ $msgNull }}</div>
+            @endif
             <nav aria-label="Page Navigation">
                 {{ $tours->links() }}
             </nav>

@@ -2,36 +2,17 @@
 namespace App\Services\Admin;
 
 use App\Models\Tour;
-use Illuminate\Support\Facades\Storage;
 
-class TourService
+class TourService extends BaseService
 {
-
-    public function __construct(Tour $tour)
+    public function find($data)
     {
-        $this->tour = $tour;
-    }
-
-    public function update($inputs, Tour $tour)
-    {
-        $isDelete = false;
-
-        if (!empty($inputs['file'])) {
-            $folder = detectFolderByModel($tour);
-            $inputs['file'] = saveImgByFileUpload($inputs['file'], $folder);
-
-            if (!empty($tour->picture)) {
-                Storage::delete($folder . $tour->picture);
-                $isDelete = true;
-            }
-        }
-
-        if (!$isDelete && empty($inputs['file']) && !empty($tour->picture)) {
-            $inputs['picture'] = null;
-        }
-
-        $tour->update($inputs);
-
-        return $tour;
+        return Tour::where('name', 'LIKE', '%' . $data . '%')
+            ->orWhere ('description', 'LIKE', '%' . $data . '%')
+            ->orWhere ('day', 'LIKE', '%' . $data . '%')
+            ->orWhere ('night', 'LIKE', '%' . $data . '%')
+            ->orWhere ('price', 'LIKE', '%' . $data . '%')
+            ->orWhere ('discount', 'LIKE', '%' . $data . '%')
+            ->paginate(5);
     }
 }

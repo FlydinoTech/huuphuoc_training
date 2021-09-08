@@ -30,24 +30,4 @@ class Tour extends Model
     { 
         return $this->belongsTo(Category::class);
     }
-
-    public function updateTour($data, $id)
-    {
-        return Tour::where('id', $id)->update($data);
-    }
-
-    public function deleteTour($id)
-    {
-        return Tour::where('id', $id)->delete();
-    }
-
-    public function searchTour($data){
-        return Tour::where('name', 'LIKE', '%' . $data . '%')
-            ->orWhere ('description', 'LIKE', '%' . $data . '%')
-            ->orWhere ('day', 'LIKE', '%' . $data . '%')
-            ->orWhere ('night', 'LIKE', '%' . $data . '%')
-            ->orWhere ('price', 'LIKE', '%' . $data . '%')
-            ->orWhere ('discount', 'LIKE', '%' . $data . '%')
-            ->paginate(5);
-    }
 }

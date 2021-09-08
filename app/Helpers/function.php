@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
-
 function detectFolderByModel($model)
 {
     switch (get_class($model)) {
@@ -17,11 +14,4 @@ function detectFolderByModel($model)
         default:
             return '';
     }
-}
-
-function saveImgByFileUpload($file, $folder)
-{
-    $path = Storage::putFile($folder, $file);
-
-    return $path;
 }
