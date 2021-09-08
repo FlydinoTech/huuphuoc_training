@@ -40,7 +40,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($tours as $tour)
+                        @forelse ($tours as $tour)
                             <tr>
                                 <td>{{$tour->id}}</td>
                                 <td>{{$tour->name}}</td>
@@ -57,13 +57,14 @@
                                     {!! Form::close() !!}
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <div class="alert alert-danger">Không tìm thấy dữ liệu</div>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
-            @if(!empty($msgNull))
-                <div class="    alert alert-success"> {{ $msgNull }}</div>
-            @endif
             <nav aria-label="Page Navigation">
                 {{ $tours->links() }}
             </nav>

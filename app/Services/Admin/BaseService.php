@@ -17,15 +17,4 @@ class BaseService
     
         return $picture;
     }
-
-    public function update($inputs, $model)
-    {
-        if (!empty($inputs['picture'])) {
-            $folder = detectFolderByModel($model);
-            Storage::delete($folder . $model->picture);
-        }
-        $model->update($inputs);
-
-        return $model;
-    }
 }

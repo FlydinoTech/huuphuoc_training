@@ -7,18 +7,16 @@ use App\Http\Requests\TourCreateRequest;
 use App\Http\Requests\TourUpdateRequest;
 use App\Models\Category;
 use App\Models\Tour;
-use App\Services\Admin\BaseService;
 use App\Services\Admin\TourService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class TourController extends Controller
 {
-    public function __construct(Tour $tour, Category $category, BaseService $baseService, TourService $tourService)
+    public function __construct(Tour $tour, Category $category, TourService $tourService)
     {
         $this->tour = $tour;
         $this->category = $category;
-        $this->baseService = $baseService;
         $this->tourService = $tourService;
     }
     /**
@@ -29,6 +27,7 @@ class TourController extends Controller
     public function index()
     {
         $tours = $this->tour->orderBy('id', 'desc')->paginate(5);
+        
         return view('admin.tour.index')->with(compact('tours'));
     }
 
@@ -39,7 +38,6 @@ class TourController extends Controller
      */
     public function create(Category $category)
     {
-
         return view('admin.tour.create', ['category' => $category]);
     }
 
@@ -51,11 +49,9 @@ class TourController extends Controller
      */
     public function store(TourCreateRequest $request, Tour $tour)
     {
-        $inputs = $request->validated();
-        $inputs['category_id'] = $request->category_id;
-        $inputs['picture'] = $this->baseService->uploadImage($request->file('file'), $tour);
-        $createTour = $this->tour->create($inputs);
-        if ($createTour) {
+        $tourParam = $request->validated();
+        $tourParam = $this->tourService->setTourParam($tourParam, $request->category_id, $request->file('file'));
+        if ($this->tour->create($tourParam)) {
             return redirect()->route('tour.index')->with('msgAddSuccess', 'Thêm danh mục thành công.');
         } else {
             return redirect()->route('tour.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
@@ -93,12 +89,9 @@ class TourController extends Controller
      */
     public function update(TourUpdateRequest $request, Tour $tour)
     {
-        $inputs = $request->validated();
-        if(!empty($request->file('file'))){
-            $inputs['picture'] = $this->baseService->uploadImage($request->file('file'), $tour);
-        }
-        $update = $this->baseService->update($inputs, $tour);
-        if ($update) {
+        $tourParam = $request->validated();
+        $tourParam = $this->tourService->checkImageEmpty($tourParam, $request->file('file'));
+        if ($this->tourService->update($tourParam, $tour)) {
             return redirect()->route('tour.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
         } else {
             return redirect()->route('tour.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
@@ -113,9 +106,7 @@ class TourController extends Controller
      */
     public function destroy(Tour $tour)
     {
-        Storage::delete('/images/tour/' . $tour->picture);
-        $deleteTour = $tour->delete();
-        if ($deleteTour) {
+        if ($this->tourService->deleteTour($tour)) {
             return redirect()->route('tour.index')->with('msgDeleteSuccess', 'Xóa thành công');
         } else {
             return redirect()->route('tour.index')->with('msgDeleteFail', 'Xóa không thành công');
@@ -126,12 +117,6 @@ class TourController extends Controller
     {
         $search = $request->search;
         $tours = $this->tourService->find($search);
-        if (count($tours) == 0) {
-            return view('admin.tour.index', compact('tours'))->with('msgNull', 'Không tìm thấy dữ liệu');
-        } else {
-            return view('admin.tour.index')->with(compact('tours'));
-        }
-        
-        
+        return view('admin.tour.index')->with(compact('tours'));
     }
 }
