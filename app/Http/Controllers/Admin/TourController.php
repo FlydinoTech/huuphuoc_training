@@ -26,7 +26,7 @@ class TourController extends Controller
      */
     public function index()
     {
-        $tours = $this->tour->orderBy('id', 'desc')->paginate(5);
+        $tours = $this->tourService->getTour();
         
         return view('admin.tour.index')->with(compact('tours'));
     }
@@ -50,7 +50,7 @@ class TourController extends Controller
     public function store(TourCreateRequest $request, Tour $tour)
     {
         $tourParam = $request->validated();
-        if ($this->tourService->create($tour, $tourParam, $request->category_id, $request->file('file'))) {
+        if ($this->tourService->create($tourParam, $request->category_id, $request->file('file'))) {
             return redirect()->route('tour.index')->with('msgAddSuccess', 'Thêm danh mục thành công.');
         } else {
             return redirect()->route('tour.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
@@ -86,10 +86,10 @@ class TourController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TourUpdateRequest $request, Tour $tour)
+    public function update(TourUpdateRequest $request, $id)
     {
         $tourParam = $request->validated();
-        if ($this->tourService->update($tour, $tourParam, $request->file('file'))) {
+        if ($this->tourService->updateTour($tourParam, $id, $request->file('file'))) {
             return redirect()->route('tour.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
         } else {
             return redirect()->route('tour.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
