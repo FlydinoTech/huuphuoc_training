@@ -18,7 +18,7 @@ class TourService extends BaseService
 
     public function getTourEdit($id)
     {
-        return $this->model->where('id', $id)->first();
+        return $this->model->findOrFail($id);
     }
 
     public function create($inputs, $file)
@@ -32,7 +32,7 @@ class TourService extends BaseService
 
     public function checkImageEmpty($inputs, $picture)
     {
-        if(!empty($picture)){
+        if (!empty($picture)) {
             $inputs['picture'] = $this->uploadImage($picture, $this->model);
         }
 
