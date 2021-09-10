@@ -21,7 +21,7 @@
             <!--Travel Banner ends-->
             <div class="content">
                 <!--Travel search engine-->
-                <form class="travel_search_engine" style="margin-bottom: 100px">
+                {!! Form::open(['method' => 'POST']) !!}
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -30,11 +30,28 @@
                                         <h5 class="title-icon"><span class="icon-travel"></span><b>Book Tour</b></h5>
                                         <div class="booking_content">
                                             <!--Travel location finder-->
-                                            <div class="kode_felid">
-                                                <label>Nơi đến</label>
-                                                <div class="ralative-icon">
-                                                    <input type="text" class="location-finder" placeholder="City, Region, Conuntry, landmark, Hotel, Dist">
-                                                    <span class="icon-signs"></span>
+                                            <div class="booking_content">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-xs-12 col-sm-6">
+                                                        <!--Travel check in calender-->
+                                                        <div class="kode_felid">
+                                                            {{ Form::label('fullname', 'Họ tên khách hàng', ['class' => 'foo']) }}
+                                                            <div class="ralative-icon">
+                                                                {{ Form::text('fullname', null, ['class' => 'checkout', 'placeholder' =>  'Nhập đầy đủ họ tên']) }}
+                                                                <span class="fa fa-user"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-xs-12 col-sm-6">
+                                                        <!--Travel check out calender-->
+                                                        <div class="kode_felid">
+                                                            {{ Form::label('phone', 'Số điện thoại', ['class' => 'foo']) }}
+                                                            <div class="ralative-icon">
+                                                                {{ Form::text('phone', null, ['class' => 'checkout', 'placeholder' =>  'Nhập số điện thoại']) }}
+                                                                <span class="fa fa-phone"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!--Travel location finder ends-->
@@ -43,20 +60,21 @@
                                                     <div class="col-md-5 col-xs-12 col-sm-6">
                                                         <!--Travel check in calender-->
                                                         <div class="kode_felid">
-                                                            <label>Ngày xuất phát</label>
+                                                            {{ Form::label('day-output', 'Ngày xuất phát', ['class' => 'foo']) }}
                                                             <div class="ralative-icon">
-                                                                <input class="checkin" type="text">
-                                                                <span class="fa fa-calendar"></span>
+                                                                <div data-date-format="dd-mm-yyyy"> 
+                                                                    {!! Form::date('day-output') !!}
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5 col-xs-12 col-sm-6">
                                                         <!--Travel check out calender-->
                                                         <div class="kode_felid">
-                                                            <label>Số điện thoại</label>
+                                                            {{ Form::label('code', 'Mã giảm giá', ['class' => 'foo']) }}
                                                             <div class="ralative-icon">
-                                                                <input class="checkout" type="text">
-                                                                <span class="fa fa-phone"></span>
+                                                                {{ Form::text('code', null, ['class' => 'checkout', 'placeholder' =>  'Nhập mã giảm giá (Nếu có)']) }}
+                                                                <span class="fa fa-money"></span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -74,7 +92,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                {!! Form::close() !!}
                 <!--Travel search engine ends-->
             </div>
 @stop

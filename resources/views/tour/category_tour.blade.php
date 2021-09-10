@@ -49,7 +49,7 @@
                                                     <span class="radio-price" style="width: 100px">{{ number_format($tour->price) }} đ</span>
                                                 </div>
                                             </div>
-                                            <div class="kf_trip_content" style="height: 250px">
+                                            <div class="kf_trip_content" style="height: 300px">
                                                 <h4><a href="{{ route('tour.book_tour', [$tour->slug_tour, $tour->id]) }}">{{ $tour->name }}</a></h4>
                                                 <p>{{ $tour->description }}</p>
                                                 <h5 style="color: red">Giảm giá : {{ $tour->discount }}%</h5>

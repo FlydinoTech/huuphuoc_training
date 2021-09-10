@@ -9,7 +9,7 @@
                     </div>
                 </div>
                 <div class="breadcrumb-blog">
-                    <ul class="breadcrumb orange-bg">
+                    <ul class="breadcrumb ">
                         <li><a href="#">Home</a></li>
                         <li class="active"><a href="#">Category</a></li>
                     </ul>

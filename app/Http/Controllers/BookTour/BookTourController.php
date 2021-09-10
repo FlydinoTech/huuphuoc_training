@@ -3,42 +3,40 @@
 namespace App\Http\Controllers\BookTour;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Tour;
-use Illuminate\Http\Request;
+use App\Services\BookTourService;
 
 class BookTourController extends Controller
 {
-    public function __construct(Category $category, Tour $tour)
+    public function __construct(BookTourService $booktour)
     {
-        $this->category = $category;
-        $this->tour = $tour;
+        $this->booktour = $booktour;
     }
+
     public function index()
     {
-        $categories = $this->category->get();
+        $categories = $this->booktour->getCategory();
 
         return view('tour.index', compact('categories'));
     }
 
     public function categoryTour($slug, $id)
     {
-        $tours = $this->tour->getTourCategory($id);
-        $category = $this->category->getCategory($id);
+        $tours = $this->booktour->getTourCategory($id);
+        $category = $this->booktour->getCategoryId($id);
 
         return view('tour.category_tour', compact('tours', 'category'));
     }
 
     public function allTour()
     {
-        $tours = $this->tour->getAllTour();
+        $tours = $this->booktour->getAllTour();
 
         return view('tour.all_tour', compact('tours'));
     }
 
     public function bookTour($slug, $id)
     {
-        $tours = $this->tour->getTour($id);
+        $tours = $this->booktour->getTour($id);
 
         return view('tour.book_tour', compact('tours'));
     }
