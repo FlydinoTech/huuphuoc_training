@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryCreateRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -41,9 +44,22 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryCreateRequest $request)
     {
-        //
+        $path = $request->file('file')->store('/images/category');
+        $explodePath = explode('/', $path);
+        $picture = end($explodePath);
+        $createData = [
+            'name' => $request->name,
+            'description' => $request->description,
+            'picture' => $picture,
+        ];
+        $addCategory = $this->category->insert($createData);
+        if ($addCategory) {
+            return redirect()->route('category.index')->with('msgAddSuccess', 'Thêm danh mục thành công.');
+        } else {
+            return redirect()->route('category.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
+        }
     }
 
     /**
@@ -77,9 +93,34 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryUpdateRequest $request, $id)
     {
-        //
+        $name = $request->name;
+        $description = $request->description;
+        $picture = $request->file('file');
+        if ($picture == '') {
+            $updateData = [
+                'name' => $name,
+                'description' => $description,
+            ];
+        } else {
+            $category = $this->category->findOrFail($id);
+            Storage::delete('/images/category/' . $category->picture);
+            $path = $request->file('file')->store('/images/category');
+            $explodePath = explode('/', $path);
+            $picture = end($explodePath);
+            $updateData = [
+                'name' => $name,
+                'description' => $description,
+                'picture' => $picture,
+            ];
+        }
+        $updateCategory = $this->category->updateCategory($updateData, $id);
+        if ($updateCategory) {
+            return redirect()->route('category.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
+        } else {
+            return redirect()->route('category.edit')->with('msgUpdateFail', 'Lỗi. Vui lòng thử lại.');
+        }
     }
 
     /**
@@ -90,6 +131,21 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = $this->category->findOrFail($id);
+        Storage::delete('/images/category/' . $category->picture);
+        $deleteCategory = $this->category->deleteCategory($id);
+        if ($deleteCategory) {
+            return redirect()->route('category.index')->with('msgDeleteSuccess', 'Xóa thành công');
+        } else {
+            return redirect()->route('category.index')->with('msgDeleteFail', 'Xóa không thành công');
+        }
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $categories = $this->category->searchItem($search);
+        
+        return view('admin.category.index')->with(compact('categories'));
     }
 }

@@ -11,32 +11,9 @@
     <link rel="shortcut icon" href="javascript:;" type="image/png">
 
     <title>SlickLab - Responsive Admin Dashboard Template</title>
-
-    <!--easy pie chart-->
-    <link href="/js/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
-
-    <!--vector maps -->
-    <link rel="stylesheet" href="/js/vector-map/jquery-jvectormap-1.1.1.css">
-
-    <!--right slidebar-->
-    <link href="/css/slidebars.css" rel="stylesheet">
-
-    <!--switchery-->
-    <link href="/js/switchery/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
-
-    <!--jquery-ui-->
-    <link href="/js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet" />
-
-    <!--iCheck-->
-    <link href="/js/icheck/skins/all.css" rel="stylesheet">
-
-    <link href="/css/owl.carousel.css" rel="stylesheet">
-
-
     <!--common style-->
     <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/style-responsive.css" rel="stylesheet">
-    <link href="/css/admin/app.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -51,7 +28,7 @@
 
         </div>
         <div class="col-3">
-            <p>Xin chào, Huu Phuoc  <a href="">Logout</a></p>
+            <p>Xin chào, {{ ucwords(Auth::user()->name) }}  <a href="{{ route('auth.logout') }}">Logout</a></p>
         </div>
         
     </div>
