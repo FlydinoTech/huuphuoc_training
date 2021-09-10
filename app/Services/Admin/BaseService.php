@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Storage;
 
 class BaseService
 {
-
     protected $model;
 
     public function uploadImage($file, $model)
@@ -16,14 +15,5 @@ class BaseService
         $picture = end($explodePath);
     
         return $picture;
-    }
-
-    public function delete($model)
-    {
-        $folder = detectFolderByModel($this->model);
-        Storage::delete($folder . $model->picture);
-        $model->delete();
-
-        return $model;
     }
 }

@@ -16,19 +16,18 @@ class TourService extends BaseService
         return $this->model->orderBy('id', 'desc')->paginate(6);
     }
 
-    public function setTourParam($inputs, $category_id, $file)
+    public function getTourEdit($id)
     {
-        $inputs['category_id'] = $category_id;
-        $picture = $this->uploadImage($file, $this->model);
-        $inputs['picture'] = $picture;
-
-        return $inputs;
+        return $this->model->where('id', $id)->first();
     }
 
     public function create($inputs, $category_id, $file)
     {
-        $tourParam = $this->setTourParam($inputs, $category_id, $file);
-        $this->model->create($tourParam);
+        $inputs['category_id'] = $category_id;
+        $picture = $this->uploadImage($file, $this->model);
+        $inputs['picture'] = $picture;
+        $this->model->create($inputs);
+        
         return $this->model;
     }
 
@@ -41,7 +40,7 @@ class TourService extends BaseService
         return $inputs;
     }
 
-    public function updateTour($inputs, $id, $picture)
+    public function update($inputs, $id, $picture)
     {
         $tour = $this->model->findOrFail($id);
         $inputs = $this->checkImageEmpty($inputs, $picture);
@@ -50,6 +49,16 @@ class TourService extends BaseService
             Storage::delete($folder . $tour->picture);
         }
         $tour->update($inputs);
+
+        return $tour;
+    }
+
+    public function delete($id)
+    {
+        $tour = $this->model->findOrFail($id);
+        $folder = detectFolderByModel($this->model);
+        Storage::delete($folder . $tour->picture);
+        $tour->delete();
 
         return $tour;
     }

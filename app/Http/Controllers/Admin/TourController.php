@@ -5,19 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TourCreateRequest;
 use App\Http\Requests\TourUpdateRequest;
-use App\Models\Category;
-use App\Models\Tour;
+use App\Services\Admin\CategoryService;
 use App\Services\Admin\TourService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class TourController extends Controller
 {
-    public function __construct(Tour $tour, Category $category, TourService $tourService)
+    public function __construct(TourService $tourService, CategoryService $categoryService)
     {
-        $this->tour = $tour;
-        $this->category = $category;
         $this->tourService = $tourService;
+        $this->categoryService = $categoryService;
     }
     /**
      * Display a listing of the resource.
@@ -36,9 +33,11 @@ class TourController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Category $category)
+    public function create()
     {
-        return view('admin.tour.create', ['category' => $category]);
+        $category = $this->categoryService->getCategory();
+
+        return view('admin.tour.create', compact('category'));
     }
 
     /**
@@ -47,7 +46,7 @@ class TourController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TourCreateRequest $request, Tour $tour)
+    public function store(TourCreateRequest $request)
     {
         $tourParam = $request->validated();
         if ($this->tourService->create($tourParam, $request->category_id, $request->file('file'))) {
@@ -74,9 +73,12 @@ class TourController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tour $tour, Category $category)
+    public function edit($id)
     {
-        return view('admin.tour.edit', ['tour' => $tour, 'category' => $category]);
+        $category = $this->categoryService->getCategory();
+        $tour = $this->tourService->getTourEdit($id);
+
+        return view('admin.tour.edit', compact('category', 'tour'));
     }
 
     /**
@@ -89,7 +91,7 @@ class TourController extends Controller
     public function update(TourUpdateRequest $request, $id)
     {
         $tourParam = $request->validated();
-        if ($this->tourService->updateTour($tourParam, $id, $request->file('file'))) {
+        if ($this->tourService->update($tourParam, $id, $request->file('file'))) {
             return redirect()->route('tour.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
         } else {
             return redirect()->route('tour.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
@@ -102,9 +104,9 @@ class TourController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tour $tour)
+    public function destroy($id)
     {
-        if ($this->tourService->delete($tour)) {
+        if ($this->tourService->delete($id)) {
             return redirect()->route('tour.index')->with('msgDeleteSuccess', 'Xóa thành công');
         } else {
             return redirect()->route('tour.index')->with('msgDeleteFail', 'Xóa không thành công');
@@ -115,6 +117,7 @@ class TourController extends Controller
     {
         $search = $request->search;
         $tours = $this->tourService->find($search);
+        
         return view('admin.tour.index')->with(compact('tours'));
     }
 }
