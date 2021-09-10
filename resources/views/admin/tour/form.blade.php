@@ -4,7 +4,7 @@
 </div>
 <div class="form-group">
     {{ Form::label('category_id', 'Tên quốc gia', ['class' => 'form-group']) }}
-    {!! Form::select('category_id', $category->pluck('name', 'id'), null, ['class' => 'form-control']) !!}
+    {!! Form::select('category_id', $category, null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     {{ Form::label('description', 'Mô tả', ['class' => 'form-group']) }}

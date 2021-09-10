@@ -10,9 +10,9 @@ class CategoryService extends BaseService
         $this->model = $category;
     }
     
-    public function getCategory()
+    public function getCategoryForSelect()
     {
-        return $this->model->get();
+        return $this->model->pluck('name', 'id');
     }
 
 }

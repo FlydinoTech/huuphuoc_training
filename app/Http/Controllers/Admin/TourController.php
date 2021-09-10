@@ -35,7 +35,7 @@ class TourController extends Controller
      */
     public function create()
     {
-        $category = $this->categoryService->getCategory();
+        $category = $this->categoryService->getCategoryForSelect();
 
         return view('admin.tour.create', compact('category'));
     }
@@ -48,8 +48,8 @@ class TourController extends Controller
      */
     public function store(TourCreateRequest $request)
     {
-        $tourParam = $request->validated();
-        if ($this->tourService->create($tourParam, $request->category_id, $request->file('file'))) {
+        $tourParam = $request->all();
+        if ($this->tourService->create($tourParam, $request->file('file'))) {
             return redirect()->route('tour.index')->with('msgAddSuccess', 'Thêm danh mục thành công.');
         } else {
             return redirect()->route('tour.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
@@ -75,7 +75,7 @@ class TourController extends Controller
      */
     public function edit($id)
     {
-        $category = $this->categoryService->getCategory();
+        $category = $this->categoryService->getCategoryForSelect();
         $tour = $this->tourService->getTourEdit($id);
 
         return view('admin.tour.edit', compact('category', 'tour'));
@@ -90,7 +90,7 @@ class TourController extends Controller
      */
     public function update(TourUpdateRequest $request, $id)
     {
-        $tourParam = $request->validated();
+        $tourParam = $request->all();
         if ($this->tourService->update($tourParam, $id, $request->file('file'))) {
             return redirect()->route('tour.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
         } else {

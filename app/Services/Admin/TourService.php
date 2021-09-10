@@ -21,9 +21,8 @@ class TourService extends BaseService
         return $this->model->where('id', $id)->first();
     }
 
-    public function create($inputs, $category_id, $file)
+    public function create($inputs, $file)
     {
-        $inputs['category_id'] = $category_id;
         $picture = $this->uploadImage($file, $this->model);
         $inputs['picture'] = $picture;
         $this->model->create($inputs);
