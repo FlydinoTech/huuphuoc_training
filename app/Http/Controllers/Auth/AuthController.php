@@ -31,7 +31,7 @@ class AuthController extends Controller
             if ($this->user->isAdmin()) {
                 return redirect()->route('admin.index');
             } else {
-                return redirect()->route('tour.index');
+                return redirect()->route('booktour.index');
             }
         } else {
             return redirect()->route('auth.login')->with('msg', 'Email hoặc mật khẩu bị sai. Vui lòng đăng nhập lại!');

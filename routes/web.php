@@ -4,7 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TourController;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Tour\TourController;
+use App\Http\Controllers\Tour\BookTourController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['namespace' => 'tour'], function (){
-	Route::get('/',[TourController::class,'index'])->name('tour.index');
+	Route::get('/',[BookTourController::class,'index'])->name('booktour.index');
 });
 
 Route::prefix('auth')->group(function(){
