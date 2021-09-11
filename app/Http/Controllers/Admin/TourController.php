@@ -50,9 +50,9 @@ class TourController extends Controller
     {
         $tourParam = $request->all();
         if ($this->tourService->create($tourParam, $request->file('file'))) {
-            return redirect()->route('tour.index')->with('msgAddSuccess', 'Thêm danh mục thành công.');
+            return redirect()->route('tour.index')->with('msgAddSuccess', 'Thêm chuyến đi thành công.');
         } else {
-            return redirect()->route('tour.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
+            return redirect()->route('tour.create')->with('msgAddFail', 'Thêm chuyến đi không thành công.');
         }
     }
 

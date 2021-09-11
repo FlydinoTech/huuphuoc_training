@@ -32,4 +32,9 @@ class User extends Model implements AuthenticatableContract
     {
         return in_array($this->category_user_id, [1, 2]);
     }
+
+    public function category_user()
+    {
+        return $this->belongsTo(Category_user::class);
+    }
 }
