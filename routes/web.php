@@ -37,6 +37,8 @@ Route::prefix('admin')->middleware('admin', 'auth')->group(function(){
     Route::get('/searchCategory',[CategoryController::class,'search'])->name('category.search');
     Route::resource('tour', TourController::class);
     Route::get('/searchTour',[TourController::class,'search'])->name('tour.search');
-    Route::resource('user', UserController::class);
+    Route::resource('user', UserController::class, ['only' => ['index']]);
+    Route::resource('user', UserController::class, ['except' => ['index']])->middleware('admin-manager');
     Route::get('/searchUser',[UserController::class,'search'])->name('user.search');
+    Route::get('error',[UserController::class,'error'])->name('admin.error');
 });

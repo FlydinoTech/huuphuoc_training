@@ -120,4 +120,9 @@ class UserController extends Controller
         
         return view('admin.user.index')->with(compact('users'));
     }
+
+    public function error()
+    {
+        return view('admin.error');
+    }
 }
