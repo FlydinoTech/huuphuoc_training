@@ -5,15 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryCreateRequest;
 use App\Http\Requests\CategoryUpdateRequest;
-use App\Models\Category;
+use App\Services\Admin\CategoryService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
-    public function __construct(Category $category)
+    public function __construct(CategoryService $categoryService)
     {
-        $this->category = $category;
+        $this->categoryService = $categoryService;
     }
 
     /**
@@ -23,7 +22,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = $this->category->get();
+        $categories = $this->categoryService->getCategory();
         
         return view('admin.category.index')->with(compact('categories'));
     }
@@ -46,16 +45,8 @@ class CategoryController extends Controller
      */
     public function store(CategoryCreateRequest $request)
     {
-        $path = $request->file('file')->store('/images/category');
-        $explodePath = explode('/', $path);
-        $picture = end($explodePath);
-        $createData = [
-            'name' => $request->name,
-            'description' => $request->description,
-            'picture' => $picture,
-        ];
-        $addCategory = $this->category->insert($createData);
-        if ($addCategory) {
+        $categoryParam = $request->validated();
+        if ($this->categoryService->create($categoryParam, $request->file('file'))) {
             return redirect()->route('category.index')->with('msgAddSuccess', 'Thêm danh mục thành công.');
         } else {
             return redirect()->route('category.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
@@ -81,7 +72,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = $this->category->findOrFail($id);
+        $category = $this->categoryService->getCategoryUpdate($id);
 
         return view('admin.category.edit', compact('category'));
     }
@@ -95,28 +86,8 @@ class CategoryController extends Controller
      */
     public function update(CategoryUpdateRequest $request, $id)
     {
-        $name = $request->name;
-        $description = $request->description;
-        $picture = $request->file('file');
-        if ($picture == '') {
-            $updateData = [
-                'name' => $name,
-                'description' => $description,
-            ];
-        } else {
-            $category = $this->category->findOrFail($id);
-            Storage::delete('/images/category/' . $category->picture);
-            $path = $request->file('file')->store('/images/category');
-            $explodePath = explode('/', $path);
-            $picture = end($explodePath);
-            $updateData = [
-                'name' => $name,
-                'description' => $description,
-                'picture' => $picture,
-            ];
-        }
-        $updateCategory = $this->category->updateCategory($updateData, $id);
-        if ($updateCategory) {
+        $categoryParam = $request->validated();
+        if ($this->categoryService->update($categoryParam, $id, $request->file('file'))) {
             return redirect()->route('category.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
         } else {
             return redirect()->route('category.edit')->with('msgUpdateFail', 'Lỗi. Vui lòng thử lại.');
@@ -131,10 +102,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = $this->category->findOrFail($id);
-        Storage::delete('/images/category/' . $category->picture);
-        $deleteCategory = $this->category->deleteCategory($id);
-        if ($deleteCategory) {
+        if ($this->categoryService->delete($id)) {
             return redirect()->route('category.index')->with('msgDeleteSuccess', 'Xóa thành công');
         } else {
             return redirect()->route('category.index')->with('msgDeleteFail', 'Xóa không thành công');
@@ -144,7 +112,7 @@ class CategoryController extends Controller
     public function search(Request $request)
     {
         $search = $request->search;
-        $categories = $this->category->searchItem($search);
+        $categories = $this->categoryService->find($search);
         
         return view('admin.category.index')->with(compact('categories'));
     }
