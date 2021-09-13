@@ -11,10 +11,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function __construct(UserService $userService, CategoryUserService $category_userService)
+    public function __construct(UserService $userService, CategoryUserService $categoryUserService)
     {
         $this->userService = $userService;
-        $this->category_userService = $category_userService;
+        $this->categoryUserService = $categoryUserService;
     }
     /**
      * Display a listing of the resource.
@@ -36,9 +36,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        $category_user = $this->category_userService->getUserForSelect();
+        $categoryUser = $this->categoryUserService->getUserForSelect();
 
-        return view('admin.user.create', compact('category_user'));
+        return view('admin.user.create', compact('categoryUser'));
     }
 
     /**
@@ -76,10 +76,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $category_user = $this->category_userService->getUserForSelect();
+        $categoryUser = $this->categoryUserService->getUserForSelect();
         $user = $this->userService->getUserUpdate($id);
 
-        return view('admin.user.edit', compact('category_user', 'user'));
+        return view('admin.user.edit', compact('categoryUser', 'user'));
     }
 
     /**

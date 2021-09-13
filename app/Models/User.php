@@ -38,8 +38,13 @@ class User extends Model implements AuthenticatableContract
         return in_array($this->category_user_id, [1]);
     }
 
-    public function category_user()
+    public function categoryUser()
     {
         return $this->belongsTo(Category_user::class);
+    }
+
+    public function bcryptPassword($password)
+    {
+        return bcrypt($password);
     }
 }

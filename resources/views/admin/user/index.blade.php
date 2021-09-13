@@ -41,7 +41,7 @@
                                 <td>{{$user->id}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
-                                <td>{{$user->category_user->name}}</td>
+                                <td>{{$user->categoryUser->name}}</td>
                                 <td class="center">
                                     <a href="{{ route('user.edit', $user->id) }}" title="" class="btn btn-success" style="width: 75px; float:left"><i class="fa fa-edit "></i> Sửa</a>
                                     {!! Form::open(['method' => 'DELETE', 'url' => route('user.destroy', $user->id)]) !!}

@@ -24,5 +24,5 @@
 </div>
 <div class="form-group">
     {{ Form::label('category_user_id', 'Loại người dùng', ['class' => 'form-group']) }}
-    {!! Form::select('category_user_id', $category_user, null, ['class' => 'form-control']) !!}
+    {!! Form::select('category_user_id', $categoryUser, null, ['class' => 'form-control']) !!}
 </div>
