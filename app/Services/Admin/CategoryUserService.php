@@ -7,11 +7,11 @@ class CategoryUserService extends BaseService
 {
     public function __construct(Category_user $category_user)
     {
-        $this->category_user = $category_user;
+        $this->model = $category_user;
     }
     
     public function getUserForSelect()
     {
-        return $this->category_user->pluck('name', 'id');
+        return $this->model->pluck('name', 'id');
     }
 }
