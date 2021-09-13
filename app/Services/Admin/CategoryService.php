@@ -8,37 +8,37 @@ class CategoryService extends BaseService
 {
     public function __construct(Category $category)
     {
-        $this->category = $category;
+        $this->model = $category;
     }
     
     public function getCategoryForSelect()
     {
-        return $this->category->pluck('name', 'id');
+        return $this->model->pluck('name', 'id');
     }
 
     public function getCategory()
     {
-        return $this->category->orderBy('updated_at', 'desc')->paginate(5);
+        return $this->model->orderBy('updated_at', 'desc')->paginate(5);
     }
 
     public function create($inputs, $file)
     {
-        $picture = $this->uploadImage($file, $this->category);
+        $picture = $this->uploadImage($file, $this->model);
         $inputs['picture'] = $picture;
-        $this->category->create($inputs);
+        $this->model->create($inputs);
         
-        return $this->category;
+        return $this->model;
     }
 
     public function getCategoryUpdate($id)
     {
-        return $this->category->findOrFail($id);
+        return $this->model->findOrFail($id);
     }
 
     public function checkImageEmpty($inputs, $picture)
     {
         if (!empty($picture)) {
-            $inputs['picture'] = $this->uploadImage($picture, $this->category);
+            $inputs['picture'] = $this->uploadImage($picture, $this->model);
         }
 
         return $inputs;
@@ -46,10 +46,10 @@ class CategoryService extends BaseService
 
     public function update($inputs, $id, $picture)
     {
-        $category = $this->category->findOrFail($id);
+        $category = $this->model->findOrFail($id);
         $inputs = $this->checkImageEmpty($inputs, $picture);
         if (!empty($inputs['picture'])) {
-            $folder = detectFolderByModel($this->category);
+            $folder = detectFolderByModel($this->model);
             Storage::delete($folder . $category->picture);
         }
 
@@ -58,8 +58,8 @@ class CategoryService extends BaseService
 
     public function delete($id)
     {
-        $category = $this->category->findOrFail($id);
-        $folder = detectFolderByModel($this->category);
+        $category = $this->model->findOrFail($id);
+        $folder = detectFolderByModel($this->model);
         Storage::delete($folder . $category->picture);
 
         return $category->delete();

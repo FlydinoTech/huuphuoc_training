@@ -8,32 +8,32 @@ class TourService extends BaseService
 {
     public function __construct(Tour $tour)
     {
-        $this->tour = $tour;
+        $this->model = $tour;
     }
     
     public function getTour()
     {
-        return $this->tour->orderBy('updated_at', 'desc')->paginate(6);
+        return $this->model->orderBy('updated_at', 'desc')->paginate(6);
     }
 
     public function getTourEdit($id)
     {
-        return $this->tour->findOrFail($id);
+        return $this->model->findOrFail($id);
     }
 
     public function create($inputs, $file)
     {
-        $picture = $this->uploadImage($file, $this->tour);
+        $picture = $this->uploadImage($file, $this->model);
         $inputs['picture'] = $picture;
-        $this->tour->create($inputs);
+        $this->model->create($inputs);
         
-        return $this->tour;
+        return $this->model;
     }
 
     public function checkImageEmpty($inputs, $picture)
     {
         if (!empty($picture)) {
-            $inputs['picture'] = $this->uploadImage($picture, $this->tour);
+            $inputs['picture'] = $this->uploadImage($picture, $this->model);
         }
 
         return $inputs;
@@ -41,10 +41,10 @@ class TourService extends BaseService
 
     public function update($inputs, $id, $picture)
     {
-        $tour = $this->tour->findOrFail($id);
+        $tour = $this->model->findOrFail($id);
         $inputs = $this->checkImageEmpty($inputs, $picture);
         if (!empty($inputs['picture'])) {
-            $folder = detectFolderByModel($this->tour);
+            $folder = detectFolderByModel($this->model);
             Storage::delete($folder . $tour->picture);
         }
         $tour->update($inputs);
@@ -54,8 +54,8 @@ class TourService extends BaseService
 
     public function delete($id)
     {
-        $tour = $this->tour->findOrFail($id);
-        $folder = detectFolderByModel($this->tour);
+        $tour = $this->model->findOrFail($id);
+        $folder = detectFolderByModel($this->model);
         Storage::delete($folder . $tour->picture);
         $tour->delete();
 
