@@ -55,15 +55,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categories as $categories)
+                        @foreach ($categories as $category)
                             <tr>
-                                <td>{{$categories->id}}</td>
-                                <td>{{$categories->name}}</td>
-                                <td>{{$categories->description}}</td>
-                                <td>{{ Html::image($categories->picture_url, 'alt', array( 'width' => 150, 'height' => 100 )) }}</td>
+                                <td>{{$category->id}}</td>
+                                <td>{{$category->name}}</td>
+                                <td>{{$category->description}}</td>
+                                <td>{{ Html::image($category->picture_url, 'alt', array( 'width' => 150, 'height' => 100 )) }}</td>
                                 <td class="center">
-                                    <a href="{{ route('category.edit', $categories->id) }}" title="" class="btn btn-success" style="width: 75px; float:left"><i class="fa fa-edit "></i> Sửa</a>
-                                    {!! Form::open(['method' => 'DELETE', 'url' => route('category.destroy', $categories->id)]) !!}
+                                    <a href="{{ route('category.edit', $category->id) }}" title="" class="btn btn-success" style="width: 75px; float:left"><i class="fa fa-edit "></i> Sửa</a>
+                                    {!! Form::open(['method' => 'DELETE', 'url' => route('category.destroy', $category->id)]) !!}
                                         {!! Form::submit('Xóa', ['class' => 'btn btn-danger', 'style' => 'width: 70px; float:left']) !!}
                                     {!! Form::close() !!}
                                 </td>
@@ -73,7 +73,7 @@
                 </table>
             </div>
             <nav aria-label="Page Navigation">
-                {{-- {{ $categories->links() }} --}}
+                {{ $categories->links() }}
             </nav>
         </div>
     </div>

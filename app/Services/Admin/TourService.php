@@ -13,7 +13,7 @@ class TourService extends BaseService
     
     public function getTour()
     {
-        return $this->model->orderBy('id', 'desc')->paginate(6);
+        return $this->model->orderBy('updated_at', 'desc')->paginate(6);
     }
 
     public function getTourEdit($id)
