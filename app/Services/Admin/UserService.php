@@ -17,8 +17,6 @@ class UserService extends BaseService
 
     public function create($inputs)
     {
-        $inputs['password'] = $this->model->bcryptPassword($inputs['password']);
-
         return $this->model->create($inputs);
     }
 
@@ -30,12 +28,7 @@ class UserService extends BaseService
     public function update($inputs, $id)
     {
         $user = $this->model->findOrFail($id);
-        if (empty($inputs['password'])) {
-            $inputs['password'] = $user->password;
-        } else {
-            $inputs['password'] = $this->model->bcryptPassword($inputs['password']);
-        }
-        
+
         return $user->update($inputs);
     }
 

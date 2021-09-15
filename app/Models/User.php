@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Model implements AuthenticatableContract
 {
@@ -43,8 +44,10 @@ class User extends Model implements AuthenticatableContract
         return $this->belongsTo(Category_user::class);
     }
 
-    public function bcryptPassword($password)
+    public function setPasswordAttribute($value)
     {
-        return bcrypt($password);
+        if ($value) {
+            $this->attributes['password'] = Hash::make($value);
+        }
     }
 }
