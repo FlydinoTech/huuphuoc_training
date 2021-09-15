@@ -1,4 +1,4 @@
-@extends('template.tour.master')
+@extends('template.booktour.master')
 @section('main_content')
         <!--Travel Banner-->
         <div class="kode_banner">

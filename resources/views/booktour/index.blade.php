@@ -1,4 +1,4 @@
-@extends('template.tour.master')
+@extends('template.booktour.master')
 @section('main_content')
             <!--Travel Banner-->
             <div class="kode_banner" style="background-image: url('/img/tour/destinations02-img6.jpeg')">
@@ -38,9 +38,9 @@
                                         <div class="destination-grid">
                                             <img src="{{ $category->picture_url }}" style="width: 369px; height: 294px" alt="img here">
                                             <div class="destination-grid-content">
-                                                <h5><a href="{{ route('tour.category_tour', [$category->slug_category, $category->id]) }}">{{ $category->name }}</a></h5>
+                                                <h5><a href="{{ route('booktour.category_tour', [$category->slug_category, $category->id]) }}">{{ $category->name }}</a></h5>
                                                 <p>{{ $category->description }}</p>
-                                                <a href="{{ route('tour.category_tour', [$category->slug_category, $category->id]) }}" class="arrow-btn">See More</a>
+                                                <a href="{{ route('booktour.category_tour', [$category->slug_category, $category->id]) }}" class="arrow-btn">See More</a>
                                             </div>
                                         </div>
                                     </div>

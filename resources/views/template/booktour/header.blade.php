@@ -69,22 +69,22 @@
                 <div class="header-v1_navigation_row animated">
                    <div class="container">
                       <div class="logo-here">
-                         <h1><a href="{{ route('tour.index') }}"><img src="/img/tour/logo_v1.png" alt="44 by 150"></a></h1>
+                         <h1><a href="{{ route('booktour.index') }}"><img src="/img/tour/logo_v1.png" alt="44 by 150"></a></h1>
                       </div>
                       <div class="header-v1-nav txt-hvr3">
                          <nav class="navigation">
                             <ul>
                                <li>
-                                  <a href="{{ route('tour.index') }}">Home</a>
+                                  <a href="{{ route('booktour.index') }}">Home</a>
                                </li>
                                <li>
-                                  <a href="{{ route('tour.all_tour') }}">Tour</a>
+                                  <a href="{{ route('booktour.all_tour') }}">Tour</a>
                                </li>
                                <li>
                                   <a href="">Pages</a>
                                   <ul class="sub-menu children">
-                                     <li><a href="{{ route('tour.about_us')}}">about us</a></li>
-                                     <li><a href="{{ route('tour.error')}}">404</a></li>
+                                     <li><a href="{{ route('booktour.about_us')}}">about us</a></li>
+                                     <li><a href="{{ route('booktour.error')}}">404</a></li>
                                   </ul>
                                </li>
                                <li><a href="">Shop</a></li>

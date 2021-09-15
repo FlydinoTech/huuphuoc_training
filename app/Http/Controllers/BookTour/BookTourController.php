@@ -16,7 +16,7 @@ class BookTourController extends Controller
     {
         $categories = $this->booktour->getCategory();
 
-        return view('tour.index', compact('categories'));
+        return view('booktour.index', compact('categories'));
     }
 
     public function categoryTour($slug, $id)
@@ -24,30 +24,30 @@ class BookTourController extends Controller
         $tours = $this->booktour->getTourCategory($id);
         $category = $this->booktour->getCategoryId($id);
 
-        return view('tour.category_tour', compact('tours', 'category'));
+        return view('booktour.category_tour', compact('tours', 'category'));
     }
 
     public function allTour()
     {
         $tours = $this->booktour->getAllTour();
 
-        return view('tour.all_tour', compact('tours'));
+        return view('booktour.all_tour', compact('tours'));
     }
 
     public function bookTour($slug, $id)
     {
         $tours = $this->booktour->getTour($id);
 
-        return view('tour.book_tour', compact('tours'));
+        return view('booktour.book_tour', compact('tours'));
     }
 
     public function aboutUs()
     {
-        return view('tour.about_us');
+        return view('booktour.about_us');
     }
 
     public function error()
     {
-        return view('tour.error');
+        return view('booktour.error');
     }
 }
