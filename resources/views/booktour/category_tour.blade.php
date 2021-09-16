@@ -34,7 +34,7 @@
                                         <div class="kf_column_trip hover-effect-01">
                                             <div class="kf_column-figure">
                                                 <figure>
-                                                    <a href="{{ route('booktour.book_tour', [$tour->slug_tour, $tour->id]) }}" data-rel="prettyPhoto">
+                                                    <a href="{{ route('booktour.book_tour', [$tour->category_id, $tour->id]) }}" data-rel="prettyPhoto">
                                                     <img src="{{ $tour->picture_url }}" style="width: 354px; height: 261px" alt="img here">
                                                     </a>
                                                     <div class="hover-content-01"></div>
@@ -50,12 +50,12 @@
                                                 </div>
                                             </div>
                                             <div class="kf_trip_content" style="height: 300px">
-                                                <h4><a href="{{ route('booktour.book_tour', [$tour->slug_tour, $tour->id]) }}">{{ $tour->name }}</a></h4>
+                                                <h4><a href="{{ route('booktour.book_tour', [$tour->category_id, $tour->id]) }}">{{ $tour->name }}</a></h4>
                                                 <p>{{ $tour->description }}</p>
                                                 <h5 style="color: red">Giảm giá : {{ $tour->discount }}%</h5>
                                             </div>
                                             <ul class="booking-bottom">
-                                                <li><a href="{{ route('booktour.book_tour', [$tour->slug_tour, $tour->id]) }}" class="btn-blog ">Book Now</a></li>
+                                                <li><a href="{{ route('booktour.book_tour', [$tour->category_id, $tour->id]) }}" class="btn-blog ">Book Now</a></li>
                                             </ul>
                                         </div>
                                     </div>

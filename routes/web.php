@@ -42,9 +42,9 @@ Route::prefix('admin')->middleware('admin', 'auth')->group(function(){
 
 Route::group(['namespace' => 'booktour'], function (){
 	Route::get('/',[BookTourController::class,'index'])->name('booktour.index');
-    Route::get('category/{slug}_{id}',[BookTourController::class,'categoryTour'])->name('booktour.category_tour');
+    Route::get('category/{id}',[BookTourController::class,'categoryTour'])->name('booktour.category_tour');
     Route::get('/all_tour',[BookTourController::class,'allTour'])->name('booktour.all_tour');
-    Route::get('/book_tour/{slug}_{id}.html',[BookTourController::class,'bookTour'])->name('booktour.book_tour');
+    Route::get('/category/{category}/book_tour/{id}',[BookTourController::class,'bookTour'])->name('booktour.book_tour');
     Route::get('/about_us',[BookTourController::class,'aboutUs'])->name('booktour.about_us');
     Route::get('/error',[BookTourController::class,'error'])->name('booktour.error');
 });

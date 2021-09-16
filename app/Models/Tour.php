@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class Tour extends Model
 {
@@ -25,13 +24,9 @@ class Tour extends Model
     {
         return $this->picture ? Storage::url('/images/tour/' . $this->picture) : '';
     }
+
     public function category()
     { 
         return $this->belongsTo(Category::class);
-    }
-
-    public function getSlugTourAttribute()
-    {
-        return $this->name ? Str::slug($this->name) : '';
     }
 }

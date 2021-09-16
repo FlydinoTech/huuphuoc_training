@@ -63,7 +63,7 @@ class AuthController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('auth.login');    
+        return redirect()->route('booktour.index');    
     }
 
     public function error()

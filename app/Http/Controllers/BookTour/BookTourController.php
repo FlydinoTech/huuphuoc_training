@@ -19,7 +19,7 @@ class BookTourController extends Controller
         return view('booktour.index', compact('categories'));
     }
 
-    public function categoryTour($slug, $id)
+    public function categoryTour($id)
     {
         $tours = $this->booktour->getTourCategory($id);
         $category = $this->booktour->getCategoryId($id);
@@ -34,7 +34,7 @@ class BookTourController extends Controller
         return view('booktour.all_tour', compact('tours'));
     }
 
-    public function bookTour($slug, $id)
+    public function bookTour($category_id, $id)
     {
         $tours = $this->booktour->getTour($id);
 
