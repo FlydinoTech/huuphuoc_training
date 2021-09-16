@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TourController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\BookTour\BookTourController;
+use App\Http\Controllers\BookTourController;
 use Illuminate\Support\Facades\Route;
 
 /*
