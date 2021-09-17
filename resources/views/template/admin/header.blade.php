@@ -24,11 +24,20 @@
 
 <body class="sticky-header">
     <div class="row">
-        <div class="col-9">
-
+        <div class="col-6"></div>
+        <div class="col-3">
+                <ul>
+                    <li>
+                        <a href="{{ route('language', ['vi']) }}"><span> Tiếng Việt </span></a>
+                    </li>
+                    <li>
+                        <a href="{{ route('language', ['en']) }}"><span> English </span></a>
+                    </li>
+                </ul>
+            </li>
         </div>
         <div class="col-3">
-            <p>Xin chào, {{ ucwords(Auth::user()->name) }}  <a href="{{ route('auth.logout') }}">Logout</a></p>
+            <p>@lang('admin.hello'), {{ ucwords(Auth::user()->name) }}  <a href="{{ route('auth.logout') }}">Logout</a></p>
         </div>
         
     </div>
@@ -56,9 +65,9 @@
 
                     <li class="menu-list">
                         <ul class="child-list">
-                            <li><a href="{{ route('category.index')}}"> Quản lý danh mục</a></li>
-                            <li><a href="{{ route('tour.index')}}"> Quản lý chuyến đi</a></li>
-                            <li><a href="{{ route('user.index')}}"> Quản lý người dùng</a></li>
+                            <li><a href="{{ route('category.index')}}"> @lang('admin.categoryManager') </a></li>
+                            <li><a href="{{ route('tour.index')}}"> @lang('admin.tourManager') </a></li>
+                            <li><a href="{{ route('user.index')}}"> @lang('admin.userManager')  </a></li>
                         </ul>
                     </li>
                 </ul>

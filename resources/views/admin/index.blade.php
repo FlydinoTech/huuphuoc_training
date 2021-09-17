@@ -15,7 +15,7 @@
                 <div class="col-sm-12">
                     <header class="panel-heading head-border row">
                         <div class="col-sm-7" style="text-align: left;">
-                            <a style="float:left" href="" class="btn btn-success btn-md">Thêm</a>
+                            <a style="float:left" href="" class="btn btn-success btn-md">@lang('admin.category.add')</a>
                         </div>
                         <div class="col-sm-5" style="text-align: right;">
                             <form action="" method="get">

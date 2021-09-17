@@ -31,11 +31,11 @@ class CategoryCreateRequest extends FormRequest
     }
     public function messages(){
         return [
-            'name.required' => 'Tên không được để trống',
-            'name.min' => 'Tên không được ít hơn 2 ký tự',
-            'description.required' => 'Mô tả không được để trống',
-            'description.min' => 'Mô tả không được dưới 50 ký tự',
-            'file.required' => 'Ảnh chưa được thêm',
+            'name.required' => trans('admin.category.nameRequired'),
+            'name.min' => trans('admin.category.nameMin'),
+            'description.required' => trans('admin.category.descriptionRequired'),
+            'description.min' => trans('admin.category.descriptionMin'),
+            'file.required' => trans('admin.category.pictureRequired'),
         ];
     }
 }

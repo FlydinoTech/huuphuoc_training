@@ -47,9 +47,9 @@ class CategoryController extends Controller
     {
         $categoryParam = $request->validated();
         if ($this->categoryService->create($categoryParam, $request->file('file'))) {
-            return redirect()->route('category.index')->with('msgAddSuccess', 'Thêm danh mục thành công.');
+            return redirect()->route('category.index')->with('msgAddSuccess', trans('admin.addSuccess'));
         } else {
-            return redirect()->route('category.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
+            return redirect()->route('category.create')->with('msgAddFail', trans('admin.addError'));
         }
     }
 
@@ -88,9 +88,9 @@ class CategoryController extends Controller
     {
         $categoryParam = $request->validated();
         if ($this->categoryService->update($categoryParam, $id, $request->file('file'))) {
-            return redirect()->route('category.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
+            return redirect()->route('category.index')->with('msgUpdateSuccess', trans('admin.updateSuccess'));
         } else {
-            return redirect()->route('category.edit')->with('msgUpdateFail', 'Lỗi. Vui lòng thử lại.');
+            return redirect()->route('category.edit')->with('msgUpdateFail', trans('admin.updateError'));
         }
     }
 
@@ -103,9 +103,9 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         if ($this->categoryService->delete($id)) {
-            return redirect()->route('category.index')->with('msgDeleteSuccess', 'Xóa thành công');
+            return redirect()->route('category.index')->with('msgDeleteSuccess', trans('admin.deleteSuccess'));
         } else {
-            return redirect()->route('category.index')->with('msgDeleteFail', 'Xóa không thành công');
+            return redirect()->route('category.index')->with('msgDeleteFail', trans('admin.deleteError'));
         }
     }
 
