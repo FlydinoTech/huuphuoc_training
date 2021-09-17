@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\TourController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Tour\BookTourController;
+use App\Http\Controllers\BookTourController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +19,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['namespace' => 'tour'], function (){
-	Route::get('/',[BookTourController::class,'index'])->name('booktour.index');
-});
 
 Route::prefix('auth')->group(function(){
     Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
@@ -46,4 +43,13 @@ Route::prefix('admin')->middleware('admin', 'auth')->group(function(){
 
 Route::prefix('language')->group(function (){
 	Route::get('/language/{language}',[LanguageController::class,'index'])->name('language');
+});
+
+Route::group(['namespace' => 'booktour'], function (){
+	Route::get('/',[BookTourController::class,'index'])->name('booktour.index');
+    Route::get('category/{id}',[BookTourController::class,'categoryTour'])->name('booktour.category_tour');
+    Route::get('/all_tour',[BookTourController::class,'allTour'])->name('booktour.all_tour');
+    Route::get('/category/{category}/book_tour/{id}',[BookTourController::class,'bookTour'])->name('booktour.book_tour');
+    Route::get('/about_us',[BookTourController::class,'aboutUs'])->name('booktour.about_us');
+    Route::get('/error',[BookTourController::class,'error'])->name('booktour.error');
 });
