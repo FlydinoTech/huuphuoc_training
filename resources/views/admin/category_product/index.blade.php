@@ -54,14 +54,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($category_products as $category_product)
+                        @forelse ($categoryProducts as $categoryProduct)
                             <tr>
-                                <td style="width: 50px">{{$category_product->id}}</td>
-                                <td style="width: 250px">{{$category_product->name}}</td>
-                                <td style="width: 400px">{{ Html::image($category_product->picture_url, 'alt', array( 'width' => 150, 'height' => 100 )) }}</td>
+                                <td style="width: 50px">{{$categoryProduct->id}}</td>
+                                <td style="width: 250px">{{$categoryProduct->name}}</td>
+                                <td style="width: 400px">{{ Html::image($categoryProduct->picture_url, 'alt', array( 'width' => 150, 'height' => 100 )) }}</td>
                                 <td class="center">
-                                    <a href="{{ route('category_product.edit', $category_product->id) }}" title="" class="btn btn-success" style="width: 75px; float:left"><i class="fa fa-edit "></i> Sửa</a>
-                                    {!! Form::open(['method' => 'DELETE', 'url' => route('category_product.destroy', $category_product->id)]) !!}
+                                    <a href="{{ route('category_product.edit', $categoryProduct->id) }}" title="" class="btn btn-success" style="width: 75px; float:left"><i class="fa fa-edit "></i> Sửa</a>
+                                    {!! Form::open(['method' => 'DELETE', 'url' => route('category_product.destroy', $categoryProduct->id)]) !!}
                                         {!! Form::submit('Xóa', ['class' => 'btn btn-danger', 'style' => 'width: 70px; float:left']) !!}
                                     {!! Form::close() !!}
                                 </td>
@@ -75,7 +75,7 @@
                 </table>
             </div>
             <nav aria-label="Page Navigation">
-                {{ $category_products->links() }}
+                {{ $categoryProducts->links() }}
             </nav>
         </div>
     </div>

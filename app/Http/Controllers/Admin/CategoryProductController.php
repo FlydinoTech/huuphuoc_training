@@ -23,9 +23,9 @@ class CategoryProductController extends Controller
 
     public function index()
     {
-        $category_products = $this->categoryProductService->getCategoryProduct();
+        $categoryProducts = $this->categoryProductService->getCategoryProduct();
         
-        return view('admin.category_product.index')->with(compact('category_products'));
+        return view('admin.category_product.index')->with(compact('categoryProducts'));
     }
 
     /**
@@ -73,9 +73,9 @@ class CategoryProductController extends Controller
      */
     public function edit($id)
     {
-        $category_product = $this->categoryProductService->getCategoryProductUpdate($id);
+        $categoryProduct = $this->categoryProductService->getCategoryProductUpdate($id);
 
-        return view('admin.category_product.edit', compact('category_product'));
+        return view('admin.category_product.edit', compact('categoryProduct'));
     }
 
     /**
@@ -113,8 +113,8 @@ class CategoryProductController extends Controller
     public function search(Request $request)
     {
         $search = $request->search;
-        $category_products = $this->categoryProductService->find($search);
+        $categoryProducts = $this->categoryProductService->find($search);
         
-        return view('admin.category_product.index')->with(compact('category_products'));
+        return view('admin.category_product.index')->with(compact('categoryProducts'));
     }
 }

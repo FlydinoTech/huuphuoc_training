@@ -20,7 +20,7 @@
                                 </div>
                             @endif
                             @include('template.errorValidate')
-                            {!! Form::model($category_product, ['method' => 'PUT', 'route' => ['category_product.update', $category_product->id], 'enctype' => 'multipart/form-data']) !!}
+                            {!! Form::model($categoryProduct, ['method' => 'PUT', 'route' => ['category_product.update', $categoryProduct->id], 'enctype' => 'multipart/form-data']) !!}
                                 @include('admin.category_product.form')
                                 {!! Form::submit('Sửa', ['class' => 'btn-submit']) !!}
                             {!! Form::close() !!}
