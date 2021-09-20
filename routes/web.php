@@ -41,10 +41,15 @@ Route::prefix('admin')->middleware('admin', 'auth')->group(function(){
 });
 
 Route::group(['namespace' => 'booktour'], function (){
-	Route::get('/',[BookTourController::class,'index'])->name('booktour.index');
-    Route::get('category/{id}',[BookTourController::class,'categoryTour'])->name('booktour.category_tour');
+    Route::get('/',[BookTourController::class,'index'])->name('booktour.index');
+    Route::get('/category/{id}',[BookTourController::class,'categoryTour'])->name('booktour.category_tour');
+    Route::get('/booktour/{id}',[BookTourController::class,'bookTour'])->name('booktour.book_tour');
     Route::get('/all_tour',[BookTourController::class,'allTour'])->name('booktour.all_tour');
-    Route::get('/category/{category}/book_tour/{id}',[BookTourController::class,'bookTour'])->name('booktour.book_tour');
+    Route::get('/shop',[BookTourController::class,'shop'])->name('booktour.shop');
+    Route::get('/product',[BookTourController::class,'product'])->name('booktour.product');
+    Route::get('/cart',[BookTourController::class,'cart'])->name('booktour.cart');
+    Route::get('/checkout',[BookTourController::class,'checkout'])->name('booktour.checkout');
+    Route::get('/contact',[BookTourController::class,'contact'])->name('booktour.contact');
     Route::get('/about_us',[BookTourController::class,'aboutUs'])->name('booktour.about_us');
     Route::get('/error',[BookTourController::class,'error'])->name('booktour.error');
 });

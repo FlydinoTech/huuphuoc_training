@@ -28,12 +28,20 @@ mix.styles([
 
 mix.styles([
     'resources/css/tour/style.css',
-    'resources/css/tour/shortcodes.css',
-    'resources/css/tour/widget.css',
-    'resources/css/tour/icons.css',
-    'resources/css/tour/colors.css',
-    'resources/css/tour/typography.css',
-    'resources/css/tour/selectric.css',
+    'resources/css/tour/bootstrap.css',
+    'resources/css/tour/responsive.css',
 ], 'public/css/tour/all.css');
 
-mix.copy('resources/css/tour/icons.css', 'css/tour/');
+mix.js([
+    'resources/js/tour/appear.js',
+    'resources/js/tour/bootstrap.min.js',
+    'resources/js/tour/isotope.js',
+    'resources/js/tour/jquery-ui.js',
+    'resources/js/tour/jquery.fancybox.js',
+    'resources/js/tour/jquery.js',
+    'resources/js/tour/owl.js',
+    'resources/js/tour/popper.min.js',
+    'resources/js/tour/script.js',
+    'resources/js/tour/scrollbar.js',
+    'resources/js/tour/wow.js',
+], 'public/js/tour/all_script.js');
