@@ -15,10 +15,10 @@
             <div class="col-12">
                 <header class="panel-heading head-border row">
                     <div class="col-sm-7" style="text-align: left;">
-                        <a style="float:left" href="{{route('category.create')}}" class="btn btn-success btn-md">Thêm</a>
+                        <a style="float:left" href="{{route('category_product.create')}}" class="btn btn-success btn-md">Thêm</a>
                     </div>
                     <div class="col-sm-5" style="text-align: right;">
-                        {!! Form::open(['method' => 'GET', 'url' => route('category.search')]) !!}
+                        {!! Form::open(['method' => 'GET', 'url' => route('category_product.search')]) !!}
                             {{ Form::text('search', null, ['class' => 'form-control input-sm', 'placeholder' =>  'Nhập dữ liệu', 'style' => 'float:left; width: 350px']) }}
                             {!! Form::submit( 'Tìm kiếm', ['class' => 'btn btn-warning btn-sm', 'style' => 'float:right']) !!}
                         {!! Form::close() !!}<br />
@@ -48,22 +48,20 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th style="width: 120px">Quốc gia</th>
-                            <th>Mô tả</th>
+                            <th style="width: 120px">Loại sản phẩm</th>
                             <th>Hình ảnh</th>
                             <th width="165px">Chức năng</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($categories as $category)
+                        @forelse ($category_products as $category_product)
                             <tr>
-                                <td>{{$category->id}}</td>
-                                <td>{{$category->name}}</td>
-                                <td>{{$category->description}}</td>
-                                <td>{{ Html::image($category->picture_url, 'alt', array( 'width' => 150, 'height' => 100 )) }}</td>
+                                <td style="width: 50px">{{$category_product->id}}</td>
+                                <td style="width: 250px">{{$category_product->name}}</td>
+                                <td style="width: 400px">{{ Html::image($category_product->picture_url, 'alt', array( 'width' => 150, 'height' => 100 )) }}</td>
                                 <td class="center">
-                                    <a href="{{ route('category.edit', $category->id) }}" title="" class="btn btn-success" style="width: 75px; float:left"><i class="fa fa-edit "></i> Sửa</a>
-                                    {!! Form::open(['method' => 'DELETE', 'url' => route('category.destroy', $category->id)]) !!}
+                                    <a href="{{ route('category_product.edit', $category_product->id) }}" title="" class="btn btn-success" style="width: 75px; float:left"><i class="fa fa-edit "></i> Sửa</a>
+                                    {!! Form::open(['method' => 'DELETE', 'url' => route('category_product.destroy', $category_product->id)]) !!}
                                         {!! Form::submit('Xóa', ['class' => 'btn btn-danger', 'style' => 'width: 70px; float:left']) !!}
                                     {!! Form::close() !!}
                                 </td>
@@ -77,7 +75,7 @@
                 </table>
             </div>
             <nav aria-label="Page Navigation">
-                {{ $categories->links() }}
+                {{ $category_products->links() }}
             </nav>
         </div>
     </div>
