@@ -6,7 +6,6 @@
 <meta charset="utf-8">
 <title>Stella Orr'e - Interior and Home Renovation HTML Template | Home Page 02</title>
 <!-- Stylesheets -->
-{!! Html::style('css/tour/bootstrap.css') !!}
 {!! Html::style('css/tour/responsive.css') !!}
 {!! Html::style('css/tour/style.css') !!}
 {!! Html::style('css/tour/app.css') !!}
