@@ -15,6 +15,7 @@ mix.sass('resources/scss/app.scss', 'css/tour');
 
 mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/js/admin');
 mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/js/tour');
+mix.copy('node_modules/bootstrap/dist/js/bootstrap.min.js', 'public/js/tour');
 
 mix.copyDirectory('resources/img/auth', 'public/img/auth');
 mix.copyDirectory('resources/img/tour', 'public/img/tour');
@@ -34,7 +35,6 @@ mix.styles([
 
 mix.js([
     'resources/js/tour/appear.js',
-    'resources/js/tour/bootstrap.min.js',
     'resources/js/tour/isotope.js',
     'resources/js/tour/jquery-ui.js',
     'resources/js/tour/jquery.fancybox.js',
