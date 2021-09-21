@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CategoryProductController;
 use App\Http\Controllers\Admin\TourController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AuthController;
@@ -34,6 +35,8 @@ Route::prefix('admin')->middleware('admin', 'auth')->group(function(){
     Route::get('/searchCategory',[CategoryController::class,'search'])->name('category.search');
     Route::resource('tour', TourController::class);
     Route::get('/searchTour',[TourController::class,'search'])->name('tour.search');
+    Route::resource('category_product', CategoryProductController::class);
+    Route::get('/searchCategoryProduct',[CategoryProductController::class,'search'])->name('category_product.search');
     Route::resource('user', UserController::class, ['only' => ['index']]);
     Route::resource('user', UserController::class, ['except' => ['index']])->middleware('admin-manager');
     Route::get('/searchUser',[UserController::class,'search'])->name('user.search');

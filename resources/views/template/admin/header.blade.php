@@ -13,7 +13,6 @@
     <title>SlickLab - Responsive Admin Dashboard Template</title>
     <!--common style-->
     <link href="/css/admin/app.css" rel="stylesheet">
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="/js/html5shiv.js"></script>
@@ -58,6 +57,7 @@
                             <li><a href="{{ route('category.index')}}"> Quản lý danh mục</a></li>
                             <li><a href="{{ route('tour.index')}}"> Quản lý chuyến đi</a></li>
                             <li><a href="{{ route('user.index')}}"> Quản lý người dùng</a></li>
+                            <li><a href="{{ route('category_product.index')}}"> Quản lý loại sản phẩm</a></li>
                         </ul>
                     </li>
                 </ul>
