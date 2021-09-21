@@ -7,7 +7,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Login</title>
         <link href="/css/auth/all.css" rel="stylesheet">
-        <link href="/css/app.css" rel="stylesheet">
+        <link href="/css/admin/app.css" rel="stylesheet">
         <link rel="icon" type="image/png" href="/img/auth/favicon-32x32.png" sizes="32x32">
     </head>
     <body class="background-log">
