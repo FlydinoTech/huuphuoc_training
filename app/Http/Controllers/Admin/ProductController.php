@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductCreateRequest;
+use App\Http\Requests\ProductUpdateRequest;
+use App\Services\Admin\CategoryProductService;
+use App\Services\Admin\ProductService;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,9 +16,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(ProductService $productService, CategoryProductService $categoryProductService)
+    {
+        $this->productService = $productService;
+        $this->categoryProductService = $categoryProductService;
+    }
+
     public function index()
     {
-        //
+        $products = $this->productService->getProduct();
+        
+        return view('admin.product.index')->with(compact('products'));
     }
 
     /**
@@ -24,7 +37,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categoryProduct = $this->categoryProductService->getCategoryProductForSelect();
+
+        return view('admin.product.create', compact('categoryProduct'));
     }
 
     /**
@@ -33,9 +48,14 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductCreateRequest $request)
     {
-        //
+        $productParam = $request->all();
+        if ($this->productService->create($productParam, $request->file('file'))) {
+            return redirect()->route('product.index')->with('msgAddSuccess', 'Thêm sản phẩm thành công.');
+        } else {
+            return redirect()->route('product.create')->with('msgAddFail', 'Thêm sản phẩm không thành công.');
+        }
     }
 
     /**
@@ -57,7 +77,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categoryProduct = $this->categoryProductService->getCategoryProductForSelect();
+        $product = $this->productService->getProductEdit($id);
+
+        return view('admin.product.edit', compact('categoryProduct', 'product'));
     }
 
     /**
@@ -67,9 +90,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductUpdateRequest $request, $id)
     {
-        //
+        $productParam = $request->all();
+        if ($this->productService->update($productParam, $id, $request->file('file'))) {
+            return redirect()->route('product.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
+        } else {
+            return redirect()->route('product.create')->with('msgUpdateFail', 'Cập nhật không thành công.');
+        }
     }
 
     /**
@@ -80,6 +108,18 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($this->productService->delete($id)) {
+            return redirect()->route('product.index')->with('msgDeleteSuccess', 'Xóa thành công');
+        } else {
+            return redirect()->route('product.index')->with('msgDeleteFail', 'Xóa không thành công');
+        }
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $products = $this->productService->find($search);
+        
+        return view('admin.product.index')->with(compact('products'));
     }
 }

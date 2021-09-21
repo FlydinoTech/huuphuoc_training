@@ -15,6 +15,9 @@ function detectFolderByModel($model)
         case \App\Models\CategoryProduct::class:
             return '/images/category_product/';
             break;
+        case \App\Models\Product::class:
+            return '/images/product/';
+            break;
         default:
             return '';
     }

@@ -94,7 +94,7 @@ class TourController extends Controller
         if ($this->tourService->update($tourParam, $id, $request->file('file'))) {
             return redirect()->route('tour.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
         } else {
-            return redirect()->route('tour.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
+            return redirect()->route('tour.create')->with('msgUpdateFail', 'Cập nhật không thành công.');
         }
     }
 

@@ -60,6 +60,7 @@
                             <li><a href="{{ route('tour.index')}}"> Quản lý chuyến đi</a></li>
                             <li><a href="{{ route('user.index')}}"> Quản lý người dùng</a></li>
                             <li><a href="{{ route('category_product.index')}}"> Quản lý loại sản phẩm</a></li>
+                            <li><a href="{{ route('product.index')}}"> Quản lý sản phẩm</a></li>
                         </ul>
                     </li>
                 </ul>
