@@ -11,7 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.sass('resources/scss/app.scss', 'css/');
+mix.sass('resources/scss/app.scss', 'css/tour');
 
 mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/js/admin');
 mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/js/tour');
