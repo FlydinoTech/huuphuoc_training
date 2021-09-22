@@ -3,7 +3,7 @@
     <div id="page-inner" class="col-10">
         <div class="row">
             <div class="col-md-10">
-                <h2>Thêm danh mục</h2>
+                <h2>@lang('admin.product.add')</h2>
             </div>
         </div>
             <!-- /. ROW  -->
@@ -18,7 +18,7 @@
                             @include('template.errorValidate')
                             {!! Form::open(['method' => 'POST', 'url' => route('product.store'), 'enctype' => 'multipart/form-data']) !!}
                                 @include('admin.product.form')
-                                {!! Form::submit('Thêm', ['class' => 'btn-submit']) !!}
+                                {!! Form::submit( trans('admin.add'), ['class' => 'btn-submit']) !!}
                             {!! Form::close() !!}
                         </div>
                     </div>
