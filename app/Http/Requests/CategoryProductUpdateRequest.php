@@ -29,8 +29,8 @@ class CategoryProductUpdateRequest extends FormRequest
     }
     public function messages(){
         return [
-            'name.required' => 'Tên không được để trống',
-            'name.min' => 'Tên không được ít hơn 2 ký tự',
+            'name.required' => trans('admin.categoryProduct.nameRequired'),
+            'name.min' => trans('admin.categoryProduct.nameMin'),
         ];
     }
 }

@@ -48,7 +48,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th style="width: 120px">@lang('admin.country')</th>
+                            <th style="width: 120px">@lang('admin.category.country')</th>
                             <th>@lang('admin.description')</th>
                             <th>@lang('admin.picture')</th>
                             <th width="165px">@lang('admin.action')</th>
