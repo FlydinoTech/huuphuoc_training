@@ -3,7 +3,7 @@
     <div id="page-inner" class="col-10">
         <div class="row">
             <div class="col-md-10">
-                <h2>Sửa danh mục</h2>
+                <h2>@lang('admin.tour.edit')</h2>
             </div>
         </div>
         <!-- /. ROW  -->
@@ -18,7 +18,7 @@
                             @include('template.errorValidate')
                             {!! Form::model($tour, ['method' => 'PUT', 'route' => ['tour.update', $tour->id], 'enctype' => 'multipart/form-data']) !!}
                                 @include('admin.tour.form')
-                                {!! Form::submit('Sửa', ['class' => 'btn-submit']) !!}
+                                {!! Form::submit(trans('admin.edit'), ['class' => 'btn-submit']) !!}
                             {!! Form::close() !!}
                         </div>
                     </div>

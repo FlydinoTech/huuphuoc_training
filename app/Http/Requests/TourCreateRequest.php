@@ -35,19 +35,19 @@ class TourCreateRequest extends FormRequest
     }
     public function messages(){
         return [
-            'name.required' => 'Tên không được để trống',
-            'name.min' => 'Tên không được ít hơn 2 ký tự',
-            'description.required' => 'Mô tả không được để trống',
-            'description.min' => 'Mô tả không được dưới 50 ký tự',
-            'file.required' => 'Ảnh chưa được thêm',
-            'day.required' => 'Số ngày không được để trống',
-            'day.numeric' => 'Số ngày phải là số',
-            'night.required' => 'Số đêm không được để trống',
-            'night.numeric' => 'Số đêm phải là số',
-            'price.required' => 'Giá tiền không được để trống',
-            'price.numeric' => 'Giá tiền phải là số',
-            'discount.required' => 'Giảm giá không được để trống',
-            'discount.numeric' => 'Giảm giá phải là số',
+            'name.required' => trans('admin.tour.nameRequired'),
+            'name.min' => trans('admin.tour.nameMin'),
+            'description.required' => trans('admin.tour.descriptionRequired'),
+            'description.min' => trans('admin.tour.descriptionMin'),
+            'file.required' => trans('admin.tour.pictureRequired'),
+            'day.required' => trans('admin.tour.dayRequired'),
+            'day.numeric' => trans('admin.tour.dayNumberic'),
+            'night.required' => trans('admin.tour.nightRequired'),
+            'night.numeric' => trans('admin.tour.nightNumberic'),
+            'price.required' => trans('admin.tour.priceRequired'),
+            'price.numeric' => trans('admin.tour.priceNumberic'),
+            'discount.required' => trans('admin.tour.discountRequired'),
+            'discount.numeric' => trans('admin.tour.discountNumberic'),
         ];
     }
 }
