@@ -52,9 +52,9 @@ class ProductController extends Controller
     {
         $productParam = $request->all();
         if ($this->productService->create($productParam, $request->file('file'))) {
-            return redirect()->route('product.index')->with('msgAddSuccess', 'Thêm sản phẩm thành công.');
+            return redirect()->route('product.index')->with('msgAddSuccess', trans('admin.addSuccess'));
         } else {
-            return redirect()->route('product.create')->with('msgAddFail', 'Thêm sản phẩm không thành công.');
+            return redirect()->route('product.create')->with('msgAddFail', trans('admin.addError'));
         }
     }
 
@@ -94,9 +94,9 @@ class ProductController extends Controller
     {
         $productParam = $request->all();
         if ($this->productService->update($productParam, $id, $request->file('file'))) {
-            return redirect()->route('product.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
+            return redirect()->route('product.index')->with('msgUpdateSuccess', trans('admin.updateSuccess'));
         } else {
-            return redirect()->route('product.create')->with('msgUpdateFail', 'Cập nhật không thành công.');
+            return redirect()->route('product.create')->with('msgUpdateFail', trans('admin.updateError'));
         }
     }
 
@@ -109,9 +109,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
         if ($this->productService->delete($id)) {
-            return redirect()->route('product.index')->with('msgDeleteSuccess', 'Xóa thành công');
+            return redirect()->route('product.index')->with('msgDeleteSuccess', trans('admin.deleteSuccess'));
         } else {
-            return redirect()->route('product.index')->with('msgDeleteFail', 'Xóa không thành công');
+            return redirect()->route('product.index')->with('msgDeleteFail', trans('admin.deleteError'));
         }
     }
 

@@ -1,31 +1,31 @@
 <div class="form-group">
-    {{ Form::label('name', 'Tên sản phẩm', ['class' => 'form-group']) }}
-    {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nhập tên sản phẩm']) }}
+    {{ Form::label('name', trans('admin.product.productName'), ['class' => 'form-group']) }}
+    {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('admin.product.enterProductName')]) }}
 </div>
 <div class="form-group">
-    {{ Form::label('category_product_id', 'Loại sản phẩm', ['class' => 'form-group']) }}
+    {{ Form::label('category_product_id', trans('admin.product.categoryProduct'), ['class' => 'form-group']) }}
     {!! Form::select('category_product_id', $categoryProduct, null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
-    {{ Form::label('description', 'Mô tả', ['class' => 'form-group']) }}
-    {{ Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Nhập mô tả']) }}
+    {{ Form::label('description', trans('admin.description'), ['class' => 'form-group']) }}
+    {{ Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => trans('admin.product.enterDescriptionName')]) }}
 </div>
 <div class="form-group">
-    {{ Form::label('hinhanh', 'Hình ảnh', ['class' => 'form-group']) }}
+    {{ Form::label('hinhanh', trans('admin.picture'), ['class' => 'form-group']) }}
     {{ Form::file('file') }}<br/>
     @if (isset($product) && $product->picture)
         {{ Html::image($product->picture_url, 'alt', ['width' => 150, 'height' => 100]) }}
     @endif
 </div><br/>
 <div class="form-group">
-    {{ Form::label('star', 'Số sao', ['class' => 'form-group']) }}
+    {{ Form::label('star', trans('admin.product.review'), ['class' => 'form-group']) }}
     {!! Form::select('star', ['0' => 0,  '1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5], null, ['class' => 'name']) !!}
 </div><br/>
 <div class="form-group">
-    {{ Form::label('price', 'Giá tiền (VNĐ)', ['class' => 'form-group']) }}
-    {{ Form::text('price', null, ['class' => 'form-control', 'placeholder' => 'Nhập giá tiền']) }}
+    {{ Form::label('price', trans('admin.product.price') . ' (VNĐ)', ['class' => 'form-group']) }}
+    {{ Form::text('price', null, ['class' => 'form-control', 'placeholder' => trans('admin.product.enterPrice')]) }}
 </div>
 <div class="form-group">
-    {{ Form::label('discount', 'Giảm giá (%)', ['class' => 'form-group']) }}
-    {{ Form::text('discount', null, ['class' => 'form-control', 'placeholder' => 'Giảm giá']) }}
+    {{ Form::label('discount', trans('admin.product.discount') . ' (%)', ['class' => 'form-group']) }}
+    {{ Form::text('discount', null, ['class' => 'form-control', 'placeholder' => trans('admin.product.enterDiscount')]) }}
 </div><br/>

@@ -15,12 +15,12 @@
             <div class="col-12">
                 <header class="panel-heading head-border row">
                     <div class="col-sm-7" style="text-align: left;">
-                        <a style="float:left" href="{{route('product.create')}}" class="btn btn-success btn-md">Thêm</a>
+                        <a style="float:left" href="{{route('product.create')}}" class="btn btn-success btn-md">@lang('admin.add')</a>
                     </div>
                     <div class="col-sm-5" style="text-align: right;">
                         {!! Form::open(['method' => 'GET', 'url' => route('product.search')]) !!}
-                            {{ Form::text('search', null, ['class' => 'form-control input-sm', 'placeholder' =>  'Nhập dữ liệu', 'style' => 'float:left; width: 350px']) }}
-                            {!! Form::submit( 'Tìm kiếm', ['class' => 'btn btn-warning btn-sm', 'style' => 'float:right']) !!}
+                            {{ Form::text('search', null, ['class' => 'form-control input-sm', 'placeholder' =>  trans('admin.enterSearch'), 'style' => 'float:left; width: 250px']) }}
+                            {!! Form::submit( trans('admin.search'), ['class' => 'btn btn-warning btn-sm', 'style' => 'float:right']) !!}
                         {!! Form::close() !!}<br />
                     </div>
                 </header>
@@ -29,14 +29,14 @@
                     <thead>
                         <tr style="text-align: center">
                             <th>#</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Loại sản phẩm</th>
-                            <th>Mô tả</th>
-                            <th>Hình ảnh</th>
-                            <th>Giá (VNĐ)</th>
-                            <th>Giảm giá (%)</th>
-                            <th>Đánh giá (số sao)</th>
-                            <th width="165px">Chức năng</th>
+                            <th>@lang('admin.product.product')</th>
+                            <th>@lang('admin.product.categoryProduct')</th>
+                            <th>@lang('admin.description')</th>
+                            <th>@lang('admin.picture')</th>
+                            <th>@lang('admin.product.price') (VNĐ)</th>
+                            <th>@lang('admin.product.discount') (%)</th>
+                            <th>@lang('admin.product.review')</th>
+                            <th width="180px">@lang('admin.action')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,15 +51,15 @@
                                 <td style="text-align: center">{{$product->discount}}</td>
                                 <td style="text-align: center">{{$product->star}}</td>
                                 <td class="center">
-                                    <a href="{{ route('product.edit', $product->id) }}" title="" class="btn btn-success" style="width: 75px; float:left"><i class="fa fa-edit "></i> Sửa</a>
+                                    <a href="{{ route('product.edit', $product->id) }}" title="" class="btn btn-success" style="width: 75px; float:left"><i class="fa fa-edit "></i> @lang('admin.edit')</a>
                                     {!! Form::open(['method' => 'DELETE', 'url' => route('product.destroy', $product->id)]) !!}
-                                        {!! Form::submit('Xóa', ['class' => 'btn btn-danger', 'style' => 'width: 70px; float:left']) !!}
+                                        {!! Form::submit(trans('admin.delete'), ['class' => 'btn btn-danger', 'style' => 'width: 70px; float:left']) !!}
                                     {!! Form::close() !!}
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <div class="alert alert-danger">Không tìm thấy dữ liệu</div>
+                                <div class="alert alert-danger">@lang('admin.notFound')</div>
                             </tr>
                         @endforelse
                     </tbody>

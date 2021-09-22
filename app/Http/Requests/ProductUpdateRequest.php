@@ -32,14 +32,14 @@ class ProductUpdateRequest extends FormRequest
     }
     public function messages(){
         return [
-            'name.required' => 'Tên không được để trống',
-            'name.min' => 'Tên không được ít hơn 2 ký tự',
-            'description.required' => 'Mô tả không được để trống',
-            'description.min' => 'Mô tả không được dưới 50 ký tự',
-            'price.required' => 'Giá tiền không được để trống',
-            'price.numeric' => 'Giá tiền phải là số',
-            'discount.required' => 'Giảm giá không được để trống',
-            'discount.numeric' => 'Giảm giá phải là số',
+            'name.required' => trans('admin.product.nameRequired'),
+            'name.min' => trans('admin.product.nameMin'),
+            'description.required' => trans('admin.product.descriptionRequired'),
+            'description.min' => trans('admin.product.descriptionMin'),
+            'price.required' => trans('admin.product.priceRequired'),
+            'price.numeric' => trans('admin.product.priceNumberic'),
+            'discount.required' => trans('admin.product.discountRequired'),
+            'discount.numeric' => trans('admin.product.discountNumberic'),
         ];
     }
 }
