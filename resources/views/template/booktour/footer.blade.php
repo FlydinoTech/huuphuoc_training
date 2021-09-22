@@ -1,104 +1,120 @@
-            <footer class="travel-footer overlay">
-                <div class="footer-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-5 col-sm-8 col-xs-12">
-                                <div class="widget">
-                                    <h5>Follow us</h5>
-                                    <ul class="kode_social_icons_2">
-                                        <li><a href="#"><i aria-hidden="true" class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i aria-hidden="true" class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i aria-hidden="true" class="fa fa-google-plus"></i></a></li>
-                                        <li><a href="#"><i aria-hidden="true" class="fa fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="sprate-border"></div>
-                                <div class="widget kf_keep_connect">
-                                    <h5>Stay connected</h5>
-                                    <span>Subscribe us ti get latest offers news letter</span>
-                                    <form class="subscribe-form">
-                                        <div class="text-felid">
-                                            <input type="text" placeholder="Email Address">
-                                            <button class="btn-normal-4 effect2-color-2">subscribe<i class="fa fa-paper-plane-o" data-toggle="tooltip" title="subscribe"></i></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-xs-12">
-                                <div class="widget">
-                                    <h5>Important Links</h5>
-                                    <ul class="kf_arrow_list">
-                                        <li><a href="#">Flights</a></li>
-                                        <li><a href="#">Tours</a></li>
-                                        <li><a href="#">Destination</a></li>
-                                        <li><a href="#">Hotel</a></li>
-                                        <li><a href="#">Packages</a></li>
-                                        <li><a href="#">Transfer</a></li>
-                                        <li><a href="#">Car</a></li>
-                                        <li><a href="#">Cruies</a></li>
+    <!--Main Footer-->
+    <footer class="main-footer">
+        <div class="auto-container">
+            <!--Widgets Section-->
+            <div class="widgets-section">
+                <div class="row clearfix">
+                    <!--big column-->
+                    <div class="big-column col-lg-6 col-md-12 col-sm-12">
+                        <div class="row clearfix">
+                            <!--Footer Column-->
+                            <div class="footer-column col-lg-7 col-md-6 col-sm-12">
+                                <div class="footer-widget logo-widget">
+                                    <div class="logo">
+                                        <a href="index-2.html"><img src="/img/tour/footer-logo.png" alt="" /></a>
+                                    </div>
+                                    <div class="text">Stella Orr'e is a WordPress theme to build Interior websites. It has good features and you will love.</div>
+                                    <ul class="social-icons">
+                                        <li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
+                                        <li><a href="#"><span class="fa fa-linkedin-in"></span></a></li>
+                                        <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                        <li><a href="#"><span class="fa fa-google-plus-g"></span></a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="widget">
-                                    <h5>TOP DESTINATIONS</h5>
-                                    <ul class="widget-gallery">
-                                        <li>
-                                            <figure>
-                                                <img src="img/tour/widget-gallery-img1.jpeg" alt="">
-                                                <a href="img/tour/widget-gallery-img1.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                            </figure>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <img src="img/tour/widget-gallery-img2.jpeg" alt="">
-                                                <a href="img/tour/widget-gallery-img2.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                            </figure>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <img src="img/tour/widget-gallery-img3.jpeg" alt="">
-                                                <a href="img/tour/widget-gallery-img3.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                            </figure>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <img src="img/tour/widget-gallery-img4.jpeg" alt="">
-                                                <a href="img/tour/widget-gallery-img4.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                            </figure>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <img src="img/tour/widget-gallery-img5.jpeg" alt="">
-                                                <a href="img/tour/widget-gallery-img5.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                            </figure>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <img src="img/tour/widget-gallery-img6.jpeg" alt="">
-                                                <a href="img/tour/widget-gallery-img6.jpeg" data-rel="prettyPhoto"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                            </figure>
-                                        </li>
-                                    </ul>
+                            <!--Footer Column-->
+                            <div class="footer-column col-lg-5 col-md-6 col-sm-12">
+                                <div class="footer-widget links-widget">
+                                    <h2>Quick links</h2>
+                                    <div class="widget-content">
+                                        <ul class="list">
+                                            <li><a href="#">About Gaille</a></li>
+                                            <li><a href="#">Privacy Policy</a></li>
+                                            <li><a href="#">Terms & Conditionis</a></li>
+                                            <li><a href="#">Faq</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--big column-->
+                    <div class="big-column col-lg-6 col-md-12 col-sm-12">
+                        <div class="row clearfix">
+                            <!--Footer Column-->
+                            <div class="footer-column col-lg-5 col-md-6 col-sm-12">
+                                <div class="footer-widget contact-widget">
+                                    <h2>Contact Info</h2>
+                                    <div class="widget-content">
+                                        <a href="tel:1800-574-9687" class="contact-number">(1800) 574 9687</a>
+                                        <ul>
+                                            <li>256, Stella Orr'e, New York 24</li>
+                                            <li>Email :<a href="mailto:info@stellaorre.com"> info@stellaorre.com</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Footer Column-->
+                            <div class="footer-column col-lg-7 col-md-6 col-sm-12">
+                                <div class="footer-widget newsletter-widget">
+                                    <h2>Newsletter</h2>
+                                    <div class="text">Get Special offers & Discounts</div>
+                                    <!-- Newsletter Form -->
+                                    <div class="newsletter-form">
+                                        <form method="post" action="templateshub.net">
+                                            <div class="form-group">
+                                                <input type="email" name="email" value="" placeholder="Enter your email address" required>
+                                                <button type="submit" class="theme-btn btn-style-one"><span class="txt">Subscribe</span></button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="created-by-kodeforest-team">
-                    <div class="container">
-                        <span>Copyright 2018 - All Right Reserved</span>
-                        <ul class="kf_cradit_cards">
-                            <li><a href="#"><img src="img/tour/card-1.jpeg" alt=""></a></li>
-                            <li><a href="#"><img src="img/tour/card-2.jpeg" alt=""></a></li>
-                            <li><a href="#"><img src="img/tour/card-3.jpeg" alt=""></a></li>
-                            <li><a href="#"><img src="img/tour/card-4.jpeg" alt=""></a></li>
-                        </ul>
-                    </div>
+            </div>
+            
+            <!--Footer Bottom-->
+            <div class="footer-bottom clearfix">
+                <div class="pull-left">
+                    <div class="copyright"><a href="templateshub.net">Templates Hub</a></div>
                 </div>
-            </footer>
+                <div class="pull-right">
+                    <a href="templateshub.net">Templates Hub</a>
+                </div>
+            </div>
         </div>
+    </footer>
+</div>  
+<!--End pagewrapper-->
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
+
+<!--Search Popup-->
+<div id="search-popup" class="search-popup">
+    <div class="close-search theme-btn"><span class="flaticon-cancel"></span></div>
+    <div class="popup-inner">
+        <div class="overlay-layer"></div>
+        <div class="search-form">
+            <form method="post" action="templateshub.net">
+                <div class="form-group">
+                    <fieldset>
+                        <input type="search" class="form-control" name="search-input" value="" placeholder="Search Here" required >
+                        <input type="submit" value="Search Now!" class="theme-btn">
+                    </fieldset>
+                </div>
+            </form>
+            <br>
+            <h3>Recent Search Keywords</h3>
+            <ul class="recent-searches">
+                <li><a href="#">Home Interiors</a></li>
+                <li><a href="#">Offices Interiors</a></li>
+                <li><a href="#">Showroom Interiors</a></li>
+                <li><a href="#">Building Interiors</a></li>
+                <li><a href="#">Shops Interiors</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

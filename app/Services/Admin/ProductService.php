@@ -1,24 +1,24 @@
 <?php
 namespace App\Services\Admin;
 
-use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 
-class CategoryService extends BaseService
+class ProductService extends BaseService
 {
-    public function __construct(Category $category)
+    public function __construct(Product $product)
     {
-        $this->model = $category;
+        $this->model = $product;
     }
     
-    public function getCategoryForSelect()
+    public function getProduct()
     {
-        return $this->model->pluck('name', 'id');
+        return $this->model->orderBy('updated_at', 'desc')->paginate(6);
     }
 
-    public function getCategory()
+    public function getProductEdit($id)
     {
-        return $this->model->orderBy('updated_at', 'desc')->paginate(5);
+        return $this->model->findOrFail($id);
     }
 
     public function create($inputs, $file)
@@ -28,11 +28,6 @@ class CategoryService extends BaseService
         $this->model->create($inputs);
         
         return $this->model;
-    }
-
-    public function getCategoryUpdate($id)
-    {
-        return $this->model->findOrFail($id);
     }
 
     public function checkImageEmpty($inputs, $picture)
@@ -46,29 +41,33 @@ class CategoryService extends BaseService
 
     public function update($inputs, $id, $picture)
     {
-        $category = $this->model->findOrFail($id);
+        $product = $this->model->findOrFail($id);
         $inputs = $this->checkImageEmpty($inputs, $picture);
         if (!empty($inputs['picture'])) {
             $folder = detectFolderByModel($this->model);
-            Storage::delete($folder . $category->picture);
+            Storage::delete($folder . $product->picture);
         }
+        $product->update($inputs);
 
-        return $category->update($inputs);
+        return $product;
     }
 
     public function delete($id)
     {
-        $category = $this->model->findOrFail($id);
+        $product = $this->model->findOrFail($id);
         $folder = detectFolderByModel($this->model);
-        Storage::delete($folder . $category->picture);
+        Storage::delete($folder . $product->picture);
+        $product->delete();
 
-        return $category->delete();
+        return $product;
     }
 
     public function find($data)
     {
-        return Category::where('name', 'LIKE', '%' . $data . '%')
+        return Product::where('name', 'LIKE', '%' . $data . '%')
             ->orWhere ('description', 'LIKE', '%' . $data . '%')
-            ->paginate(10);
+            ->orWhere ('price', 'LIKE', '%' . $data . '%')
+            ->orWhere ('discount', 'LIKE', '%' . $data . '%')
+            ->paginate(5);
     }
 }

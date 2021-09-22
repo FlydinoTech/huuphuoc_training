@@ -1,13 +1,12 @@
 @extends('template.booktour.master')
 @section('main_content')
     <!--Page Title-->
-    <section class="page-title" style="background-image:url({{ $tour->category->picture_url }})">
+    <section class="page-title" style="background-image:url(/img/tour/background/5.jpg)">
         <div class="auto-container">
-            <h2>Tour Detail</h2>
+            <h2>Product Details</h2>
             <ul class="page-breadcrumb">
                 <li><a href="index-2.html">home</a></li>
-                <li>{{ $tour->category->name }}</li>
-                <li>{{ $tour->name }}</li>
+                <li>Product Details</li>
             </ul>
         </div>
     </section>
@@ -21,27 +20,24 @@
                     <div class="basic-details">
                         <div class="row clearfix">
                             <div class="image-column col-lg-6 col-md-12 col-sm-12">
-                                <figure class="image-box"><a href="/img/tour/resource/products/9.jpg" class="lightbox-image" title="Image Caption Here"><img src="{{ $tour->picture_url }}" alt=""></a></figure>
+                                <figure class="image-box"><a href="img/tour/resource/products/9.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/tour/resource/products/9.jpg" alt=""></a></figure>
                             </div>
                             <div class="info-column col-lg-6 col-md-12 col-sm-12">
                                 <div class="inner-column">
-                                    <h4>{{ $tour->name }}</h4>
-                                    <div class="text">{{ $tour->description }}</div>
-                                    <div class="price">
-                                        Giá : <span>{{ number_format($tour->price) }} đ -- </span>
-                                        Giảm giá : <span>{{ $tour->discount }} %</span>
-                                    </div>
-                                    <div class="">Giá : 
-                                        <span>Ngày : {{ number_format($tour->day) }}</span> //
-                                        <span>Đêm : {{ number_format($tour->night) }}</span>
-                                    <div class="other-options clearfix"><br/>
-                                        <button type="button" class="theme-btn cart-btn">Đặt phòng</button>
+                                    <h4>MULTI-WAY ULTRA</h4>
+                                    <div class="text">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequ untur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, </div>
+                                    <div class="price">Price : <span>$24.5</span></div>
+                                    
+                                    <div class="other-options clearfix">
+                                        <div class="item-quantity"><label class="field-label">Quantity :</label><input class="quantity-spinner" type="text" value="2" name="quantity"></div>
+                                        <button type="button" class="theme-btn cart-btn">Add to cart</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--Basic Details-->
+                    
                     <!--Product Info Tabs-->
                     <div class="product-info-tabs" style="background-color: white">
                         <!--Product Tabs-->
@@ -60,7 +56,7 @@
                                         <!--Comment Box-->
                                         <div class="comment-box">
                                             <div class="comment">
-                                                <div class="author-thumb"><img src="/img/tour/resource/author-1.jpg" alt=""></div>
+                                                <div class="author-thumb"><img src="img/tour/resource/author-1.jpg" alt=""></div>
                                                 <div class="comment-inner">
                                                     <div class="comment-info clearfix">Steven Rich – Sep 17, 2016:</div>
                                                     <div class="rating">
@@ -77,7 +73,7 @@
                                         <!--Comment Box-->
                                         <div class="comment-box reply-comment">
                                             <div class="comment">
-                                                <div class="author-thumb"><img src="/img/tour/resource/author-2.jpg" alt=""></div>
+                                                <div class="author-thumb"><img src="img/tour/resource/author-2.jpg" alt=""></div>
                                                 <div class="comment-inner">
                                                     <div class="comment-info clearfix">William Cobus – Aug 21, 2016:</div>
                                                     <div class="rating">
@@ -92,6 +88,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     <!-- Comment Form -->
                                     <div class="shop-comment-form">	
                                         <h2>Add Your Review</h2>
@@ -150,4 +147,92 @@
         </div>
     </section>
     <!--End Shop Single Section-->
+    <!-- Related Products -->
+    <section class="related-products" style="background-color: white">
+        <div class="auto-container">
+            <!--Sec Title-->
+            <div class="title-box">
+                <h2>Related Products</h2>
+            </div>
+            <div class="row clearfix">
+                <!--Shop Item-->
+                <div class="shop-item col-lg-3 col-md-6 col-sm-12">
+                    <div class="inner-box">
+                        <div class="image">
+                            <a href="product-detail.html"><img src="img/tour/resource/products/2.jpg" alt="" /></a>
+                            <div class="overlay-box">
+                                <ul class="option-box">
+                                    <li><a href="#"><span class="far fa-heart"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-shopping-bag"></span></a></li>
+                                    <li><a href="img/tour/resource/products/2.jpg" class="lightbox-image" data-fancybox="products"><span class="fa fa-search"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="lower-content">
+                            <h3><a href="product-detail.html">SIDE-TIE TANK</a></h3>
+                            <div class="price">$39.32</div>
+                        </div>
+                    </div>
+                </div>
+                <!--Shop Item-->
+                <div class="shop-item col-lg-3 col-md-6 col-sm-12">
+                    <div class="inner-box">
+                        <div class="image">
+                            <a href="product-detail.html"><img src="img/tour/resource/products/3.jpg" alt="" /></a>
+                            <div class="overlay-box">
+                                <ul class="option-box">
+                                    <li><a href="#"><span class="far fa-heart"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-shopping-bag"></span></a></li>
+                                    <li><a href="img/tour/resource/products/3.jpg" class="lightbox-image" data-fancybox="products"><span class="fa fa-search"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="lower-content">
+                            <h3><a href="product-detail.html">COLD CREWNECK</a></h3>
+                            <div class="price">$21.00</div>
+                        </div>
+                    </div>
+                </div>
+                <!--Shop Item-->
+                <div class="shop-item col-lg-3 col-md-6 col-sm-12">
+                    <div class="inner-box">
+                        <div class="image">
+                            <a href="product-detail.html"><img src="img/tour/resource/products/4.jpg" alt="" /></a>
+                            <div class="overlay-box">
+                                <ul class="option-box">
+                                    <li><a href="#"><span class="far fa-heart"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-shopping-bag"></span></a></li>
+                                    <li><a href="img/tour/resource/products/4.jpg" class="lightbox-image" data-fancybox="products"><span class="fa fa-search"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="tag-banner">Trending</div>
+                        </div>
+                        <div class="lower-content">
+                            <h3><a href="product-detail.html">WINTER WALKING</a></h3>
+                            <div class="price">$91.50</div>
+                        </div>
+                    </div>
+                </div>
+                <!--Shop Item-->
+                <div class="shop-item col-lg-3 col-md-6 col-sm-12">
+                    <div class="inner-box">
+                        <div class="image">
+                            <a href="product-detail.html"><img src="img/tour/resource/products/1.jpg" alt="" /></a>
+                            <div class="overlay-box">
+                                <ul class="option-box">
+                                    <li><a href="#"><span class="far fa-heart"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-shopping-bag"></span></a></li>
+                                    <li><a href="img/tour/resource/products/1.jpg" class="lightbox-image" data-fancybox="products"><span class="fa fa-search"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="lower-content">
+                            <h3><a href="product-detail.html">MULTI-WAY ULTRA</a></h3>
+                            <div class="price">$50.22</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @stop

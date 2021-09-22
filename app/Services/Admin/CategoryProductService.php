@@ -1,22 +1,22 @@
 <?php
 namespace App\Services\Admin;
 
-use App\Models\Category;
+use App\Models\CategoryProduct;
 use Illuminate\Support\Facades\Storage;
 
-class CategoryService extends BaseService
+class CategoryProductService extends BaseService
 {
-    public function __construct(Category $category)
+    public function __construct(CategoryProduct $category_product)
     {
-        $this->model = $category;
+        $this->model = $category_product;
     }
     
-    public function getCategoryForSelect()
+    public function getCategoryProductForSelect()
     {
         return $this->model->pluck('name', 'id');
     }
 
-    public function getCategory()
+    public function getCategoryProduct()
     {
         return $this->model->orderBy('updated_at', 'desc')->paginate(5);
     }
@@ -30,7 +30,7 @@ class CategoryService extends BaseService
         return $this->model;
     }
 
-    public function getCategoryUpdate($id)
+    public function getCategoryProductUpdate($id)
     {
         return $this->model->findOrFail($id);
     }
@@ -67,8 +67,8 @@ class CategoryService extends BaseService
 
     public function find($data)
     {
-        return Category::where('name', 'LIKE', '%' . $data . '%')
-            ->orWhere ('description', 'LIKE', '%' . $data . '%')
-            ->paginate(10);
+        return CategoryProduct::where('name', 'LIKE', '%' . $data . '%')
+        ->paginate(10);
     }
+
 }

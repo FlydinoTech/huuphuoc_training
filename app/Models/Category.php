@@ -19,7 +19,7 @@ class Category extends Model
 
     public function getPictureUrlAttribute()
     {
-        return $this->picture ? Storage::url('/images/category/' . $this->picture) : '';
+        return $this->picture ? Storage::url(detectFolderByModel($this) . $this->picture) : '';
     }
 
     public function getSlugCategoryAttribute()

@@ -6,18 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class Tour extends Model
+class Product extends Model
 {
     use HasFactory;
     protected $fillable = [
         'name', 
-        'category_id',
+        'category_product_id',
         'description', 
-        'day', 
-        'night', 
         'price', 
         'discount', 
         'picture',
+        'star',
     ];
 
     public function getPictureUrlAttribute()
@@ -25,8 +24,8 @@ class Tour extends Model
         return $this->picture ? Storage::url(detectFolderByModel($this) . $this->picture) : '';
     }
 
-    public function category()
+    public function categoryProduct()
     { 
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(CategoryProduct::class);
     }
 }
