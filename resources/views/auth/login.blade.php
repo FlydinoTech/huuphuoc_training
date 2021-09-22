@@ -23,6 +23,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="travel-login ">
+                                                    <a href="{{ route('booktour.index') }}"><h4 class="title-01">Tour</h4></a>
                                                     <a href=""><h4 class="title-01">Login</h4></a>
                                                     <h5 class="title-anchor">Not a member yet? <a href="{{ route('auth.register') }}">Register for User!</a></h5>
                                                     @include('template.errorValidate')

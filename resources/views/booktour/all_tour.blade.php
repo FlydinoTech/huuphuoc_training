@@ -1,74 +1,44 @@
 @extends('template.booktour.master')
 @section('main_content')
-            <!--Travel Banner-->
-            <div class="kode_banner" style="background-image: url('/img/tour/pre-loader.gif');">
-                <!--Sub banner for inner pages-->
-                <div class="sub-banner">
-                    <div class="container">
-                        <h2>all tours</h2>
-                        <p>Curabitur nunc erat, consequat in erat ut, congue bibendum nulla. Suspendisse <br>id pharetra lacus, et hendrerit mi quis leo elementum.</p>
-                    </div>
-                </div>
-                <div class="breadcrumb-blog">
-                    <ul class="breadcrumb orange-bg">
-                        <li><a href="#">Tour</a></li>
-                        <li class="active"><a href="#">all tour</a></li>
-                    </ul>
-                </div>
+    <!--Page Title-->
+    <section class="page-title" style="background-image:url(img/tour/background/5.jpg)">
+        <div class="auto-container">
+            <h2>All Tour</h2>
+            <ul class="page-breadcrumb">
+                <li><a href="index-2.html">Home</a></li>
+            </ul>
+        </div>
+    </section>
+    <!--End Page Title-->
+    <!-- Services Page Section -->
+    <section class="services-page-section style-two">
+        <div class="auto-container">
+            <!-- Sec Title -->
+            <div class="sec-title centered">
+                <h2>We Provide Different Services In Interior Field</h2>
+                <div class="text" style="text-color: black">Survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple.</div>
             </div>
-            <!--Travel Banner ends-->
-            <div class="content">
-                <!--Travel Blog Detail Content-->
-                <section>
-                    <div class="container">
-                        <div class="top-row margin-bottom-30">
-                            <div class="page-info">
-                                <p>Showing 1 to 6 of 200 Total</p>
+            <div class="row clearfix">
+                @foreach ($tours as $tour)
+                    <!-- Service Block -->
+                    <div class="service-block-three style-two col-lg-4 col-md-6 col-sm-12">
+                        <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                            <div class="image">
+                                <a href="{{ route('booktour.book_tour', $tour->id) }}"><img src="{{ $tour->picture_url }}" alt="" style="height: 250px" /></a>
                             </div>
-                        </div>
-                        <div class="div">
-                            <div class="row">
-                                <!--Travel columns-->
-                                @foreach ($tours as $tour)
-                                    <div class="col-md-4 col-sm-6 col-xs-12">
-                                        <div class="kf_column_trip hover-effect-01">
-                                            <div class="kf_column-figure">
-                                                <figure>
-                                                    <a href="{{ route('booktour.book_tour', [$tour->category_id, $tour->id]) }}" data-rel="prettyPhoto">
-                                                        <img src="{{ $tour->picture_url }}" style="width: 354px; height: 261px" alt="img here">
-                                                    </a>
-                                                    <div class="hover-content-01"></div>
-                                                    <figcaption class="">
-                                                        <ul class="kf_meta_2">
-                                                            <li><span class="fa fa-clock-o"></span><a href="#">{{ $tour->day }} days</a></li>
-                                                            <li><a href="#">{{ $tour->night }} nights</a></li>
-                                                        </ul>
-                                                    </figcaption>
-                                                </figure>
-                                                <div class="bottom-price">
-                                                    <span class="radio-price" style="width: 100px">{{ number_format($tour->price) }}đ</span>
-                                                </div>
-                                            </div>
-                                            <div class="kf_trip_content" style="height: 350px">
-                                                <ul class="bk-colr">
-                                                    <li><h5>{{ $tour->category_name }}<h5></li>
-                                                </ul>
-                                                <h4><a href="{{ route('booktour.book_tour', [$tour->category_id, $tour->id]) }}">{{ $tour->name }}</a></h4>
-                                                <p>{{ $tour->description }}</p>
-                                                <h5 style="color: red">Giảm giá : {{ $tour->discount }}%</h5>
-                                            </div>
-                                            <ul class="booking-bottom">
-                                                <li><a href="{{ route('booktour.book_tour', [$tour->category_id, $tour->id]) }}" class="btn-blog ">Book Now</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                @endforeach
-                                <nav aria-label="Page Navigation">
-                                    {{ $tours->links('vendor.pagination.default') }}
-                                </nav>
+                            <div class="lower-content" style="height: 400px">
+                                <h3><a href="{{ route('booktour.book_tour', $tour->id) }}">{{ $tour->name }}</a></h3>
+                                <div class="text">{{ $tour->description }}</div>
+                                <a href="{{ route('booktour.book_tour', $tour->id) }}" class="read-more">Read more</a>
                             </div>
                         </div>
                     </div>
-                </section>
+                @endforeach
             </div>
+            <div class="shop-pagination" style="margin-left: 500px">
+                {{ $tours->links() }}
+            </div>
+        </div>
+    </section>
+    <!-- End Story Section -->
 @stop

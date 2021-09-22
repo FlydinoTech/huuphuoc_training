@@ -19,12 +19,24 @@ class BookTourController extends Controller
         return view('booktour.index', compact('categories'));
     }
 
+    public function bookTour($id)
+    {
+        $tour = $this->booktour->getTour($id);
+
+        return view('booktour.book_tour', compact('tour'));
+    }
+
     public function categoryTour($id)
     {
-        $tours = $this->booktour->getTourCategory($id);
+        $tourCategories = $this->booktour->getTourCategory($id);
         $category = $this->booktour->getCategoryId($id);
 
-        return view('booktour.category_tour', compact('tours', 'category'));
+        return view('booktour.category_tour', compact('tourCategories', 'category'));
+    }
+
+    public function product()
+    {
+        return view('booktour.product');
     }
 
     public function allTour()
@@ -34,20 +46,23 @@ class BookTourController extends Controller
         return view('booktour.all_tour', compact('tours'));
     }
 
-    public function bookTour($category_id, $id)
+    public function shop()
     {
-        $tours = $this->booktour->getTour($id);
-
-        return view('booktour.book_tour', compact('tours'));
+        return view('booktour.shop');
     }
 
-    public function aboutUs()
+    public function cart()
     {
-        return view('booktour.about_us');
+        return view('booktour.cart');
     }
 
-    public function error()
+    public function checkout()
     {
-        return view('booktour.error');
+        return view('booktour.checkout');
+    }
+
+    public function contact()
+    {
+        return view('booktour.contact');
     }
 }

@@ -14,7 +14,7 @@ class BookTourService
 
     public function getCategory()
     {
-        return $this->category->get();
+        return $this->category->paginate(4);
     }
 
     public function getCategoryId($id)

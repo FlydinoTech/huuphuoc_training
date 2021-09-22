@@ -1,53 +1,34 @@
 @extends('template.booktour.master')
 @section('main_content')
-            <!--Travel Banner-->
-            <div class="kode_banner" style="background-image: url('/img/tour/destinations02-img6.jpeg')">
-                <!--Sub banner for inner pages-->
-                <div class="sub-banner">
-                    <div class="container">
-                        <h2>Du lịch các quốc gia</h2>
-                    </div>
-                </div>
-                <div class="breadcrumb-blog">
-                    <ul class="breadcrumb ">
-                        <li><a href="#">Home</a></li>
-                        <li class="active"><a href="#">Category</a></li>
-                    </ul>
-                </div>
+    <!-- Services Section Three -->
+    <section class="services-section-three" >
+        <div class="auto-container" >
+            <!-- Sec Title -->
+            <div class="sec-title light centered">
+                <h2>One stop for home interiors</h2>
+                <div class="text">To give you a home that lasts, we bring you only the best in everything — quality raw materials, state-of-the-art manufacturing, rigorous quality checks, professional installations and transparent prices.</div>
             </div>
-            <!--Travel Banner ends-->
-            <div class="content">
-                <!--Travel Blog Detail Content-->
-                <section>
-                    <div class="container">
-                        <div class="top-row margin-bottom-30">
-                            <div class="page-info">
-                                <p>Showing 1 to 6 of 200 Total</p>
+            <div class="row clearfix" > 
+                @foreach ($categories as $category)
+                    <!-- Service Block -->
+                    <div class="service-block-three col-lg-3 col-md-6 col-sm-12">
+                        <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                            <div class="image">
+                                <a href="{{ route('booktour.category_tour', $category->id) }}"><img src="{{ $category->picture_url }}" alt="" style="height: 250px"/></a>
                             </div>
-                            <div class="pull-right">
-                                <ul class="tab-nav-row">
-                                    <li><a href=""><i class="fa fa-bars" aria-hidden="true"></i></a></li>
-                                    <li><a href=""><i class="fa fa-th-list" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="destination-blog-01">
-                            <div class="row">
-                                @foreach ($categories as $category)
-                                    <div class="col-md-4 col-sm-6 col-xs-12">
-                                        <div class="destination-grid">
-                                            <img src="{{ $category->picture_url }}" style="width: 369px; height: 294px" alt="img here">
-                                            <div class="destination-grid-content">
-                                                <h5><a href="{{ route('booktour.category_tour', [$category->id]) }}">{{ $category->name }}</a></h5>
-                                                <p>{{ $category->description }}</p>
-                                                <a href="{{ route('booktour.category_tour', [$category->id]) }}" class="arrow-btn">See More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
+                            <div class="lower-content" style="height: 450px">
+                                <h3><a href="{{ route('booktour.category_tour', $category->id) }}">{{ $category->name }}</a></h3>
+                                <div class="text">{{ $category->description }}</div>
+                                <a href="{{ route('booktour.category_tour', $category->id) }}" class="read-more">Read more</a>
                             </div>
                         </div>
                     </div>
-                </section>
+                @endforeach
             </div>
+            <div class="shop-pagination" style="margin-left: 500px">
+                {{ $categories->links() }}
+            </div>
+        </div>
+    </section>
+    <!-- End Services Section -->
 @stop
