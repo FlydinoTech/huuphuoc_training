@@ -15,12 +15,12 @@
             <div class="col-12">
                 <header class="panel-heading head-border row">
                     <div class="col-sm-7" style="text-align: left;">
-                        <a style="float:left" href="{{route('category.create')}}" class="btn btn-success btn-md">Thêm</a>
+                        <a style="float:left" href="{{route('category.create')}}" class="btn btn-success btn-md">@lang('admin.add')</a>
                     </div>
                     <div class="col-sm-5" style="text-align: right;">
                         {!! Form::open(['method' => 'GET', 'url' => route('category.search')]) !!}
-                            {{ Form::text('search', null, ['class' => 'form-control input-sm', 'placeholder' =>  'Nhập dữ liệu', 'style' => 'float:left; width: 350px']) }}
-                            {!! Form::submit( 'Tìm kiếm', ['class' => 'btn btn-warning btn-sm', 'style' => 'float:right']) !!}
+                            {{ Form::text('search', null, ['class' => 'form-control input-sm', 'placeholder' => trans('admin.enterSearch'), 'style' => 'float:left; width: 350px']) }}
+                            {!! Form::submit( trans('admin.search'), ['class' => 'btn btn-warning btn-sm', 'style' => 'float:right']) !!}
                         {!! Form::close() !!}<br />
                     </div>
                 </header>
@@ -48,10 +48,10 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th style="width: 120px">Quốc gia</th>
-                            <th>Mô tả</th>
-                            <th>Hình ảnh</th>
-                            <th width="165px">Chức năng</th>
+                            <th style="width: 120px">@lang('admin.country')</th>
+                            <th>@lang('admin.description')</th>
+                            <th>@lang('admin.picture')</th>
+                            <th width="165px">@lang('admin.action')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,15 +62,15 @@
                                 <td>{{$category->description}}</td>
                                 <td>{{ Html::image($category->picture_url, 'alt', array( 'width' => 150, 'height' => 100 )) }}</td>
                                 <td class="center">
-                                    <a href="{{ route('category.edit', $category->id) }}" title="" class="btn btn-success" style="width: 75px; float:left"><i class="fa fa-edit "></i> Sửa</a>
+                                    <a href="{{ route('category.edit', $category->id) }}" title="" class="btn btn-success" style="width: 75px; float:left"><i class="fa fa-edit "></i> @lang('admin.edit')</a>
                                     {!! Form::open(['method' => 'DELETE', 'url' => route('category.destroy', $category->id)]) !!}
-                                        {!! Form::submit('Xóa', ['class' => 'btn btn-danger', 'style' => 'width: 70px; float:left']) !!}
+                                        {!! Form::submit(trans('admin.delete'), ['class' => 'btn btn-danger', 'style' => 'width: 70px; float:left']) !!}
                                     {!! Form::close() !!}
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <div class="alert alert-danger">Không tìm thấy dữ liệu</div>
+                                <div class="alert alert-danger">@lang('admin.notFound')</div>
                             </tr>
                         @endforelse
                     </tbody>

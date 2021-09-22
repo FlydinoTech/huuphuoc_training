@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\CategoryProductController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\TourController;
@@ -44,6 +45,10 @@ Route::prefix('admin')->middleware('admin', 'auth')->group(function(){
     Route::resource('user', UserController::class, ['except' => ['index']])->middleware('admin-manager');
     Route::get('/searchUser',[UserController::class,'search'])->name('user.search');
     Route::get('error',[UserController::class,'error'])->name('admin.error');
+});
+
+Route::prefix('language')->group(function (){
+	Route::get('/language/{language}',[LanguageController::class,'index'])->name('language');
 });
 
 Route::group(['namespace' => 'booktour'], function (){
