@@ -44,6 +44,9 @@ Route::prefix('admin')->middleware('admin', 'auth')->group(function(){
     Route::resource('user', UserController::class, ['only' => ['index']]);
     Route::resource('user', UserController::class, ['except' => ['index']])->middleware('admin-manager');
     Route::get('/searchUser',[UserController::class,'search'])->name('user.search');
+    Route::get('user-vuejs', function () {
+        return view('admin.user.app');
+    });
     Route::get('error',[UserController::class,'error'])->name('admin.error');
 });
 
@@ -63,4 +66,8 @@ Route::group(['namespace' => 'booktour'], function (){
     Route::get('/contact',[BookTourController::class,'contact'])->name('booktour.contact');
     Route::get('/about_us',[BookTourController::class,'aboutUs'])->name('booktour.about_us');
     Route::get('/error',[BookTourController::class,'error'])->name('booktour.error');
+});
+
+Route::get('/user', function () {
+    return view('admin.user.app');
 });
