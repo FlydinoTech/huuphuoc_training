@@ -11,7 +11,7 @@
         <div style='width: 600px;border: 1px solid yellow;text-align:center; margin: 210px auto; color:red'>
             <h1>Bạn không thể thực hiện chức năng này.</h1>
             <h1>Bạn phải đăng nhập bằng tài khoản admin.</h1>
-            <h1 >Vui lòng <a style = 'text-decoration:none; color: blue' href = '/auth/login'>QUAY LẠI</a></h1>
+            <h1 >Vui lòng <a style = 'text-decoration:none; color: blue' href = '{{ url('/auth/login') }}'>QUAY LẠI</a></h1>
         </div>
     </body>
 </html>
