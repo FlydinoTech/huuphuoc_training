@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\CategoryProductController;
+use App\Http\Controllers\Admin\CategoryUserController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\TourController;
 use App\Http\Controllers\Admin\UserController;
@@ -43,6 +44,11 @@ Route::prefix('admin')->middleware('admin', 'auth')->group(function(){
     Route::get('/searchProduct',[ProductController::class,'search'])->name('product.search');
     Route::resource('user', UserController::class, ['only' => ['index']]);
     Route::resource('user', UserController::class, ['except' => ['index']])->middleware('admin-manager');
+    Route::get('user-vuejs', function() {
+        return view('admin.user.app');
+    })->name('user.vuejs');
+    Route::resource('category_user', CategoryUserController::class, ['only' => ['index']]);
+    Route::resource('category_user', CategoryUserController::class, ['except' => ['index']])->middleware('admin-manager');
     Route::get('/searchUser',[UserController::class,'search'])->name('user.search');
     Route::get('error',[UserController::class,'error'])->name('admin.error');
 });

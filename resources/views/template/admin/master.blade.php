@@ -1,3 +1,3 @@
 @include('template.admin.header')
 @yield('main_content')
-@include('template.admin.js')
+@include('template.admin.footer')

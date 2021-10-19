@@ -1,6 +1,7 @@
 <?php
 namespace App\Services\Admin;
 
+use App\Http\Resources\UserCollection;
 use App\Models\User;
 
 class UserService extends BaseService
@@ -12,7 +13,7 @@ class UserService extends BaseService
 
     public function getUser()
     {
-        return $this->model->orderBy('updated_at', 'desc')->paginate(6);
+        return new UserCollection($this->model->orderBy('updated_at', 'desc')->paginate(6));
     }
 
     public function create($inputs)
