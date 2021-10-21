@@ -11,9 +11,9 @@ class TourService extends BaseService
         $this->model = $tour;
     }
     
-    public function getTour()
+    public function getTour($limit = 5)
     {
-        return $this->model->orderBy('updated_at', 'desc')->paginate(6);
+        return $this->model->orderBy('updated_at', 'desc')->paginate($limit);
     }
 
     public function getTourEdit($id)

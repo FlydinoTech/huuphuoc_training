@@ -1,47 +1,68 @@
 <template>
     <div class="api-calling container mt-5">
-        <button class="btn btn-success" @click="changeCreate()">Creates User</button>
-        <transition name="fade">
-            <div class="alert alert-danger alert-dismissible" role="alert" v-if="error">
-                <b>{{ error.message }}</b>
-                <ul>
-                    <li v-for="(errorName, index) in error.errors" :key="index">
-                        {{ errorName[0] }}
-                    </li>
-                </ul>
-                <button type="button" class="close" @click="error = null">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+        <!-- Button to Open the Modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Create User
+        </button>
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                    <h4 class="modal-title">Create User</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <transition name="fade">
+                            <div class="alert alert-danger alert-dismissible" role="alert" v-if="error">
+                                <b>{{ error.message }}</b>
+                                <ul>
+                                    <li v-for="(errorName, index) in error.errors" :key="index">
+                                        {{ errorName[0] }}
+                                    </li>
+                                </ul>
+                                <button type="button" class="close" @click="error = null">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </transition>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input v-model="user.name" type="text" class="form-control" placeholder="Name...">
+                        </div>
+                        <div class="form-group">
+                            <label>Category_User_ID</label>
+                            <select v-model="user.category_user_id" class="form-control">
+                                <option v-for="category_user in listCategoryUser" :key="category_user.id" v-bind:value="category_user.id">
+                                    {{ category_user.name }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input v-model="user.email" type="text" class="form-control" placeholder="Email...">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input v-model="user.password" type="password" class="form-control" placeholder="Password...">
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input v-model="user.confirm_password" type="password" class="form-control" placeholder="Password...">
+                        </div>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" @click="createUser" >Add User</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
-        </transition>
-        <div class="form-group" v-if="isCreate">
-            <label>Name</label>
-            <input v-model="user.name" type="text" class="form-control" placeholder="Name...">
         </div>
-        <div class="form-group" v-if="isCreate">
-            <label>Category_User_ID</label>
-            <select v-model="user.category_user_id" class="form-control">
-                <option v-for="category_user in listCategoryUser" :key="category_user.id" v-bind:value="category_user.id">
-                    {{ category_user.name }}
-                </option>
-            </select>
-        </div>
-        <div class="form-group" v-if="isCreate">
-            <label>Email</label>
-            <input v-model="user.email" type="text" class="form-control" placeholder="Email...">
-        </div>
-        <div class="form-group" v-if="isCreate">
-            <label>Password</label>
-            <input v-model="user.password" type="password" class="form-control" placeholder="Password...">
-        </div>
-        <div class="form-group" v-if="isCreate">
-            <label>Confirm Password</label>
-            <input v-model="user.confirm_password" type="password" class="form-control" placeholder="Password...">
-        </div>
-        <button class="btn btn-primary" @click="createUser" v-if="isCreate">Add User</button>
-
         <hr>
-        <h1>List Users</h1>
+        <h1>List User</h1>
         <table class="table">
             <thead>
                 <tr>
@@ -69,7 +90,7 @@
                         <input type="text" v-model="selectedUser.email" class="form-control" readonly>
                     </td>
                     <td v-if="!user.isEdit">
-                        {{ user.category_user_id }}
+                        {{ user.category_name }}
                     </td>
                     <td v-else>
                         <select v-model="selectedUser.category_user_id" class="form-control">
@@ -86,7 +107,8 @@
 
                     </td>
                     <td v-if="!user.isEdit">
-                        <button class="btn btn-primary" @click="selecteUser(user)">Edit</button>
+                        <button class="btn btn-success" @click="selectUserDetail(user)" data-toggle="modal" data-target="#userDetail">Detail</button>
+                        <button class="btn btn-primary" @click="selectUser(user)">Edit</button>
                         <button class="btn btn-danger" @click="deleteUser(user, index)">Delete</button>
                     </td>
                     <td v-else>
@@ -127,7 +149,7 @@
     </div>
 </template>
 
-<script>
+<script>  
     export default {
         data() {
             return {
@@ -139,14 +161,14 @@
                     confirm_password: '',
                     isEdit: false
                 },
+                isDetail: false,
                 listUsers: {},
                 error: null,
                 selectedUser: null,
-                isCreate: false,
                 listCategoryUser: {},
                 category_user: {
                     name: ''
-                }
+                },
             }
         },
         created() {
@@ -176,8 +198,7 @@
                         password: '',
                         category_user_id: 1, 
                         confirm_password: '',
-                    },
-                    this.isCreate = false
+                    }
                 } catch (error) {
                     this.error = error.response.data
                 }
@@ -193,14 +214,11 @@
                     this.error = error.response.data
                 }
             },
-           selecteUser (user) {
+           selectUser (user) {
                 user.isEdit = true
-				this.selectedUser = { ...user }
-			},
-            changeCreate() {
-                this.isCreate = !this.isCreate
-			},
-			async updateUser(index) {
+                this.selectedUser = { ...user }
+            },
+            async updateUser(index) {
                 try {
                     const response = await axios.put('/admin/user/' + this.selectedUser.id, {
                         name: this.selectedUser.name,
@@ -217,7 +235,7 @@
                 } catch (error) {
                     this.error = error.response.data
                 }
-			},
+            },
             async deleteUser(user, index) {
                 try {
                     await axios.delete('/admin/user/' + user.id)
@@ -230,11 +248,13 @@
                 try {
                     const response = await axios.get('/admin/category_user')
                     this.listCategoryUser = response.data
-                    console.log(this.listCategoryUser)
                 } catch (error) {
                     this.error = error.response.data
                 }
             },
+            selectUserDetail(user) {
+                this.$emit('selectUserDetail', user)
+            }
         }
     }
 </script>

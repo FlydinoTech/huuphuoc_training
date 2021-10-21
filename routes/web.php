@@ -36,20 +36,29 @@ Route::prefix('admin')->middleware('admin', 'auth')->group(function(){
     Route::get('/',[AdminController::class,'index'])->name("admin.index");
     Route::resource('category', CategoryController::class);
     Route::get('/searchCategory',[CategoryController::class,'search'])->name('category.search');
+
     Route::resource('tour', TourController::class);
     Route::get('/searchTour',[TourController::class,'search'])->name('tour.search');
+    Route::get('tour-vuejs', function() {
+        return view('admin.tour.app');
+    })->name('tour.vuejs');
+
     Route::resource('category_product', CategoryProductController::class);
     Route::get('/searchCategoryProduct',[CategoryProductController::class,'search'])->name('category_product.search');
+
     Route::resource('product', ProductController::class);
     Route::get('/searchProduct',[ProductController::class,'search'])->name('product.search');
+
     Route::resource('user', UserController::class, ['only' => ['index']]);
     Route::resource('user', UserController::class, ['except' => ['index']])->middleware('admin-manager');
     Route::get('user-vuejs', function() {
         return view('admin.user.app');
     })->name('user.vuejs');
+
     Route::resource('category_user', CategoryUserController::class, ['only' => ['index']]);
     Route::resource('category_user', CategoryUserController::class, ['except' => ['index']])->middleware('admin-manager');
     Route::get('/searchUser',[UserController::class,'search'])->name('user.search');
+
     Route::get('error',[UserController::class,'error'])->name('admin.error');
 });
 

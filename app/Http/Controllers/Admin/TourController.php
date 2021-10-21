@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TourCreateRequest;
 use App\Http\Requests\TourUpdateRequest;
+use App\Models\Tour;
 use App\Services\Admin\CategoryService;
 use App\Services\Admin\TourService;
 use Illuminate\Http\Request;
@@ -23,9 +24,7 @@ class TourController extends Controller
      */
     public function index()
     {
-        $tours = $this->tourService->getTour();
-        
-        return view('admin.tour.index')->with(compact('tours'));
+        return $this->tourService->getTour();
     }
 
     /**
@@ -35,9 +34,9 @@ class TourController extends Controller
      */
     public function create()
     {
-        $category = $this->categoryService->getCategoryForSelect();
+        // $category = $this->categoryService->getCategoryForSelect();
 
-        return view('admin.tour.create', compact('category'));
+        // return view('admin.tour.create', compact('category'));
     }
 
     /**
@@ -48,12 +47,18 @@ class TourController extends Controller
      */
     public function store(TourCreateRequest $request)
     {
-        $tourParam = $request->all();
-        if ($this->tourService->create($tourParam, $request->file('file'))) {
-            return redirect()->route('tour.index')->with('msgAddSuccess', 'Thêm chuyến đi thành công.');
-        } else {
-            return redirect()->route('tour.create')->with('msgAddFail', 'Thêm chuyến đi không thành công.');
-        }
+        $tour = Tour::create([
+            'name' => $request->input('name'),
+            'category_id' => $request->input('category_id'),
+            'description'    => $request->input('description'),
+            'day' => $request->input('day'),
+            'night' => $request->input('night'),
+            'price' => $request->input('price'),
+            'discount' => $request->input('discount'),
+        ]);
+        return response([
+            'tour' => $tour
+        ], 200);
     }
 
     /**
@@ -90,12 +95,21 @@ class TourController extends Controller
      */
     public function update(TourUpdateRequest $request, $id)
     {
-        $tourParam = $request->all();
-        if ($this->tourService->update($tourParam, $id, $request->file('file'))) {
-            return redirect()->route('tour.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
-        } else {
-            return redirect()->route('tour.create')->with('msgUpdateFail', 'Cập nhật không thành công.');
-        }
+        $tour = Tour::find($id);
+    
+        $tour->name = $request->input('name');
+        $tour->category_id = $request->input('category_id');
+        $tour->description = $request->input('description');
+        $tour->day = $request->input('day');
+        $tour->night = $request->input('night');
+        $tour->price = $request->input('price');
+        $tour->discount = $request->input('discount');
+        
+        $tour->save();
+    
+        return response([
+            'tour' => $tour
+        ], 200);
     }
 
     /**
@@ -106,11 +120,11 @@ class TourController extends Controller
      */
     public function destroy($id)
     {
-        if ($this->tourService->delete($id)) {
-            return redirect()->route('tour.index')->with('msgDeleteSuccess', 'Xóa thành công');
-        } else {
-            return redirect()->route('tour.index')->with('msgDeleteFail', 'Xóa không thành công');
-        }
+        $tour = Tour::find($id);
+        $tour->delete();
+        return response([
+            'result' => 'success'
+        ], 200);
     }
 
     public function search(Request $request)

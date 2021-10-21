@@ -43,7 +43,6 @@
             <!--responsive view logo start-->
             <div class="logo dark-logo-bg visible-xs-* visible-sm-*">
                 <a href="{{route('admin.index')}}">
-                    <img src="/img/logo-icon.png" alt="">
                     <!--<i class="fa fa-maxcdn"></i>-->
                     <span class="brand-name">SlickLab</span>
                 </a>
@@ -64,6 +63,7 @@
                             <li><a href="{{ route('tour.index')}}"> @lang('admin.tourManager') </a></li>
                             <li><a href="{{ route('user.index')}}"> @lang('admin.userManager')  </a></li>
                             <li><a href="{{ route('user.vuejs')}}"> User-vuejs</a></li>
+                            <li><a href="{{ route('tour.vuejs')}}"> Tour-vuejs</a></li>
                             <li><a href="{{ route('category_product.index')}}"> Quản lý loại sản phẩm</a></li>
                             <li><a href="{{ route('product.index')}}"> Quản lý sản phẩm</a></li>
                         </ul>

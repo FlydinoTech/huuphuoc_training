@@ -10,6 +10,7 @@ use App\Services\Admin\CategoryUserService;
 use App\Services\Admin\UserService;
 use Illuminate\Http\Request;
 
+
 class UserController extends Controller
 {
     public function __construct(UserService $userService, CategoryUserService $categoryUserService)
@@ -23,7 +24,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function index()
+    public function index(Request $request)
     {
         return $this->userService->getUser();
     }
@@ -65,7 +66,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->userService->getUserShow($id);
     }
 
     /**
