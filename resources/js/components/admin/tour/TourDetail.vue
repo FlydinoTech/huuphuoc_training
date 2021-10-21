@@ -18,22 +18,27 @@
                             <label for="">Name : </label>
                             {{ tourDetailInfo.name }} 
                         </div>
-                        <!-- <div class="user-name">
-                            <label for="">Email : </label>
-                            {{ userDetailInfo.email }} 
+                        <div class="user-name">
+                            <p for="">Description : </p>
+                            {{ tourDetailInfo.description }} 
                         </div>
                         <div class="user-name">
-                            <label for="">Category : </label>
-                            {{ userDetailInfo.category_name }} 
+                            {{ tourDetailInfo.day }}
+                            <label for="">Day / </label>
+                            {{ tourDetailInfo.night }} 
+                            <label for="">Night</label>
                         </div>
                         <div class="user-name">
-                            <label for="">Created at : </label>
-                            {{ userDetailInfo.created_at }} 
+                            
                         </div>
                         <div class="user-name">
-                            <label for="">Update_at : </label>
-                            {{ userDetailInfo.updated_at }} 
-                        </div> -->
+                            <label for="">Price : </label>
+                            {{ Intl.NumberFormat().format(tourDetailInfo.price) }} đ
+                        </div>
+                        <div class="user-name">
+                            <label for="">Discount : </label>
+                            {{ tourDetailInfo.discount }}%
+                        </div>
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">

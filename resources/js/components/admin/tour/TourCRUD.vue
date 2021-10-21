@@ -70,7 +70,7 @@
             </div>
         </div>
         <hr>
-        <h1>List Tour</h1>
+        <h1>List Tours</h1>
         <table class="table">
             <thead>
                 <tr>
@@ -78,6 +78,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Category</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Picture</th>
                     <th scope="col">Day</th>
                     <th scope="col">Night</th>
                     <th scope="col">Price</th>
@@ -95,7 +96,7 @@
                         <input type="text" v-model="selectedTour.name" class="form-control">
                     </td>
                     <td v-if="!tour.isEdit">
-                        {{ tour.category_id }}
+                        {{ tour.category_name }}
                     </td>
                     <td v-else>
                         <select v-model="selectedTour.category_id" class="form-control">
@@ -108,38 +109,44 @@
                         {{ tour.description }}
                     </td>
                     <td v-else>
-                        <input type="text" v-model="selectedTour.description" class="form-control" readonly>
+                        <input type="text" v-model="selectedTour.description" class="form-control" >
+                    </td>
+                    <td v-if="!tour.isEdit">
+                        <img v-bind:src="tour.picture" style="width: 150; height: 100px">
+                    </td>
+                    <td v-else>
+                        <input type="text" v-model="selectedTour.picture" class="form-control" >
                     </td>
                     <td v-if="!tour.isEdit">
                         {{ tour.day }}
                     </td>
                     <td v-else>
-                        <input type="text" v-model="selectedTour.day" class="form-control" readonly>
+                        <input type="text" v-model="selectedTour.day" class="form-control" >
                     </td>
                     <td v-if="!tour.isEdit">
                         {{ tour.night }}
                     </td>
                     <td v-else>
-                        <input type="text" v-model="selectedTour.night" class="form-control" readonly>
+                        <input type="text" v-model="selectedTour.night" class="form-control" >
                     </td>
                     <td v-if="!tour.isEdit">
                         {{ tour.price }}
                     </td>
                     <td v-else>
-                        <input type="text" v-model="selectedTour.price" class="form-control" readonly>
+                        <input type="text" v-model="selectedTour.price" class="form-control" >
                     </td>
                     <td v-if="!tour.isEdit">
                         {{ tour.discount }}
                     </td>
                     <td v-else>
-                        <input type="text" v-model="selectedTour.discount" class="form-control" readonly>
+                        <input type="text" v-model="selectedTour.discount" class="form-control" >
                     </td>
-                    <td v-if="!tour.isEdit">
+                    <td v-if="!tour.isEdit" style="width: 220px">
                         <button class="btn btn-success" @click="selectTourDetail(tour)" data-toggle="modal" data-target="#tourDetail">Detail</button>
                         <button class="btn btn-primary" @click="selectTour(tour)">Edit</button>
                         <button class="btn btn-danger" @click="deleteTour(tour, index)">Delete</button>
                     </td>
-                    <td v-else>
+                    <td v-else style="width: 220px">
                         <button class="btn btn-primary" @click="updateTour(index)">Save</button>
                         <button class="btn btn-danger" @click="tour.isEdit = false">Cancel</button>
                     </td>
@@ -185,6 +192,7 @@
                     name: '',
                     category_id: 1,
                     description: '',
+                    picture: '',
                     day: '',
                     night: '',
                     price: '',
@@ -228,6 +236,7 @@
                         name: '',
                         category_id: 1,
                         description: '',
+                        picture: '',
                         day: '',
                         night: '',
                         price: '',

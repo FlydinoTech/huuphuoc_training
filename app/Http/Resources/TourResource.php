@@ -20,6 +20,7 @@ class TourResource extends JsonResource
             'category_id' => $this->category_id,
             'category_name' => $this->category->name,
             'description' => $this->description,
+            'picture' => $this->pictureUrl,
             'day' => $this->day,
             'night' => $this->night,
             'price' => $this->price,

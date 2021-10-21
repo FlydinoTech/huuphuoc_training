@@ -1,6 +1,7 @@
 <?php
 namespace App\Services\Admin;
 
+use App\Http\Resources\TourCollection;
 use App\Models\Tour;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,7 +14,7 @@ class TourService extends BaseService
     
     public function getTour($limit = 5)
     {
-        return $this->model->orderBy('updated_at', 'desc')->paginate($limit);
+        return new TourCollection($this->model->orderBy('updated_at', 'desc')->paginate($limit));
     }
 
     public function getTourEdit($id)
