@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Models\User;
 use App\Services\Admin\CategoryUserService;
 use App\Services\Admin\UserService;
 use Illuminate\Http\Request;
+
 
 class UserController extends Controller
 {
@@ -22,11 +24,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function index()
+    public function index(Request $request)
     {
-        $users = $this->userService->getUser();
-        
-        return view('admin.user.index')->with(compact('users'));
+        return $this->userService->getUser();
     }
 
     /**
@@ -36,9 +36,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $categoryUser = $this->categoryUserService->getUserForSelect();
-
-        return view('admin.user.create', compact('categoryUser'));
+        //
     }
 
     /**
@@ -49,12 +47,15 @@ class UserController extends Controller
      */
     public function store(UserCreateRequest $request)
     {
-        $userParam = $request->all();
-        if ($this->userService->create($userParam)) {
-            return redirect()->route('user.index')->with('msgAddSuccess', 'Thêm người dùng thành công.');
-        } else {
-            return redirect()->route('user.create')->with('msgAddFail', 'Thêm người dùng không thành công.');
-        }
+        $user = User::create([
+            'name' => $request->input('name'),
+            'category_user_id' => $request->input('category_user_id'),
+            'email'    => $request->input('email'),
+            'password' => $request->input('password')
+        ]);
+        return response([
+            'user' => $user
+        ], 200);
     }
 
     /**
@@ -65,7 +66,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        
+        return $this->userService->getUserShow($id);
     }
 
     /**
@@ -76,10 +77,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $categoryUser = $this->categoryUserService->getUserForSelect();
-        $user = $this->userService->getUserUpdate($id);
-
-        return view('admin.user.edit', compact('categoryUser', 'user'));
+        //
     }
 
     /**
@@ -91,12 +89,20 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, $id)
     {
-        $userParam = $request->all();
-        if ($this->userService->update($userParam, $id)) {
-            return redirect()->route('user.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
-        } else {
-            return redirect()->route('user.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
+        $user = User::find($id);
+    
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->category_user_id = $request->input('category_user_id');
+        if ($request->password != '') {
+            $user->password = $request->password;
         }
+        
+        $user->save();
+    
+        return response([
+            'user' => $user
+        ], 200);
     }
 
     /**
@@ -107,13 +113,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        if ($this->userService->delete($id)) {
-            return redirect()->route('user.index')->with('msgDeleteSuccess', 'Xóa thành công');
-        } else {
-            return redirect()->route('user.index')->with('msgDeleteFail', 'Xóa không thành công');
-        }
+        $user = User::find($id);
+        $user->delete();
+        return response([
+            'result' => 'success'
+        ], 200);
     }
-
     public function search(Request $request)
     {
         $search = $request->search;

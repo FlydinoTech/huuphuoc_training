@@ -16,9 +16,9 @@ class CategoryService extends BaseService
         return $this->model->pluck('name', 'id');
     }
 
-    public function getCategory()
+    public function getCategory($limit = 5)
     {
-        return $this->model->orderBy('updated_at', 'desc')->paginate(5);
+        return $this->model->orderBy('updated_at', 'desc')->paginate($limit);
     }
 
     public function create($inputs, $file)

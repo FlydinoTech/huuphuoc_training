@@ -13,11 +13,8 @@
     <title>SlickLab - Responsive Admin Dashboard Template</title>
     <!--common style-->
     {!! Html::style('css/admin/app.css') !!}
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="/js/html5shiv.js"></script>
-    <script src="/js/respond.min.js"></script>
-    <![endif]-->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
 <body class="sticky-header">
@@ -46,7 +43,6 @@
             <!--responsive view logo start-->
             <div class="logo dark-logo-bg visible-xs-* visible-sm-*">
                 <a href="{{route('admin.index')}}">
-                    <img src="/img/logo-icon.png" alt="">
                     <!--<i class="fa fa-maxcdn"></i>-->
                     <span class="brand-name">SlickLab</span>
                 </a>
@@ -66,6 +62,8 @@
                             <li><a href="{{ route('category.index')}}"> @lang('admin.categoryManager') </a></li>
                             <li><a href="{{ route('tour.index')}}"> @lang('admin.tourManager') </a></li>
                             <li><a href="{{ route('user.index')}}"> @lang('admin.userManager')  </a></li>
+                            <li><a href="{{ route('user.vuejs')}}"> User-vuejs</a></li>
+                            <li><a href="{{ route('tour.vuejs')}}"> Tour-vuejs</a></li>
                             <li><a href="{{ route('category_product.index')}}"> Quản lý loại sản phẩm</a></li>
                             <li><a href="{{ route('product.index')}}"> Quản lý sản phẩm</a></li>
                         </ul>

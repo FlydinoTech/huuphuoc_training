@@ -1,7 +1,10 @@
 <?php
 namespace App\Services\Admin;
 
+use App\Http\Resources\UserCollection;
 use App\Models\User;
+
+use function GuzzleHttp\Promise\all;
 
 class UserService extends BaseService
 {
@@ -10,14 +13,19 @@ class UserService extends BaseService
         $this->model = $user;
     }
 
-    public function getUser()
+    public function getUser($limit = 5)
     {
-        return $this->model->orderBy('updated_at', 'desc')->paginate(6);
+        return new UserCollection($this->model->orderBy('updated_at', 'desc')->paginate($limit));
     }
 
     public function create($inputs)
     {
         return $this->model->create($inputs);
+    }
+
+    public function getUserShow($id)
+    {
+        return $this->model->findOrFail($id);
     }
 
     public function getUserUpdate($id)

@@ -10,6 +10,11 @@ class CategoryUserService extends BaseService
         $this->model = $category_user;
     }
     
+    public function getCategoryUser() 
+    {
+        return $this->model->get();
+    }
+
     public function getUserForSelect()
     {
         return $this->model->pluck('name', 'id');
