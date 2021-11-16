@@ -66,8 +66,8 @@
                             <li><a href="{{ route('category.index')}}"> @lang('admin.categoryManager') </a></li>
                             <li><a href="{{ route('tour.index')}}"> @lang('admin.tourManager') </a></li>
                             <li><a href="{{ route('user.index')}}"> @lang('admin.userManager')  </a></li>
-                            <li><a href="{{ route('category_product.index')}}"> Quản lý loại sản phẩm</a></li>
-                            <li><a href="{{ route('product.index')}}"> Quản lý sản phẩm</a></li>
+                            <li><a href="{{ route('category_product.index')}}"> @lang('admin.categoryProductManager')</a></li>
+                            <li><a href="{{ route('product.index')}}"> @lang('admin.productManager')</a></li>
                         </ul>
                     </li>
                 </ul>

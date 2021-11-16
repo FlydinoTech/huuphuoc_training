@@ -48,9 +48,9 @@ class CategoryProductController extends Controller
     {
         $categoryProductParam = $request->validated();
         if ($this->categoryProductService->create($categoryProductParam, $request->file('file'))) {
-            return redirect()->route('category_product.index')->with('msgAddSuccess', 'Thêm danh mục thành công.');
+            return redirect()->route('category_product.index')->with('msgAddSuccess', trans('admin.addSuccess'));
         } else {
-            return redirect()->route('category_product.create')->with('msgAddFail', 'Thêm danh mục không thành công.');
+            return redirect()->route('category_product.create')->with('msgAddFail', trans('admin.addError'));
         }
     }
 
@@ -89,9 +89,9 @@ class CategoryProductController extends Controller
     {
         $categoryProductParam = $request->validated();
         if ($this->categoryProductService->update($categoryProductParam, $id, $request->file('file'))) {
-            return redirect()->route('category_product.index')->with('msgUpdateSuccess', 'Cập nhật thành công');
+            return redirect()->route('category_product.index')->with('msgUpdateSuccess', trans('admin.updateSuccess'));
         } else {
-            return redirect()->route('category_product.edit')->with('msgUpdateFail', 'Lỗi. Vui lòng thử lại.');
+            return redirect()->route('category_product.edit')->with('msgUpdateFail', trans('admin.updateError'));
         }
     }
 
@@ -104,9 +104,9 @@ class CategoryProductController extends Controller
     public function destroy($id)
     {
         if ($this->categoryProductService->delete($id)) {
-            return redirect()->route('category_product.index')->with('msgDeleteSuccess', 'Xóa thành công');
+            return redirect()->route('category_product.index')->with('msgDeleteSuccess', trans('admin.deleteSuccess'));
         } else {
-            return redirect()->route('category_product.index')->with('msgDeleteFail', 'Xóa không thành công');
+            return redirect()->route('category_product.index')->with('msgDeleteFail', trans('admin.deleteError'));
         }
     }
 
